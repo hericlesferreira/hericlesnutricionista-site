@@ -617,8 +617,7 @@ ul { list-style: none; }
   .hamburger { display: flex; }
 
   .hero__inner { grid-template-columns: 1fr; gap: 32px; min-height: unset; padding-top: 32px; padding-bottom: 32px; }
-  .hero__img-wrap { order: -1; }
-  .hero__img-frame { max-width: 280px; margin: 0 auto; }
+  .hero__img-wrap { display: none; }
   .hero__ctas { flex-direction: column; align-items: flex-start; }
 
   .hero__stats-inner { gap: 0; }

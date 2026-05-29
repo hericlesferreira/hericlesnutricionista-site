@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const WA_LINK = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Estava%20no%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20acompanhamento%20nutricional"
-const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consultoria%20online."
-const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville."
+const WA_LINK = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Estava%20no%20seu%20site%20e%20quero%20um%20acompanhamento%20nutricional%20para%20emagrecer%20e%20ganhar%20massa%20magra."
+const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consultoria%20online%20para%20emagrecimento%20e%20hipertrofia."
+const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 
 const faqs = [
   { q: "Você faz atendimentos online?", a: "Sim! A consulta online segue o mesmo padrão de qualidade da presencial. A avaliação física é feita por fotos e você recebe um manual ensinando como tirar as medidas." },
-  { q: "Em quanto tempo recebo meu plano alimentar?", a: "Em até 72h após a consulta." },
-  { q: "Terei acesso a um app para ver o plano?", a: "Sim! Todos os pacientes têm acesso ao Dietitian, app completo para acompanhar o plano alimentar, avaliações e prescrições." },
-  { q: "Quanto tempo dura a primeira consulta?", a: "De 1 a 2 horas. Venha preparado para uma boa conversa, ela é o ponto de partida de tudo." },
+  { q: "Em quanto tempo recebo meu plano alimentar?", a: "Em até 72h após a consulta. O plano é montado de acordo com sua rotina, treino, preferências, exames e objetivo de composição corporal." },
+  { q: "Terei acesso a um app para acompanhar dieta e resultados?", a: "Sim. Todos os pacientes têm acesso ao Dietitian, app completo para acompanhar plano alimentar, avaliações, prescrições e evolução." },
+  { q: "Quanto tempo dura a primeira consulta nutricional?", a: "De 1 a 2 horas. A conversa inicial é detalhada para entender histórico, rotina, treino, metabolismo e obstáculos que travaram seus resultados." },
   { q: "Quais formas de pagamento são aceitas?", a: "Cartão de crédito/débito, PIX, dinheiro ou transferência bancária." },
 ]
 
@@ -99,27 +99,27 @@ export default function App() {
         <div className="hero__bg-gradient" />
         <div className="container hero__inner">
           <div className="hero__text">
-            <p className="hero__eyebrow">Nutricionista · CRN-10 12284 · Joinville/SC</p>
+            <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              Emagreça de vez.<br />
-              <span className="accent">Sem terrorismo.</span><br />
+              Emagreça de vez<br />
+              <span className="accent">sem terrorismo.</span><br />
             </h1>
             <p className="hero__desc">
-              Emagrecimento, hipertrofia e performance com nutrição estratégica, baseada em ciência e adaptada à sua vida real.
+              Acompanhamento nutricional para emagrecimento, hipertrofia e recomposição corporal, com plano alimentar personalizado, baseado em ciência e adaptado à sua rotina real.
             </p>
             <ul className="hero__bullets">
-              <li><span>📈</span> Acompanhamento 100% personalizado</li>
+              <li><span>📈</span> Acompanhamento personalizado</li>
               <li><span>🧠</span> Prática baseada em evidências</li>
-              <li><span>🍕</span> Flexibilidade, sem restrições desnecessárias</li>
+              <li><span>🍽️</span> Flexibilidade, sem restrições desnecessárias</li>
             </ul>
             <div className="hero__ctas">
-              <WaBtn href={WA_LINK} variant="primary">Quero começar agora</WaBtn>
+              <WaBtn href={WA_LINK} variant="primary">Quero emagrecer com acompanhamento</WaBtn>
               <a href="#como-funciona" className="btn-ghost">Ver como funciona →</a>
             </div>
           </div>
           <div className="hero__img-wrap">
             <div className="hero__img-frame">
-              <img src="/img/hericlesnutri1.png" alt="Hericles Nutricionista" className="hero__photo" />
+              <img src="/img/hericlesnutri1.png" alt="Hericles Ferreira, nutricionista especialista em emagrecimento e ganho de massa magra em Joinville" className="hero__photo" />
             </div>
           </div>
         </div>
@@ -127,9 +127,9 @@ export default function App() {
           <div className="container hero__stats-inner">
             <div className="stat"><strong>Online & Presencial</strong><span>Joinville/SC</span></div>
             <div className="stat-divider" />
-            <div className="stat"><strong>72h</strong><span>Plano alimentar pronto</span></div>
+            <div className="stat"><strong>72h</strong><span>Plano alimentar personalizado</span></div>
             <div className="stat-divider" />
-            <div className="stat"><strong>Acompanhamento semanal</strong><span>Para garantir sua evolução</span></div>
+            <div className="stat"><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div>
           </div>
         </div>
       </section>
@@ -138,24 +138,24 @@ export default function App() {
       <section className="section como-funciona" id="como-funciona">
         <div className="container">
           <div className="section-header">
-            <p className="section-tag">Modalidades</p>
-            <h2 className="section-title">A sua jornada começa aqui</h2>
-            <p className="section-sub">Escolha a modalidade que encaixa na sua rotina — o resultado é o mesmo.</p>
+            <p className="section-tag">Consulta nutricional</p>
+            <h2 className="section-title">Sua jornada para emagrecer e evoluir começa aqui</h2>
+            <p className="section-sub">Escolha atendimento presencial em Joinville ou consultoria online para receber uma estratégia nutricional personalizada.</p>
           </div>
           <div className="cards-row">
             <div className="service-card featured">
               <div className="featured-badge">⭐ Mais popular</div>
               <div className="service-card__img-wrap">
-                <img src="/img/passo1.jpeg" alt="Consulta Presencial" />
+                <img src="/img/passo1.jpeg" alt="Consulta nutricional presencial em Joinville para emagrecimento e hipertrofia" />
                 <span className="service-card__badge">📍 Joinville/SC</span>
               </div>
               <div className="service-card__body">
-                <h3>Consulta Presencial</h3>
-                <p>Atendimento exclusivo no consultório. Avaliação física completa, estratégia traçada pra você.</p>
+                <h3>Consulta nutricional presencial em Joinville</h3>
+                <p>Atendimento individual no consultório, com avaliação física completa e estratégia alimentar para perda de gordura, ganho de massa magra e melhora da performance.</p>
                 <ul className="check-list">
                   <li>Questionário pré-consulta detalhado</li>
                   <li>Avaliação física completa</li>
-                  <li>Plano alimentar 100% personalizado</li>
+                  <li>Plano alimentar personalizado para emagrecimento ou hipertrofia</li>
                   <li>Suporte contínuo via WhatsApp com feedback semanal</li>
                   <li>Acesso ao Dietitian</li>
                 </ul>
@@ -165,15 +165,15 @@ export default function App() {
             <div className="service-card">
               
               <div className="service-card__img-wrap">
-                <img src="/img/passo3.jpeg" alt="Consultoria Online" />
+                <img src="/img/passo3.jpeg" alt="Consultoria nutricional online para emagrecer e ganhar massa magra" />
                 <span className="service-card__badge">🌐 Online</span>
               </div>
               <div className="service-card__body">
-                <h3>Atendimento ou Consultoria Online</h3>
-                <p>Praticidade e resultado onde você estiver. Sem deslocamento, sem enrolação.</p>
+                <h3>Consultoria nutricional online</h3>
+                <p>Praticidade para evoluir onde você estiver, com plano alimentar, ajustes semanais e acompanhamento focado em composição corporal.</p>
                 <ul className="check-list">
                   <li>Questionário inicial completo</li>
-                  <li>Planejamento alimentar personalizado</li>
+                  <li>Planejamento alimentar para emagrecer, definir ou ganhar massa magra</li>
                   <li>Avaliações periódicas por fotos e feedback</li>
                   <li>Suporte semanal por ferramenta exclusiva</li>
                   <li>Acesso ao Dietitian</li>
@@ -190,14 +190,14 @@ export default function App() {
         <div className="container">
           <div className="section-header">
             <p className="section-tag">Para quem é?</p>
-            <h2 className="section-title">Você está preparado para:</h2>
+            <h2 className="section-title">Nutrição para quem quer resultado com saúde</h2>
           </div>
           <div className="benefits-grid">
             {[
-              { icon: '⚖️', title: 'Emagrecer de verdade', desc: 'Sem dietas malucas, sem efeito sanfona, sem passar fome.' },
-              { icon: '📊', title: 'Resultados sólidos', desc: 'Estratégia validada, baseada em evidência, sem invencionismo.' },
-              { icon: '🍽️', title: 'Plano feito pra você', desc: 'Adaptado às suas preferências, rotina e objetivos. 100% personalizado.' },
-              { icon: '🧠', title: 'Comportamento duradouro', desc: 'Estratégias que mudam hábitos, pra você não depender de dieta pra sempre.' },
+              { icon: '⚖️', title: 'Emagrecer de verdade', desc: 'Reduza gordura corporal com estratégia, sem dietas malucas, sem efeito sanfona e sem passar fome.' },
+              { icon: '💪', title: 'Ganhar massa magra', desc: 'Estratégia validada, baseada em evidência, sem invencionismo. Tudo para construir um corpo mais forte e definido.' },
+              { icon: '📊', title: 'Melhorar composição corporal', desc: 'Acompanhe medidas, fotos e evolução para perder gordura mantendo desempenho e massa muscular.' },
+              { icon: '🧠', title: 'Criar hábitos duradouros', desc: 'Aprenda a comer melhor na vida real para não depender de dieta restritiva para sempre.' },
             ].map((b, i) => (
               <div className="benefit-card" key={i}>
                 <span className="benefit-icon">{b.icon}</span>
@@ -207,7 +207,7 @@ export default function App() {
             ))}
           </div>
           <div className="text-center mt-lg">
-            <WaBtn href={WA_LINK} variant="primary">Quero esses resultados</WaBtn>
+            <WaBtn href={WA_LINK} variant="primary">Quero meu plano alimentar personalizado</WaBtn>
           </div>
         </div>
       </section>
@@ -216,9 +216,9 @@ export default function App() {
       <section className="section resultados" id="resultados">
         <div className="container">
           <div className="section-header">
-            <p className="section-tag">Provas reais</p>
-            <h2 className="section-title">Transformações Reais</h2>
-            <p className="section-sub">Resultados de pacientes reais, com rotinas reais.</p>
+            <p className="section-tag">Resultados</p>
+            <h2 className="section-title">Transformações reais</h2>
+            <p className="section-sub">Evoluções de pacientes reais que seguiram uma estratégia nutricional possível para a rotina deles.</p>
           </div>
           <div className="transf-grid">
             {transformacoes.map((t, i) => (
@@ -226,18 +226,18 @@ export default function App() {
                 <div className="transf-pair">
                   <div className="transf-side">
                     <span className="transf-label">Antes</span>
-                    <img src={t.antes} alt="Antes" loading="lazy" />
+                    <img src={t.antes} alt="Antes do acompanhamento nutricional para emagrecimento" loading="lazy" />
                   </div>
                   <div className="transf-side">
                     <span className="transf-label after">Depois</span>
-                    <img src={t.depois} alt="Depois" loading="lazy" />
+                    <img src={t.depois} alt="Depois do acompanhamento nutricional para emagrecimento e composição corporal" loading="lazy" />
                   </div>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center mt-lg">
-            <WaBtn href={WA_LINK} variant="primary">Quero ser o próximo</WaBtn>
+            <WaBtn href={WA_LINK} variant="primary">Quero transformar meu corpo</WaBtn>
           </div>
         </div>
       </section>
@@ -246,21 +246,21 @@ export default function App() {
       <section className="section sobre bg-dark-section" id="sobre">
         <div className="container sobre__inner">
           <div className="sobre__img-wrap">
-            <img src="/img/hericlesnutri3.JPG" alt="Hericles Ferreira Nutricionista" />
+            <img src="/img/hericlesnutri3.JPG" alt="Hericles Ferreira nutricionista em Joinville especialista em metabolismo, emagrecimento e hipertrofia" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
-            <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo e Emagrecimento</span></h2>
-            <p>Nutricionista formado pela Católica-SC, pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçú.</p>
-            <p>Minha jornada começou de dentro: passei pelo processo de emagrecimento sem orientação e na pele entendi o caos de informações divergentes, dietas extremistas e promessas vazias. Isso me fez mergulhar de cabeça em bioquímica, fisiologia e doenças metabólicas.</p>
-            <p>Hoje minha missão é simples: <strong>resultado real, com estratégia e sem terrorismo nutricional.</strong></p>
+            <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo, Emagrecimento e Hipertrofia</span></h2>
+            <p>Sou Hericles Ferreira, nutricionista formado pela Católica-SC, pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
+            <p>Minha jornada começou de dentro: passei pelo processo de emagrecimento sem orientação e entendi na prática o caos das informações divergentes, dietas extremas e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
+            <p>Hoje minha missão é simples: <strong>ajudar você a emagrecer, ganhar massa magra e sustentar resultados com estratégia, clareza e sem terrorismo nutricional.</strong></p>
             <div className="sobre__creds">
               <span>📋 CRN-10 12284</span>
-              <span>🎓 Pós em Metabolismo</span>
+              <span>🎓 Pós em Metabolismo e Emagrecimento</span>
               <span>📍 Joinville/SC</span>
-              <span>📸 @hericlesnutri</span>
+              <span>📸 @nutrihericles</span>
             </div>
-            <WaBtn href={WA_LINK} variant="primary">Falar com o Hericles</WaBtn>
+            <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
           </div>
         </div>
       </section>
@@ -268,9 +268,9 @@ export default function App() {
       {/* CTA URGÊNCIA */}
       <section className="section cta-urgencia">
         <div className="container cta-urgencia__inner">
-          <h2>Você já tentou de tudo.<br /><span className="accent">Agora vamos fazer do jeito certo.</span></h2>
-          <p>Chega de estratégias genéricas que não funcionam. Agende agora e receba um plano feito exclusivamente pra você.</p>
-          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar minha consulta agora</WaBtn>
+          <h2>Você não precisa tentar outra dieta da moda.<br /><span className="accent">Precisa de estratégia para o seu corpo.</span></h2>
+          <p>Chega de planos genéricos. Agende sua consulta nutricional e receba um caminho personalizado para emagrecer, ganhar massa magra e evoluir com segurança.</p>
+          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta nutricional</WaBtn>
           <p className="cta-note">💬 Resposta em até 1h no horário comercial.</p>
         </div>
       </section>
@@ -284,7 +284,7 @@ export default function App() {
           </div>
           <FAQ />
           <div className="text-center mt-lg">
-            <p className="faq-cta-text">Ainda tem dúvida? Me manda mensagem.</p>
+            <p className="faq-cta-text">Ainda tem dúvida sobre emagrecimento, hipertrofia ou consultoria online? Me manda mensagem.</p>
             <WaBtn href={WA_LINK} variant="outline">Falar no WhatsApp</WaBtn>
           </div>
         </div>
@@ -295,7 +295,7 @@ export default function App() {
         <div className="container footer__inner">
           <div className="footer__brand">
             <img src="/img/logo-light.png" alt="Hericles Nutricionista" height="48" />
-            <p>Nutrição real para pessoas reais.<br />CRN-10 12284 | Joinville/SC</p>
+            <p>Nutrição para emagrecimento, massa magra e saúde metabólica.<br />CRN-10 12284 | Joinville/SC</p>
           </div>
           <div className="footer__links">
             <h4>Navegação</h4>
@@ -307,7 +307,7 @@ export default function App() {
           </div>
           <div className="footer__social">
             <h4>Redes sociais</h4>
-            <a href="https://instagram.com/hericlesnutri" target="_blank" rel="noopener noreferrer">📸 @hericlesnutri</a>
+            <a href="https://instagram.com/nutrihericles" target="_blank" rel="noopener noreferrer">📸 @nutrihericles</a>
             <a href="https://www.facebook.com/hericles.nutri" target="_blank" rel="noopener noreferrer">📘 hericles.nutri</a>
             <a href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">💼 hericlesnutri</a>
           </div>
@@ -321,7 +321,7 @@ export default function App() {
       <div className="wa-float">
         {waBubble && (
           <div className="wa-float__bubble">
-            Dúvidas? Fale comigo agora! 👋
+            Quer emagrecer ou ganhar massa magra? Fale comigo! 👋
             <button onClick={() => setWaBubble(false)} className="wa-float__close">×</button>
           </div>
         )}
