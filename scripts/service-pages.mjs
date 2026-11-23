@@ -5,6 +5,32 @@ const origin = 'https://www.nutrihericles.com.br'
 const phone = '5547988602379'
 const contact = (subject) => 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent('Olá, Hericles! Vim pelo seu site e gostaria de saber mais sobre ' + subject + '.')
 const address = 'Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC'
+const photos = {
+  'nutricionista-emagrecimento-joinville': {
+    hero: '/img/hericles-ferreira-retrato-institucional.webp',
+    heroAlt: 'Retrato profissional de Hericles Ferreira, nutricionista em Joinville',
+    support: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp',
+    supportAlt: 'Hericles Ferreira durante atendimento nutricional no consultório em Joinville'
+  },
+  'nutricionista-esportivo-joinville': {
+    hero: '/img/hericles-ferreira-retrato-institucional.webp',
+    heroAlt: 'Hericles Ferreira em retrato profissional, nutricionista com atuação em nutrição esportiva',
+    support: '/img/hericles-ferreira-retrato-perfil.webp',
+    supportAlt: 'Retrato de Hericles Ferreira, nutricionista em Joinville'
+  },
+  'consultoria-nutricional-online': {
+    hero: '/img/hericles-ferreira-consultoria-online.webp',
+    heroAlt: 'Hericles Ferreira trabalhando no notebook no ambiente de atendimento',
+    support: '/img/hericles-ferreira-sofa-profissional.webp',
+    supportAlt: 'Hericles Ferreira sentado em retrato profissional'
+  },
+  'acompanhamento-nutricional': {
+    hero: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp',
+    heroAlt: 'Hericles Ferreira conversando durante atendimento nutricional presencial',
+    support: '/img/hericles-ferreira-sofa-profissional.webp',
+    supportAlt: 'Hericles Ferreira, nutricionista, sentado em ambiente profissional'
+  }
+}
 const pages = [
   {
     slug: 'nutricionista-emagrecimento-joinville',
@@ -109,6 +135,7 @@ const nav = pages.map(p => '<a href="/' + p.slug + '/">' + esc(p.nav) + '</a>').
 const footer = '<p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
 const card = ([title, description]) => '<article class="svc-card"><h3>' + esc(title) + '</h3><p>' + esc(description) + '</p></article>'
 function render(p) {
+  const photo = photos[p.slug]
   const url = origin + '/' + p.slug + '/'
   const other = pages.filter(x => x.slug !== p.slug).map(x => '<a class="svc-more-link" href="/' + x.slug + '/">' + esc(x.nav) + ' →</a>').join('')
   const questions = p.faqs.map(([q,a]) => '<details><summary>' + esc(q) + '</summary><p>' + esc(a) + '</p></details>').join('')
@@ -130,21 +157,21 @@ function render(p) {
 <link rel="icon" href="/img/logo-light.ico">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(p.title)}"><meta property="og:description" content="${esc(p.description)}">
-<meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/img/hericlesnutri1.png">
+<meta property="og:url" content="${url}"><meta property="og:image" content="${origin}${photo.hero}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/service-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
 <header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/">HERICLES<span> NUTRI</span></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
 <main>
-<section class="svc-hero"><div class="svc-wrap">
+<section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
 <p class="svc-eyebrow">${esc(p.label)} · CRN-10 12284</p><h1>${esc(p.heading)}</h1>
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/#sobre">Conhecer o nutricionista</a></div>
-</div></section>
+</div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high"></div></section>
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}</div></section>
+<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
 <section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
 <section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
