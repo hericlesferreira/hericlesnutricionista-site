@@ -711,3 +711,12 @@ ul { list-style: none; }
  .hero__img-frame{border:0;box-shadow:none}
  .localizacao__photo{width:160px;height:190px}
 }
+
+/* FAQ com HTML acessível e conteúdo pré-renderizado */
+.faq-item summary{list-style:none;cursor:pointer}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item[open] .faq-chevron{transform:rotate(180deg)}
+.faq-chevron{transition:transform .2s}
+.sobre__actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px}
+.sobre__actions .wa-btn{white-space:normal;text-align:center}
+@media(max-width:768px){.sobre__actions{flex-direction:column;align-items:stretch}}
