@@ -31,6 +31,27 @@ const photos = {
     supportAlt: 'Hericles Ferreira, nutricionista, sentado em ambiente profissional'
   }
 }
+const transformations = [
+  ['antes1.png','depois1.png'],
+  ['antes11.png','depois11.png'],
+  ['antes2.png','depois2.png'],
+  ['antes22.png','depois22.png'],
+  ['antes3.png','depois3.png'],
+  ['antes33.png','depois33.png']
+]
+function renderTransformations(p) {
+  if (!['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville'].includes(p.slug)) return ''
+  const title = p.slug === 'nutricionista-esportivo-joinville'
+    ? 'Evoluções de composição corporal'
+    : 'Resultados reais de acompanhamento'
+  const text = p.slug === 'nutricionista-esportivo-joinville'
+    ? 'Comparativos corporais de pacientes acompanhados. Não representam necessariamente casos de hipertrofia isolada; cada evolução depende do objetivo e da estratégia individual.'
+    : 'Registros de antes e depois de pacientes acompanhados. Resultados individuais variam e não representam uma promessa de emagrecimento.'
+  return '<section class="svc-section svc-muted svc-results"><div class="svc-wrap"><p class="svc-kicker">Acompanhamento na prática</p><h2>'+title+'</h2><p class="svc-results-note">'+text+'</p><div class="svc-results-grid">'+
+    transformations.map(([before,after],i)=>'<div class="svc-results-card"><div class="svc-results-pair"><figure class="svc-results-side"><img src="/img/'+before+'" alt="Registro anterior da evolução corporal '+(i+1)+'" loading="lazy" width="300" height="375"><figcaption>Antes</figcaption></figure><figure class="svc-results-side"><img src="/img/'+after+'" alt="Registro posterior da evolução corporal '+(i+1)+'" loading="lazy" width="300" height="375"><figcaption>Depois</figcaption></figure></div></div>').join('')+
+    '</div><p class="svc-results-note">As fotografias ilustram trajetórias individuais. As condições e os resultados variam conforme cada pessoa.</p></div></section>'
+}
+
 const pages = [
   {
     slug: 'nutricionista-emagrecimento-joinville',
@@ -132,7 +153,7 @@ const pages = [
 
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 const nav = pages.map(p => '<a href="/' + p.slug + '/">' + esc(p.nav) + '</a>').join('')
-const footer = '<p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
+const footer = '<img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
 const card = ([title, description]) => '<article class="svc-card"><h3>' + esc(title) + '</h3><p>' + esc(description) + '</p></article>'
 function render(p) {
   const photo = photos[p.slug]
@@ -163,7 +184,7 @@ function render(p) {
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/">HERICLES<span> NUTRI</span></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
+<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
 <main>
 <section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
@@ -173,6 +194,7 @@ function render(p) {
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high"></div></section>
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
+${renderTransformations(p)}
 <section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
 <section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
