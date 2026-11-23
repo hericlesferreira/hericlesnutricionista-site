@@ -25,9 +25,6 @@ const transformacoes = [
   { antes: '/img/antes1.png', depois: '/img/depois1.png' },
   { antes: '/img/antes22.png', depois: '/img/depois22.png' },
   { antes: '/img/antes2.png', depois: '/img/depois2.png' },
-  { antes: '/img/antes11.png', depois: '/img/depois11.png' },
-  { antes: '/img/antes3.png', depois: '/img/depois3.png' },
-  { antes: '/img/antes33.png', depois: '/img/depois33.png' },
 ]
 
 function WaBtn({ href = WA_LINK, children, variant = 'primary', className = '' }) {
@@ -225,33 +222,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* BENEFÍCIOS */}
-      <section className="section benefits">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Para quem é?</p>
-            <h2 className="section-title">Nutrição para quem quer resultado com saúde</h2>
-          </div>
-          <div className="benefits-grid">
-            {[
-              { icon: '⚖️', title: 'Emagrecer de verdade', desc: 'Reduza gordura corporal com estratégia, sem dietas malucas, sem efeito sanfona e sem passar fome.' },
-              { icon: '💪', title: 'Ganhar massa magra', desc: 'Estratégia validada, baseada em evidência, sem invencionismo. Tudo para construir um corpo mais forte e definido.' },
-              { icon: '📊', title: 'Melhorar composição corporal', desc: 'Acompanhe medidas, fotos e evolução para perder gordura mantendo desempenho e massa muscular.' },
-              { icon: '🧠', title: 'Criar hábitos duradouros', desc: 'Aprenda a comer melhor na vida real para não depender de dieta restritiva para sempre.' },
-            ].map((b, i) => (
-              <div className="benefit-card" key={i}>
-                <span className="benefit-icon">{b.icon}</span>
-                <h4>{b.title}</h4>
-                <p>{b.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-lg">
-            <a className="btn-ghost" href="/nutricionista-emagrecimento-joinville/">Conhecer o acompanhamento para emagrecimento →</a>
-          </div>
-        </div>
-      </section>
-
       {/* TRANSFORMAÇÕES */}
       <section className="section resultados" id="resultados">
         <div className="container">
@@ -276,9 +246,7 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-lg">
-            <WaBtn href={WA_LINK} variant="primary">Quero transformar meu corpo</WaBtn>
-          </div>
+
         </div>
       </section>
 
@@ -366,31 +334,22 @@ export default function App() {
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
           </div>
           <div className="footer__links">
-            <h4>Navegação</h4>
-            <a href="#home">Início</a>
-            <a href="#como-funciona">Como funciona</a>
-            <a href="#servicos">Serviços</a>
+            <h4>Explore</h4>
+            <a href="#como-funciona">Atendimentos</a>
             <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a>
-            <a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a>
             <a href="/consultoria-nutricional-online/">Consultoria online</a>
-            <a href="/acompanhamento-nutricional/">Acompanhamento</a>
-            <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Alimentação e medicações</a>
-            <a href="#resultados">Resultados</a>
-            <a href="#sobre">Sobre</a>
-            <a href="/sobre-hericles-ferreira/">Sobre Hericles Ferreira</a>
-            <a href="#faq">FAQ</a>
-            <a href="/artigos/">Artigos educativos</a>
+            <a href="/sobre-hericles-ferreira/">Sobre mim</a>
+            <a href="/artigos/">Artigos</a>
             <a href="#localizacao">Localização</a>
           </div>
           <div className="footer__social">
             <h4>Redes sociais</h4>
-            <a href="https://instagram.com/nutrihericles" target="_blank" rel="noopener noreferrer">📸 @nutrihericles</a>
-            <a href="https://www.facebook.com/hericles.nutri" target="_blank" rel="noopener noreferrer">📘 hericles.nutri</a>
-            <a href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">💼 hericlesnutri</a>
+            <a href="https://instagram.com/nutrihericles" target="_blank" rel="noopener noreferrer">Instagram · @nutrihericles</a>
+            <a href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">LinkedIn · hericlesnutri</a>
           </div>
         </div>
         <div className="footer__bottom">
-          <p>© 2024 Hericles Ferreira Nutricionista LTDA. Todos os direitos reservados.</p>
+          <p>© 2026 Hericles Ferreira. Nutricionista · CRN-10 12284.</p>
         </div>
       </footer>
 
