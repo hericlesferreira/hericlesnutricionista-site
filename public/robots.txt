@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hericlesnutricionista.vercel.app/sitemap.xml
+Sitemap: https://www.nutrihericles.com.br/sitemap.xml
