@@ -697,3 +697,17 @@ ul { list-style: none; }
 .services-seo__card p{font-size:14px;color:var(--muted)}
 .services-seo__card span{margin-top:auto;color:var(--accent);font-weight:700;font-size:14px}
 @media(max-width:720px){.services-seo__grid{grid-template-columns:1fr}.services-seo__card{padding:25px}}
+
+
+/* Fotos profissionais atuais: cortes equilibrados em diferentes dispositivos */
+.hero__img-frame{max-width:500px;background:transparent;border:none;box-shadow:none}
+.hero__photo{width:100%;height:auto;object-fit:contain}
+.service-card__img-wrap img{object-position:center 34%}
+.sobre__img-wrap{max-width:380px}
+.sobre__img-wrap img{aspect-ratio:4/5;object-fit:cover}
+.localizacao__photo{width:180px;height:210px;object-fit:cover;object-position:center 22%;margin-top:24px;border-radius:14px;border:1px solid rgba(168,224,68,.25)}
+@media(max-width:768px){
+ .hero__img-wrap{display:flex;max-width:270px;margin:0 auto}
+ .hero__img-frame{border:0;box-shadow:none}
+ .localizacao__photo{width:160px;height:190px}
+}
