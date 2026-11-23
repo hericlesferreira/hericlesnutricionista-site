@@ -5,6 +5,7 @@ import { build, createServer } from 'vite'
 import { generateServicePages } from './service-pages.mjs'
 import { generateMedicationPage } from './medication-page.mjs'
 import { generateAboutPage } from './about-page.mjs'
+import { generateEducationalArticles } from './educational-articles.mjs'
 
 await build()
 const server = await createServer({
@@ -26,6 +27,7 @@ try {
   await generateServicePages()
   await generateMedicationPage()
   await generateAboutPage()
+  await generateEducationalArticles()
   await import('./validate-schema.mjs')
   console.log('SEO: HTML inicial pré-renderizado com sucesso.')
 } finally {
