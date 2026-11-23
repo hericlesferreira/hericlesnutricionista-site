@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import './refresh.css'
 
 const MAPS_LINK = 'https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC'
 const ADDRESS = 'Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC, CEP 89224-090'
@@ -71,16 +72,11 @@ function NavBar({ menuOpen, setMenuOpen }) {
           <img src="/img/logo-light.png" alt="Hericles Nutricionista" height="38" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
-          <a href="#home" onClick={() => setMenuOpen(false)}>Início</a>
-          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
-          <a href="#servicos" onClick={() => setMenuOpen(false)}>Serviços</a>
-          <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
-          <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
-          <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Meu trabalho</a>
-          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
+          <a href="#servicos" onClick={() => setMenuOpen(false)}>Áreas de atuação</a>
+          <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Sobre mim</a>
           <a href="/artigos/" onClick={() => setMenuOpen(false)}>Artigos</a>
-          <a href="#localizacao" onClick={() => setMenuOpen(false)}>Localização</a>
-          <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar Consulta</WaBtn>
+          <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar</WaBtn>
         </nav>
         <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span /><span /><span />
@@ -93,12 +89,6 @@ function NavBar({ menuOpen, setMenuOpen }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [waBubble, setWaBubble] = useState(false)
-
-  useEffect(() => {
-    const t = setTimeout(() => setWaBubble(true), 5000)
-    return () => clearTimeout(t)
-  }, [])
 
   return (
     <div className="app">
@@ -111,11 +101,10 @@ export default function App() {
           <div className="hero__text">
             <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              Emagreça de vez<br />
-              <span className="accent">sem terrorismo.</span><br />
+              Uma alimentação que funciona na sua vida.
             </h1>
             <p className="hero__desc">
-              Acompanhamento nutricional para emagrecimento, hipertrofia e recomposição corporal, com plano alimentar personalizado, baseado em ciência e adaptado à sua rotina real.
+              Emagrecimento e ganho de massa muscular com acompanhamento individualizado, sem dietas extremas e sem abrir mão do que você gosta.
             </p>
             <ul className="hero__bullets">
               <li><span>📈</span> Acompanhamento personalizado</li>
@@ -123,8 +112,8 @@ export default function App() {
               <li><span>🍽️</span> Flexibilidade, sem restrições desnecessárias</li>
             </ul>
             <div className="hero__ctas">
-              <WaBtn href={WA_LINK} variant="primary">Quero emagrecer com acompanhamento</WaBtn>
-              <a href="#como-funciona" className="btn-ghost">Ver como funciona →</a>
+              <WaBtn href={WA_LINK} variant="primary">Agendar acompanhamento</WaBtn>
+              <a href="#como-funciona" className="btn-ghost">Conhecer o atendimento →</a>
             </div>
           </div>
           <div className="hero__img-wrap">
@@ -153,8 +142,7 @@ export default function App() {
             <p className="section-sub">Escolha atendimento presencial em Joinville ou consultoria online para receber uma estratégia nutricional personalizada.</p>
           </div>
           <div className="cards-row">
-            <div className="service-card featured">
-              <div className="featured-badge">⭐ Mais popular</div>
+            <div className="service-card">
               <div className="service-card__img-wrap">
                 <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" width="220" height="300" />
                 <span className="service-card__badge">📍 Joinville/SC</span>
@@ -259,7 +247,7 @@ export default function App() {
             ))}
           </div>
           <div className="text-center mt-lg">
-            <WaBtn href={WA_LINK} variant="primary">Quero meu plano alimentar personalizado</WaBtn>
+            <a className="btn-ghost" href="/nutricionista-emagrecimento-joinville/">Conhecer o acompanhamento para emagrecimento →</a>
           </div>
         </div>
       </section>
@@ -310,7 +298,7 @@ export default function App() {
               <span>📋 CRN-10 12284</span>
               <span>🎓 Pós em Metabolismo e Emagrecimento</span>
               <span>📍 Joinville/SC</span>
-              <span>📸 @nutrihericles</span>
+              <span>@nutrihericles</span>
             </div>
             <div className="sobre__actions">
               <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
@@ -326,7 +314,6 @@ export default function App() {
           <h2>Você não precisa tentar outra dieta da moda.<br /><span className="accent">Precisa de estratégia para o seu corpo.</span></h2>
           <p>Chega de planos genéricos. Agende sua consulta nutricional e receba um caminho personalizado para emagrecer, ganhar massa magra e evoluir com segurança.</p>
           <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta nutricional</WaBtn>
-          <p className="cta-note">💬 Resposta em até 1h no horário comercial.</p>
         </div>
       </section>
 
@@ -409,12 +396,6 @@ export default function App() {
 
       {/* WhatsApp Flutuante */}
       <div className="wa-float">
-        {waBubble && (
-          <div className="wa-float__bubble">
-            Quer emagrecer ou ganhar massa magra? Fale comigo! 👋
-            <button onClick={() => setWaBubble(false)} className="wa-float__close">×</button>
-          </div>
-        )}
         <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="wa-float__btn" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
