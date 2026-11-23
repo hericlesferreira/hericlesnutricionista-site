@@ -220,3 +220,17 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 @media(prefers-reduced-motion:reduce) {
  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
+
+
+/* Refinamento final: títulos mais leves e marca oficial */
+.hero__title,.section-title,.service-card__body h3,.services-seo__card h3,
+.services-seo__feature h3,.cta-urgencia__inner h2 {
+  font-family:Inter,Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:-.04em;
+  line-height:1.14;
+}
+.hero__title {letter-spacing:-.055em;line-height:1.09}
+.navbar__logo img,.footer__brand img {filter:none;width:auto;height:auto;object-fit:contain}
+.navbar__logo img {width:min(196px,36vw);max-height:46px}
+.footer__brand img {width:min(230px,100%);max-height:55px}
