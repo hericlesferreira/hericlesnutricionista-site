@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+const MAPS_LINK = 'https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC'
+const ADDRESS = 'Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC, CEP 89224-090'
+
 const WA_LINK = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Estava%20no%20seu%20site%20e%20quero%20um%20acompanhamento%20nutricional%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consultoria%20online%20para%20emagrecimento%20e%20hipertrofia."
 const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
@@ -70,6 +73,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
           <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
           <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#localizacao" onClick={() => setMenuOpen(false)}>Localização</a>
           <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar Consulta</WaBtn>
         </nav>
         <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -251,7 +255,7 @@ export default function App() {
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
             <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo, Emagrecimento e Hipertrofia</span></h2>
-            <p>Sou Hericles Ferreira, nutricionista formado pela Católica-SC, pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
+            <p>Sou Hericles Ferreira, nutricionista em Joinville/SC, registrado no CRN-10 sob o número 12284, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
             <p>Minha jornada começou de dentro: passei pelo processo de emagrecimento sem orientação e entendi na prática o caos das informações divergentes, dietas extremas e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
             <p>Hoje minha missão é simples: <strong>ajudar você a emagrecer, ganhar massa magra e sustentar resultados com estratégia, clareza e sem terrorismo nutricional.</strong></p>
             <div className="sobre__creds">
@@ -290,12 +294,37 @@ export default function App() {
         </div>
       </section>
 
+      {/* LOCALIZAÇÃO */}
+      <section className="section localizacao" id="localizacao" aria-labelledby="localizacao-titulo">
+        <div className="container localizacao__inner">
+          <div>
+            <p className="section-tag">Atendimento presencial em Joinville</p>
+            <h2 className="section-title" id="localizacao-titulo">Onde fica o consultório?</h2>
+            <p className="localizacao__address">{ADDRESS}</p>
+            <p className="localizacao__description">Atendimento nutricional presencial em Joinville e consultoria online para todo o Brasil. Entre em contato para agendar seu atendimento.</p>
+            <div className="localizacao__actions">
+              <a className="wa-btn wa-btn--outline" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+              <WaBtn href={WA_PRESENCIAL} variant="primary">Agendar atendimento</WaBtn>
+            </div>
+          </div>
+          <div className="localizacao__card">
+            <strong>Hericles Ferreira | Nutricionista</strong>
+            <span>CRN-10 12284</span>
+            <span>Especialização em Metabolismo e Emagrecimento</span>
+            <address>{ADDRESS}</address>
+            <a href="tel:+5547988602379">(47) 98860-2379</a>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="footer">
         <div className="container footer__inner">
           <div className="footer__brand">
             <img src="/img/logo-light.png" alt="Hericles Nutricionista" height="48" />
-            <p>Nutrição para emagrecimento, massa magra e saúde metabólica.<br />CRN-10 12284 | Joinville/SC</p>
+            <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
+            <address className="footer__address">{ADDRESS}</address>
+            <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
           </div>
           <div className="footer__links">
             <h4>Navegação</h4>
@@ -304,6 +333,7 @@ export default function App() {
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
             <a href="#faq">FAQ</a>
+            <a href="#localizacao">Localização</a>
           </div>
           <div className="footer__social">
             <h4>Redes sociais</h4>
