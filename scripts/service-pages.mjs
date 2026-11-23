@@ -186,7 +186,7 @@ export async function generateServicePages() {
     await writeFile(join(dir, 'index.html'), render(page), 'utf8')
   }
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    [origin + '/', ...pages.map(p => origin + '/' + p.slug + '/'), origin + '/alimentacao-mounjaro-ozempic-tirzepatida/', origin + '/sobre-hericles-ferreira/'].map(url => '  <url><loc>' + url + '</loc><lastmod>2026-11-23</lastmod></url>').join('\n') +
+    [origin + '/', ...pages.map(p => origin + '/' + p.slug + '/'), origin + '/alimentacao-mounjaro-ozempic-tirzepatida/', origin + '/sobre-hericles-ferreira/', origin + '/artigos/', origin + '/artigos/como-emagrecer-sem-passar-fome/', origin + '/artigos/como-perder-gordura-sem-perder-massa-muscular/', origin + '/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/'].map(url => '  <url><loc>' + url + '</loc><lastmod>2026-11-23</lastmod></url>').join('\n') +
     '\n</urlset>\n'
   await writeFile('dist/sitemap.xml', sitemap, 'utf8')
   const html = await readFile('dist/' + pages[0].slug + '/index.html', 'utf8')
