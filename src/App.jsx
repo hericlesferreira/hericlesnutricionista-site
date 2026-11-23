@@ -23,8 +23,11 @@ const faqs = [
 
 const transformacoes = [
   { antes: '/img/antes1.png', depois: '/img/depois1.png' },
-  { antes: '/img/antes22.png', depois: '/img/depois22.png' },
+  { antes: '/img/antes11.png', depois: '/img/depois11.png' },
   { antes: '/img/antes2.png', depois: '/img/depois2.png' },
+  { antes: '/img/antes22.png', depois: '/img/depois22.png' },
+  { antes: '/img/antes3.png', depois: '/img/depois3.png' },
+  { antes: '/img/antes33.png', depois: '/img/depois33.png' },
 ]
 
 function WaBtn({ href = WA_LINK, children, variant = 'primary', className = '' }) {
@@ -66,7 +69,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__logo">
-          <img src="/img/logo-light.png" alt="Hericles Nutricionista" height="38" />
+          <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="38" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
           <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
@@ -228,7 +231,7 @@ export default function App() {
           <div className="section-header">
             <p className="section-tag">Resultados</p>
             <h2 className="section-title">Transformações reais</h2>
-            <p className="section-sub">Evoluções de pacientes reais que seguiram uma estratégia nutricional possível para a rotina deles.</p>
+            <p className="section-sub">Registros de evolução corporal de pacientes acompanhados. Cada trajetória é individual e os resultados não são garantidos.</p>
           </div>
           <div className="transf-grid">
             {transformacoes.map((t, i) => (
@@ -236,11 +239,11 @@ export default function App() {
                 <div className="transf-pair">
                   <div className="transf-side">
                     <span className="transf-label">Antes</span>
-                    <img src={t.antes} alt="Antes do acompanhamento nutricional para emagrecimento" loading="lazy" />
+                    <img src={t.antes} alt="Registro antes do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" />
                   </div>
                   <div className="transf-side">
                     <span className="transf-label after">Depois</span>
-                    <img src={t.depois} alt="Depois do acompanhamento nutricional para emagrecimento e composição corporal" loading="lazy" />
+                    <img src={t.depois} alt="Registro depois do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -328,7 +331,7 @@ export default function App() {
       <footer className="footer">
         <div className="container footer__inner">
           <div className="footer__brand">
-            <img src="/img/logo-light.png" alt="Hericles Nutricionista" height="48" />
+            <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="48" />
             <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
             <address className="footer__address">{ADDRESS}</address>
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
