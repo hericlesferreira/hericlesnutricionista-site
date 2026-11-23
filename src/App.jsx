@@ -78,6 +78,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
           <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
           <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Meu trabalho</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="/artigos/" onClick={() => setMenuOpen(false)}>Artigos</a>
           <a href="#localizacao" onClick={() => setMenuOpen(false)}>Localização</a>
           <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar Consulta</WaBtn>
         </nav>
@@ -220,6 +221,23 @@ export default function App() {
           </div>
           <div className="text-center">
             <a className="wa-btn wa-btn--outline" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo e orientações nutricionais</a>
+          </div>
+        </div>
+      </section>
+
+      {/* BIBLIOTECA EDUCATIVA */}
+      <section className="section services-seo" id="artigos" aria-labelledby="artigos-heading">
+        <div className="container">
+          <div className="section-header">
+            <p className="section-tag">Conteúdo educativo</p>
+            <h2 className="section-title" id="artigos-heading">Emagrecimento sem achismo</h2>
+            <p className="section-sub">Artigos assinados por Hericles Ferreira, nutricionista, com explicações claras e fontes científicas.</p>
+          </div>
+          <div className="services-seo__grid">
+            <a className="services-seo__card" href="/artigos/como-emagrecer-sem-passar-fome/"><h3>Como emagrecer sem passar fome?</h3><p>Volume, saciedade e flexibilidade alimentar para uma rotina possível.</p><span>Ler artigo →</span></a>
+            <a className="services-seo__card" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/"><h3>Como perder gordura e preservar músculos?</h3><p>O papel das proteínas, do treino e da avaliação da composição corporal.</p><span>Ler artigo →</span></a>
+            <a className="services-seo__card" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/"><h3>Por que parei de emagrecer?</h3><p>O que observar antes de cortar ainda mais comida.</p><span>Ler artigo →</span></a>
+            <a className="services-seo__card" href="/artigos/"><h3>Biblioteca de artigos</h3><p>Conteúdo educativo sobre emagrecimento, metabolismo e hábitos realistas.</p><span>Conhecer artigos →</span></a>
           </div>
         </div>
       </section>
@@ -379,6 +397,7 @@ export default function App() {
             <a href="#sobre">Sobre</a>
             <a href="/sobre-hericles-ferreira/">Sobre Hericles Ferreira</a>
             <a href="#faq">FAQ</a>
+            <a href="/artigos/">Artigos educativos</a>
             <a href="#localizacao">Localização</a>
           </div>
           <div className="footer__social">
