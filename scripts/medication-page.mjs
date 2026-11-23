@@ -43,6 +43,7 @@ const html = `<!doctype html>
 <meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/img/hericles-ferreira-retrato-perfil.webp?v=2">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/service-pages.css">
+<link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
 <header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/">HERICLES<span> NUTRI</span></a>
