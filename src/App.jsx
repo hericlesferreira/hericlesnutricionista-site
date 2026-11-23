@@ -124,7 +124,7 @@ export default function App() {
           </div>
           <div className="hero__img-wrap">
             <div className="hero__img-frame">
-              <img src="/img/hericlesnutri1.png" alt="Hericles Ferreira, nutricionista especialista em emagrecimento e ganho de massa magra em Joinville" className="hero__photo" />
+              <img src="/img/hericles-ferreira-retrato-institucional.webp" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" className="hero__photo" width="500" height="468" fetchPriority="high" />
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function App() {
             <div className="service-card featured">
               <div className="featured-badge">⭐ Mais popular</div>
               <div className="service-card__img-wrap">
-                <img src="/img/passo1.jpeg" alt="Consulta nutricional presencial em Joinville para emagrecimento e hipertrofia" />
+                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" width="220" height="300" />
                 <span className="service-card__badge">📍 Joinville/SC</span>
               </div>
               <div className="service-card__body">
@@ -170,7 +170,7 @@ export default function App() {
             <div className="service-card">
               
               <div className="service-card__img-wrap">
-                <img src="/img/passo3.jpeg" alt="Consultoria nutricional online para emagrecer e ganhar massa magra" />
+                <img src="/img/hericles-ferreira-consultoria-online.webp" alt="Hericles Ferreira utilizando o notebook para planejamento nutricional" loading="lazy" width="220" height="300" />
                 <span className="service-card__badge">🌐 Online</span>
               </div>
               <div className="service-card__body">
@@ -281,7 +281,7 @@ export default function App() {
       <section className="section sobre bg-dark-section" id="sobre">
         <div className="container sobre__inner">
           <div className="sobre__img-wrap">
-            <img src="/img/hericlesnutri3.JPG" alt="Hericles Ferreira nutricionista em Joinville especialista em metabolismo, emagrecimento e hipertrofia" />
+            <img src="/img/hericles-ferreira-sofa-profissional.webp" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" width="220" height="300" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
@@ -331,6 +331,7 @@ export default function App() {
           <div>
             <p className="section-tag">Atendimento presencial em Joinville</p>
             <h2 className="section-title" id="localizacao-titulo">Onde fica o consultório?</h2>
+            <img className="localizacao__photo" src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp" alt="Hericles Ferreira atendendo paciente no consultório de Joinville" loading="lazy" width="220" height="300" />
             <p className="localizacao__address">{ADDRESS}</p>
             <p className="localizacao__description">Atendimento nutricional presencial em Joinville e consultoria online para todo o Brasil. Entre em contato para agendar seu atendimento.</p>
             <div className="localizacao__actions">
