@@ -168,7 +168,7 @@ function render(p) {
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
 <p class="svc-eyebrow">${esc(p.label)} · CRN-10 12284</p><h1>${esc(p.heading)}</h1>
 <p class="svc-lead">${esc(p.intro)}</p>
-<div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/#sobre">Conhecer o nutricionista</a></div>
+<div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high"></div></section>
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
@@ -186,7 +186,7 @@ export async function generateServicePages() {
     await writeFile(join(dir, 'index.html'), render(page), 'utf8')
   }
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    [origin + '/', ...pages.map(p => origin + '/' + p.slug + '/'), origin + '/alimentacao-mounjaro-ozempic-tirzepatida/'].map(url => '  <url><loc>' + url + '</loc><lastmod>2026-11-23</lastmod></url>').join('\n') +
+    [origin + '/', ...pages.map(p => origin + '/' + p.slug + '/'), origin + '/alimentacao-mounjaro-ozempic-tirzepatida/', origin + '/sobre-hericles-ferreira/'].map(url => '  <url><loc>' + url + '</loc><lastmod>2026-11-23</lastmod></url>').join('\n') +
     '\n</urlset>\n'
   await writeFile('dist/sitemap.xml', sitemap, 'utf8')
   const html = await readFile('dist/' + pages[0].slug + '/index.html', 'utf8')
