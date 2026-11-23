@@ -826,3 +826,16 @@ body { overflow-wrap: break-word; }
  .hamburger { display:flex; }
  .navbar__links .nav-cta { display:none; }
 }
+
+
+/* Destaque editorial leve, sem adicionar mais um grid ou seção inteira */
+.services-seo__feature {
+ display:flex; align-items:center; justify-content:space-between; gap:24px;
+ margin-top:24px; padding:25px 28px; border-radius:18px;
+ background:var(--surface-raised); border:1px solid var(--line-subtle);
+}
+.services-seo__feature .section-tag { margin-bottom:10px; }
+.services-seo__feature h3 { font:700 clamp(18px,2vw,23px)/1.35 Montserrat,sans-serif; color:var(--white); max-width:35ch; }
+.services-seo__feature p:not(.section-tag) { margin-top:9px; font-size:14px; max-width:63ch; color:#c4cdbd; }
+.services-seo__feature > a { flex:0 0 auto; color:var(--accent); font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:720px) { .services-seo__feature { flex-direction:column; align-items:flex-start; padding:23px; gap:18px; } }
