@@ -121,35 +121,35 @@ function render(p) {
       { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: origin + '/' }, { '@type': 'ListItem', position: 2, name: p.nav, item: url }] },
     ]
   }
-  return \`<!doctype html>
+  return `<!doctype html>
 <html lang="pt-BR"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>\${esc(p.title)}</title><meta name="description" content="\${esc(p.description)}">
+<title>${esc(p.title)}</title><meta name="description" content="${esc(p.description)}">
 <meta name="robots" content="index,follow"><meta name="author" content="Hericles Ferreira">
-<link rel="canonical" href="\${url}">
+<link rel="canonical" href="${url}">
 <link rel="icon" href="/img/logo-light.ico">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="\${esc(p.title)}"><meta property="og:description" content="\${esc(p.description)}">
-<meta property="og:url" content="\${url}"><meta property="og:image" content="\${origin}/img/hericlesnutri1.png">
+<meta property="og:title" content="${esc(p.title)}"><meta property="og:description" content="${esc(p.description)}">
+<meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/img/hericlesnutri1.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/service-pages.css">
-<script type="application/ld+json">\${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
+<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/">HERICLES<span> NUTRI</span></a><nav aria-label="Serviços">\${nav}</nav><a class="svc-header-cta" href="\${contact(p.nav)}">Agendar</a></div></header>
+<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/">HERICLES<span> NUTRI</span></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
 <main>
 <section class="svc-hero"><div class="svc-wrap">
-<nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / \${esc(p.nav)}</nav>
-<p class="svc-eyebrow">\${esc(p.label)} · CRN-10 12284</p><h1>\${esc(p.heading)}</h1>
-<p class="svc-lead">\${esc(p.intro)}</p>
-<div class="svc-actions"><a class="svc-button" href="\${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/#sobre">Conhecer o nutricionista</a></div>
+<nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
+<p class="svc-eyebrow">${esc(p.label)} · CRN-10 12284</p><h1>${esc(p.heading)}</h1>
+<p class="svc-lead">${esc(p.intro)}</p>
+<div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/#sobre">Conhecer o nutricionista</a></div>
 </div></section>
-<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">\${p.benefits.map(card).join('')}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">\${sections}</div></section>
-<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre \${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">\${questions}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">\${other}</div></div></section>
-<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na \${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="\${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
-</main><footer class="svc-footer"><div class="svc-wrap">\${footer}<p><a href="/">Voltar à página inicial</a></p></div></footer>
-</body></html>\`
+<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
+<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}</div></section>
+<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
+<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
+<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
+</main><footer class="svc-footer"><div class="svc-wrap">${footer}<p><a href="/">Voltar à página inicial</a></p></div></footer>
+</body></html>`
 }
 
 export async function generateServicePages() {
