@@ -39,7 +39,7 @@ const html = `<!doctype html>
 <link rel="icon" href="/img/logo-light.ico">
 <meta property="og:type" content="article"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
-<meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/img/hericlesnutri2.JPG">
+<meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/img/hericles-ferreira-retrato-perfil.webp?v=2">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/service-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
@@ -54,7 +54,7 @@ const html = `<!doctype html>
 <h1>O que comer durante o uso de Mounjaro, Ozempic e tirzepatida?</h1>
 <p class="svc-lead">A medicação pode ajudar a controlar o apetite, mas a alimentação continua importante para sua saúde, energia, composição corporal e manutenção dos resultados.</p>
 <div class="svc-author-mini">
-<img src="/img/hericlesnutri2.JPG" alt="Hericles Ferreira, nutricionista e autor do artigo" width="92" height="92">
+<img src="/img/hericles-ferreira-retrato-perfil.webp?v=2" alt="Hericles Ferreira, nutricionista e autor do artigo" width="92" height="92">
 <p><strong>Por Hericles Ferreira</strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento<br><small>Atualizado em 23/11/2026</small></p>
 </div>
 <div class="svc-actions"><a class="svc-button" href="${whatsapp}">Quero acompanhamento nutricional</a></div>
@@ -122,7 +122,7 @@ const html = `<!doctype html>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
 <p class="svc-kicker">Sobre o autor</p>
 <h2>Hericles Ferreira, nutricionista em Joinville</h2>
-<figure class="svc-author-photo"><img src="/img/hericlesnutri3.JPG" alt="Hericles Ferreira sentado em ambiente profissional" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Nutricionista, CRN-10 12284</figcaption></figure>
+<figure class="svc-author-photo"><img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira sentado em ambiente profissional" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Nutricionista, CRN-10 12284</figcaption></figure>
 <p>Sou nutricionista registrado no CRN-10 sob o número 12284, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu. Meu trabalho busca encaixar o planejamento alimentar na realidade de cada paciente, sem terrorismo alimentar.</p>
 <p style="margin-top:16px">Atendo presencialmente em Joinville, na Rua Areia Branca, 1035, Jardim Iririú, e ofereço consultoria nutricional online. O acompanhamento pode incluir planejamento personalizado, check-ins semanais, suporte e ajustes de acordo com a modalidade contratada.</p>
 <h2 style="margin-top:36px">Referências e atualização</h2>
@@ -135,7 +135,7 @@ const html = `<!doctype html>
 </div></section>
 
 <section class="svc-end"><div class="svc-wrap">
-<div class="svc-cta-portrait"><img src="/img/passo3.jpeg" alt="Hericles Ferreira no ambiente de trabalho, realizando planejamento nutricional" loading="lazy" width="220" height="300"></div><h2>Já usa medicação para emagrecimento ou está pensando em começar?</h2>
+<div class="svc-cta-portrait"><img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira no ambiente de trabalho, realizando planejamento nutricional" loading="lazy" width="220" height="300"></div><h2>Já usa medicação para emagrecimento ou está pensando em começar?</h2>
 <p>Receba acompanhamento nutricional sem julgamentos para organizar sua alimentação, avaliar sintomas, cuidar da composição corporal e construir hábitos sustentáveis, em conjunto com a equipe médica quando necessário.</p>
 <a class="svc-button" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
 </div></section>
