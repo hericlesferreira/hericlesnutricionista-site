@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { createElement } from 'react'
 import { renderToString } from 'react-dom/server'
 import { build, createServer } from 'vite'
+import { generateServicePages } from './service-pages.mjs'
 
 await build()
 const server = await createServer({
@@ -20,6 +21,7 @@ try {
     throw new Error('HTML pré-renderizado incompleto.')
   }
   await writeFile(htmlPath, html.replace(placeholder, `<div id="root">${markup}</div>`), 'utf8')
+  await generateServicePages()
   console.log('SEO: HTML inicial pré-renderizado com sucesso.')
 } finally {
   await server.close()

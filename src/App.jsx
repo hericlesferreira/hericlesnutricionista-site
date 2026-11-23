@@ -70,6 +70,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
           <a href="#home" onClick={() => setMenuOpen(false)}>Início</a>
           <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
+          <a href="#servicos" onClick={() => setMenuOpen(false)}>Serviços</a>
           <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
           <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
@@ -185,6 +186,23 @@ export default function App() {
                 <WaBtn href={WA_ONLINE} variant="primary">Quero a consultoria online</WaBtn>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVIÇOS ESPECIALIZADOS */}
+      <section className="section services-seo" id="servicos">
+        <div className="container">
+          <div className="section-header">
+            <p className="section-tag">Áreas de atuação</p>
+            <h2 className="section-title">Encontre o acompanhamento ideal para seu objetivo</h2>
+            <p className="section-sub">Conheça os serviços de nutrição em Joinville e as modalidades de atendimento online.</p>
+          </div>
+          <div className="services-seo__grid">
+            <a className="services-seo__card" href="/nutricionista-emagrecimento-joinville/"><h3>Emagrecimento em Joinville</h3><p>Estratégias para reduzir gordura corporal com alimentação adaptada à rotina.</p><span>Conhecer o atendimento →</span></a>
+            <a className="services-seo__card" href="/nutricionista-esportivo-joinville/"><h3>Nutrição esportiva</h3><p>Planejamento alimentar para hipertrofia, musculação e composição corporal.</p><span>Saiba como funciona →</span></a>
+            <a className="services-seo__card" href="/consultoria-nutricional-online/"><h3>Consultoria online</h3><p>Questionário inicial, plano alimentar individualizado e acompanhamento digital.</p><span>Explorar consultoria →</span></a>
+            <a className="services-seo__card" href="/acompanhamento-nutricional/"><h3>Acompanhamento nutricional</h3><p>Check-ins semanais, suporte e ajustes conforme sua evolução.</p><span>Conhecer o acompanhamento →</span></a>
           </div>
         </div>
       </section>
@@ -330,6 +348,11 @@ export default function App() {
             <h4>Navegação</h4>
             <a href="#home">Início</a>
             <a href="#como-funciona">Como funciona</a>
+            <a href="#servicos">Serviços</a>
+            <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a>
+            <a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a>
+            <a href="/consultoria-nutricional-online/">Consultoria online</a>
+            <a href="/acompanhamento-nutricional/">Acompanhamento</a>
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
             <a href="#faq">FAQ</a>

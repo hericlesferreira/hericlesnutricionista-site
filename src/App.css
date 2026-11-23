@@ -686,3 +686,14 @@ ul { list-style: none; }
 .footer__address { font-size: 13px; color: var(--muted); font-style: normal; margin-top: 10px; }
 .footer__maps { display: inline-block; margin-top: 8px; font-size: 13px; }
 @media (max-width: 780px) { .localizacao__inner { grid-template-columns: 1fr; gap: 28px; } }
+
+
+/* Cards de serviços com links para páginas indexáveis */
+.services-seo{background:var(--dark)}
+.services-seo__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.services-seo__card{display:flex;flex-direction:column;gap:12px;padding:30px;background:var(--dark3);border:1px solid rgba(168,224,68,.18);border-radius:var(--radius);transition:border-color .2s,transform .2s}
+.services-seo__card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.services-seo__card h3{font:800 20px/1.4 Montserrat,sans-serif;color:var(--white)}
+.services-seo__card p{font-size:14px;color:var(--muted)}
+.services-seo__card span{margin-top:auto;color:var(--accent);font-weight:700;font-size:14px}
+@media(max-width:720px){.services-seo__grid{grid-template-columns:1fr}.services-seo__card{padding:25px}}
