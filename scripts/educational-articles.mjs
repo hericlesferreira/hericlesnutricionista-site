@@ -138,8 +138,7 @@ const esc = s => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 const linked = (a) => '/artigos/' + a.slug + '/'
 const refMarkup = refs => refs.map(([label,url]) => '<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')
 const articleLinks = (current) => articles.filter(a => a.slug !== current).map(a=>'<a class="svc-more-link" href="'+linked(a)+'">'+esc(a.nav)+' →</a>').join('')
-function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="stylesheet" href="/service-pages.css">
-<link rel="stylesheet" href="/refresh-pages.css"></head><body>'+content+'</body></html>' }
+function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/refresh-pages.css"></head><body>'+content+'</body></html>' }
 function render(article) {
   const url = base + linked(article)
   const graph = {
