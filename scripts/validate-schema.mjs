@@ -10,6 +10,10 @@ const pages = [
   'acompanhamento-nutricional',
   'alimentacao-mounjaro-ozempic-tirzepatida',
   'sobre-hericles-ferreira',
+  'artigos',
+  'artigos/como-emagrecer-sem-passar-fome',
+  'artigos/como-perder-gordura-sem-perder-massa-muscular',
+  'artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta',
 ]
 
 const fail = (reason, page) => { throw new Error('Schema audit [' + (page || '/') + ']: ' + reason) }
@@ -33,7 +37,8 @@ for (const page of pages) {
   const graphTypes = graphs.map(x => x['@type'])
   if (page === '' && (!graphTypes.includes('MedicalBusiness') || !graphTypes.includes('WebSite'))) fail('Entidades principais ausentes', page)
   if (page === 'sobre-hericles-ferreira' && !graphTypes.includes('ProfilePage')) fail('ProfilePage ausente', page)
-  if (page === 'alimentacao-mounjaro-ozempic-tirzepatida' && !graphTypes.includes('Article')) fail('Article ausente', page)
+  if ((page === 'alimentacao-mounjaro-ozempic-tirzepatida' || page.startsWith('artigos/')) && !graphTypes.includes('Article')) fail('Article ausente', page)
+  if (page === 'artigos' && !graphTypes.includes('CollectionPage')) fail('CollectionPage ausente', page)
   if (page.startsWith('nutricionista-') || page.startsWith('consultoria-') || page.startsWith('acompanhamento-')) {
     if (!graphTypes.includes('Service')) fail('Service ausente', page)
   }
@@ -44,4 +49,4 @@ for (const page of pages) {
   const url = base + (page ? page + '/' : '')
   if (!sitemap.includes('<loc>' + url + '</loc>')) fail('Sitemap sem URL ' + url, page)
 }
-console.log('Validação local: 7 páginas e sitemap coerentes.')
+console.log('Validação local: ' + pages.length + ' páginas e sitemap coerentes.')
