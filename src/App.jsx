@@ -9,11 +9,15 @@ const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%
 const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 
 const faqs = [
-  { q: "Você faz atendimentos online?", a: "Sim! A consulta online segue o mesmo padrão de qualidade da presencial. A avaliação física é feita por fotos e você recebe um manual ensinando como tirar as medidas." },
-  { q: "Em quanto tempo recebo meu plano alimentar?", a: "Em até 72h após a consulta. O plano é montado de acordo com sua rotina, treino, preferências, exames e objetivo de composição corporal." },
-  { q: "Terei acesso a um app para acompanhar dieta e resultados?", a: "Sim. Todos os pacientes têm acesso ao Dietitian, app completo para acompanhar plano alimentar, avaliações, prescrições e evolução." },
-  { q: "Quanto tempo dura a primeira consulta nutricional?", a: "De 1 a 2 horas. A conversa inicial é detalhada para entender histórico, rotina, treino, metabolismo e obstáculos que travaram seus resultados." },
-  { q: "Quais formas de pagamento são aceitas?", a: "Cartão de crédito/débito, PIX, dinheiro ou transferência bancária." },
+  { q: "Como funciona a consulta nutricional presencial em Joinville?", a: "O atendimento presencial envolve avaliação individualizada, análise da rotina alimentar e avaliação física conforme sua necessidade. O plano alimentar é elaborado a partir das informações da consulta." },
+  { q: "Como funciona a consultoria nutricional online?", a: "A consultoria online começa com um questionário detalhado que substitui a consulta presencial nessa modalidade. Com base nas respostas, elaboro seu planejamento alimentar e realizo o acompanhamento digital conforme o serviço contratado." },
+  { q: "Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?", a: "Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades. Ajustamos quantidades e frequência em vez de adotar proibições sem necessidade." },
+  { q: "O acompanhamento inclui contato depois do plano alimentar?", a: "As modalidades de acompanhamento oferecem check-ins semanais e suporte conforme as condições contratadas, para avaliar dificuldades e orientar eventuais ajustes." },
+  { q: "É possível ganhar massa muscular e perder gordura?", a: "Dependendo do histórico e do contexto, mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia é individualizada e a evolução é acompanhada." },
+  { q: "Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?", a: "Sim. O acompanhamento nutricional pode ajudar a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento. A prescrição e o monitoramento dos medicamentos cabem ao médico." },
+  { q: "Quanto tempo demora para receber o plano alimentar?", a: "O prazo informado para elaboração do plano após a avaliação é de até 72 horas, considerando o recebimento das informações necessárias." },
+  { q: "Onde encontro o plano e as orientações?", a: "O aplicativo Dietitian reúne documentos, planejamento alimentar, receitas e orientações disponibilizadas durante o acompanhamento." },
+  { q: "Qual é o endereço do atendimento presencial?", a: "Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Para agendar, entre em contato pelo WhatsApp." },
 ]
 
 const transformacoes = [
@@ -37,17 +41,16 @@ function WaBtn({ href = WA_LINK, children, variant = 'primary', className = '' }
 }
 
 function FAQ() {
-  const [open, setOpen] = useState(null)
   return (
     <div className="faq-list">
       {faqs.map((item, i) => (
-        <div key={i} className={`faq-item ${open === i ? 'open' : ''}`}>
-          <button className="faq-q" onClick={() => setOpen(open === i ? null : i)}>
+        <details className="faq-item" key={i}>
+          <summary className="faq-q">
             <span>{item.q}</span>
-            <span className="faq-chevron">{open === i ? '▲' : '▼'}</span>
-          </button>
-          {open === i && <div className="faq-a">{item.a}</div>}
-        </div>
+            <span className="faq-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div className="faq-a">{item.a}</div>
+        </details>
       ))}
     </div>
   )
@@ -73,6 +76,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
           <a href="#servicos" onClick={() => setMenuOpen(false)}>Serviços</a>
           <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
           <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
+          <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Meu trabalho</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <a href="#localizacao" onClick={() => setMenuOpen(false)}>Localização</a>
           <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar Consulta</WaBtn>
@@ -295,7 +299,10 @@ export default function App() {
               <span>📍 Joinville/SC</span>
               <span>📸 @nutrihericles</span>
             </div>
-            <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
+            <div className="sobre__actions">
+              <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
+              <a className="wa-btn wa-btn--outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e método</a>
+            </div>
           </div>
         </div>
       </section>
@@ -370,6 +377,7 @@ export default function App() {
             <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Alimentação e medicações</a>
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
+            <a href="/sobre-hericles-ferreira/">Sobre Hericles Ferreira</a>
             <a href="#faq">FAQ</a>
             <a href="#localizacao">Localização</a>
           </div>
