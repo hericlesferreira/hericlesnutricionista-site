@@ -7,27 +7,27 @@ const contact = (subject) => 'https://api.whatsapp.com/send?phone=' + phone + '&
 const address = 'Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC'
 const photos = {
   'nutricionista-emagrecimento-joinville': {
-    hero: '/img/hericles-ferreira-retrato-institucional.webp',
+    hero: '/img/hericlesnutri1.png',
     heroAlt: 'Retrato profissional de Hericles Ferreira, nutricionista em Joinville',
-    support: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp',
+    support: '/img/passo1.jpeg',
     supportAlt: 'Hericles Ferreira durante atendimento nutricional no consultório em Joinville'
   },
   'nutricionista-esportivo-joinville': {
-    hero: '/img/hericles-ferreira-retrato-institucional.webp',
+    hero: '/img/hericlesnutri1.png',
     heroAlt: 'Hericles Ferreira em retrato profissional, nutricionista com atuação em nutrição esportiva',
-    support: '/img/hericles-ferreira-retrato-perfil.webp',
+    support: '/img/hericlesnutri2.JPG',
     supportAlt: 'Retrato de Hericles Ferreira, nutricionista em Joinville'
   },
   'consultoria-nutricional-online': {
-    hero: '/img/hericles-ferreira-consultoria-online.webp',
+    hero: '/img/passo3.jpeg',
     heroAlt: 'Hericles Ferreira trabalhando no notebook no ambiente de atendimento',
-    support: '/img/hericles-ferreira-sofa-profissional.webp',
+    support: '/img/hericlesnutri3.JPG',
     supportAlt: 'Hericles Ferreira sentado em retrato profissional'
   },
   'acompanhamento-nutricional': {
-    hero: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp',
+    hero: '/img/passo1.jpeg',
     heroAlt: 'Hericles Ferreira conversando durante atendimento nutricional presencial',
-    support: '/img/hericles-ferreira-sofa-profissional.webp',
+    support: '/img/hericlesnutri3.JPG',
     supportAlt: 'Hericles Ferreira, nutricionista, sentado em ambiente profissional'
   }
 }
