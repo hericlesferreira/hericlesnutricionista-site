@@ -23,55 +23,114 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "name": "Hericles Ferreira Nutricionista",
-        "url": "https://www.nutrihericles.com.br/",
-        "telephone": "+55 47 98860-2379",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Areia Branca, 1035",
-          "addressLocality": "Joinville",
-          "addressRegion": "SC",
-          "postalCode": "89224-090",
-          "addressCountry": "BR"
-        },
-        "hasMap": "https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC",
-        "image": "https://www.nutrihericles.com.br/img/hericles-ferreira-retrato-perfil.webp?v=2",
-        "description": "Consulta nutricional presencial em Joinville e online com foco em emagrecimento, ganho de massa magra, hipertrofia e saúde metabólica.",
-        "medicalSpecialty": "Nutrition",
-        "founder": {
-          "@type": "Person",
-          "name": "Hericles Ferreira",
-          "jobTitle": "Nutricionista",
-          "identifier": "CRN-10 12284",
-          "sameAs": [
-            "https://instagram.com/nutrihericles",
-            "https://www.facebook.com/hericles.nutri",
-            "https://www.linkedin.com/in/hericlesnutri"
-          ]
-        },
-        "areaServed": [
+        "@graph": [
           {
-            "@type": "City",
-            "name": "Joinville"
+            "@type": "MedicalBusiness",
+            "@id": "https://www.nutrihericles.com.br/#business",
+            "name": "Hericles Ferreira Nutricionista",
+            "url": "https://www.nutrihericles.com.br/",
+            "telephone": "+55 47 98860-2379",
+            "image": "https://www.nutrihericles.com.br/img/hericles-ferreira-atendimento-nutricional-joinville.webp",
+            "description": "Atendimento nutricional presencial em Joinville e consultoria online para emagrecimento, hipertrofia e composição corporal.",
+            "medicalSpecialty": "https://schema.org/DietNutrition",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Rua Areia Branca, 1035",
+              "addressLocality": "Joinville",
+              "addressRegion": "SC",
+              "postalCode": "89224-090",
+              "addressCountry": "BR"
+            },
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC",
+            "founder": {
+              "@id": "https://www.nutrihericles.com.br/#professional"
+            },
+            "employee": {
+              "@id": "https://www.nutrihericles.com.br/#professional"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Joinville"
+              },
+              {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            ],
+            "sameAs": [
+              "https://www.instagram.com/nutrihericles/",
+              "https://www.linkedin.com/in/hericlesnutri"
+            ]
           },
           {
-            "@type": "Country",
-            "name": "Brasil"
-          }
-        ],
-        "availableService": [
-          {
-            "@type": "MedicalTherapy",
-            "name": "Acompanhamento nutricional para emagrecimento"
+            "@type": "Person",
+            "@id": "https://www.nutrihericles.com.br/#professional",
+            "name": "Hericles Ferreira",
+            "jobTitle": "Nutricionista",
+            "identifier": "CRN-10 12284",
+            "url": "https://www.nutrihericles.com.br/sobre-hericles-ferreira/",
+            "image": "https://www.nutrihericles.com.br/img/hericles-ferreira-retrato-perfil.webp",
+            "worksFor": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            },
+            "sameAs": [
+              "https://www.instagram.com/nutrihericles/",
+              "https://www.linkedin.com/in/hericlesnutri"
+            ]
           },
           {
-            "@type": "MedicalTherapy",
-            "name": "Plano alimentar para ganho de massa magra e hipertrofia"
+            "@type": "WebSite",
+            "@id": "https://www.nutrihericles.com.br/#website",
+            "name": "Hericles Ferreira Nutricionista",
+            "url": "https://www.nutrihericles.com.br/",
+            "inLanguage": "pt-BR",
+            "publisher": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            }
           },
           {
-            "@type": "MedicalTherapy",
-            "name": "Consultoria nutricional online"
+            "@type": "WebPage",
+            "@id": "https://www.nutrihericles.com.br/#webpage",
+            "url": "https://www.nutrihericles.com.br/",
+            "name": "Nutricionista em Joinville e Online | Emagrecimento e Massa Magra",
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+              "@id": "https://www.nutrihericles.com.br/#website"
+            },
+            "about": {
+              "@id": "https://www.nutrihericles.com.br/#professional"
+            },
+            "mainEntity": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.nutrihericles.com.br/nutricionista-emagrecimento-joinville/#service",
+            "name": "Acompanhamento nutricional para emagrecimento",
+            "provider": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            },
+            "url": "https://www.nutrihericles.com.br/nutricionista-emagrecimento-joinville/"
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.nutrihericles.com.br/nutricionista-esportivo-joinville/#service",
+            "name": "Nutrição esportiva e hipertrofia",
+            "provider": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            },
+            "url": "https://www.nutrihericles.com.br/nutricionista-esportivo-joinville/"
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.nutrihericles.com.br/consultoria-nutricional-online/#service",
+            "name": "Consultoria nutricional online",
+            "provider": {
+              "@id": "https://www.nutrihericles.com.br/#business"
+            },
+            "url": "https://www.nutrihericles.com.br/consultoria-nutricional-online/"
           }
         ]
       }

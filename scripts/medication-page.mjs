@@ -16,13 +16,14 @@ const schema = {
     { '@type': 'Article', '@id': url + '#artigo', headline: title, description, inLanguage: 'pt-BR',
       datePublished: '2026-11-23', dateModified: '2026-11-23',
       author: { '@id': origin + '/#professional' },
-      publisher: { '@type': 'Organization', name: 'Hericles Ferreira Nutricionista', url: origin + '/' },
+      image: origin + '/img/hericles-ferreira-retrato-perfil.webp',
+      publisher: { '@id': origin + '/#business' },
       mainEntityOfPage: { '@id': url + '#webpage' },
       citation: [medicalSource, anvisaSource, tgSource] },
-    { '@type': 'WebPage', '@id': url + '#webpage', url, name: title, description, inLanguage: 'pt-BR' },
+    { '@type': 'WebPage', '@id': url + '#webpage', url, name: title, description, inLanguage: 'pt-BR', isPartOf: { '@id': origin + '/#website' }, about: { '@id': origin + '/#professional' }, breadcrumb: { '@id': url + '#breadcrumbs' } },
     { '@type': 'Person', '@id': origin + '/#professional', name: 'Hericles Ferreira', jobTitle: 'Nutricionista',
-      identifier: 'CRN-10 12284', url: origin + '/', sameAs: ['https://www.instagram.com/nutrihericles/'] },
-    { '@type': 'BreadcrumbList', itemListElement: [
+      identifier: 'CRN-10 12284', url: origin + '/sobre-hericles-ferreira/', sameAs: ['https://www.instagram.com/nutrihericles/'] },
+    { '@type': 'BreadcrumbList', '@id': url + '#breadcrumbs', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Início', item: origin + '/' },
       { '@type': 'ListItem', position: 2, name: 'Alimentação e medicamentos para emagrecimento', item: url }
     ]}

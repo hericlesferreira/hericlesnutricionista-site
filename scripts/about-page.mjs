@@ -42,10 +42,13 @@ const structuredData = {
       name: title,
       description,
       inLanguage: 'pt-BR',
-      mainEntity: { '@id': origin + '/#professional' }
+      mainEntity: { '@id': origin + '/#professional' },
+      isPartOf: { '@id': origin + '/#website' },
+      breadcrumb: { '@id': url + '#breadcrumbs' }
     },
     {
       '@type': 'BreadcrumbList',
+      '@id': url + '#breadcrumbs',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Início', item: origin + '/' },
         { '@type': 'ListItem', position: 2, name: 'Sobre Hericles Ferreira', item: url }

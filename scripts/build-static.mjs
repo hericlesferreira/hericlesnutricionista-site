@@ -26,6 +26,7 @@ try {
   await generateServicePages()
   await generateMedicationPage()
   await generateAboutPage()
+  await import('./validate-schema.mjs')
   console.log('SEO: HTML inicial pré-renderizado com sucesso.')
 } finally {
   await server.close()
