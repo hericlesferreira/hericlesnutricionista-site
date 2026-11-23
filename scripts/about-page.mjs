@@ -69,6 +69,7 @@ const html = `<!doctype html>
 <meta property="og:url" content="${url}"><meta property="og:image" content="${image}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/service-pages.css">
+<link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</script>
 </head><body>
 <header class="svc-header"><div class="svc-wrap svc-header-row">
