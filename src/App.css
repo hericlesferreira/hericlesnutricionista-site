@@ -670,3 +670,19 @@ ul { list-style: none; }
   .hero__title { font-size: 32px; }
   .wa-btn { padding: 14px 18px; }
 }
+
+
+/* Localização e dados profissionais */
+.localizacao { background: var(--dark2); }
+.localizacao__inner { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.localizacao__address { font-size: 19px; color: var(--white); font-weight: 700; margin: 24px 0 12px; }
+.localizacao__description { color: var(--muted); max-width: 560px; }
+.localizacao__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+.localizacao__actions .wa-btn { white-space: normal; text-align: center; }
+.localizacao__card { border: 1px solid rgba(168,224,68,.23); background: var(--dark3); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 10px; }
+.localizacao__card strong { font-size: 19px; color: var(--white); }
+.localizacao__card span, .localizacao__card address { font-size: 14px; color: var(--text); font-style: normal; }
+.localizacao__card a, .footer__maps { color: var(--accent); font-weight: 600; }
+.footer__address { font-size: 13px; color: var(--muted); font-style: normal; margin-top: 10px; }
+.footer__maps { display: inline-block; margin-top: 8px; font-size: 13px; }
+@media (max-width: 780px) { .localizacao__inner { grid-template-columns: 1fr; gap: 28px; } }
