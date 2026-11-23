@@ -142,10 +142,10 @@ function render(p) {
   const sections = p.sections.map(([h,body]) => '<section class="svc-article"><h2>' + esc(h) + '</h2><p>' + esc(body) + '</p></section>').join('')
   const schema = {
     '@context': 'https://schema.org', '@graph': [
-      { '@type': 'WebPage', '@id': url + '#webpage', name: p.title, description: p.description, url, inLanguage: 'pt-BR', isPartOf: { '@id': origin + '/#website' }, about: { '@id': origin + '/#professional' } },
-      { '@type': 'Service', name: p.nav, description: p.description, serviceType: p.nav, provider: { '@id': origin + '/#professional' }, areaServed: [{ '@type': 'City', name: 'Joinville' }, { '@type': 'Country', name: 'Brasil' }] },
-      { '@type': 'Person', '@id': origin + '/#professional', name: 'Hericles Ferreira', jobTitle: 'Nutricionista', identifier: 'CRN-10 12284', url: origin + '/', sameAs: ['https://www.instagram.com/nutrihericles/'] },
-      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: origin + '/' }, { '@type': 'ListItem', position: 2, name: p.nav, item: url }] },
+      { '@type': 'WebPage', '@id': url + '#webpage', name: p.title, description: p.description, url, inLanguage: 'pt-BR', isPartOf: { '@id': origin + '/#website' }, about: { '@id': origin + '/#professional' }, mainEntity: { '@id': url + '#service' }, breadcrumb: { '@id': url + '#breadcrumbs' } },
+      { '@type': 'Service', '@id': url + '#service', name: p.nav, description: p.description, serviceType: p.nav, url, provider: { '@id': origin + '/#business' }, areaServed: [{ '@type': 'City', name: 'Joinville' }, { '@type': 'Country', name: 'Brasil' }] },
+      { '@type': 'Person', '@id': origin + '/#professional', name: 'Hericles Ferreira', jobTitle: 'Nutricionista', identifier: 'CRN-10 12284', url: origin + '/sobre-hericles-ferreira/', image: origin + '/img/hericles-ferreira-retrato-perfil.webp', sameAs: ['https://www.instagram.com/nutrihericles/'] },
+      { '@type': 'BreadcrumbList', '@id': url + '#breadcrumbs', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: origin + '/' }, { '@type': 'ListItem', position: 2, name: p.nav, item: url }] },
     ]
   }
   return `<!doctype html>
