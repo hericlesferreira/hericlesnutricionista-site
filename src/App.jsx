@@ -212,19 +212,6 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section services-seo" aria-labelledby="artigo-medicacoes-titulo">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Artigo assinado · Hericles Ferreira</p>
-            <h2 className="section-title" id="artigo-medicacoes-titulo">Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</h2>
-            <p className="section-sub">Saiba como cuidar da ingestão de proteínas, hidratação e composição corporal durante um tratamento medicamentoso para emagrecimento.</p>
-          </div>
-          <div className="text-center">
-            <a className="wa-btn wa-btn--outline" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo e orientações nutricionais</a>
-          </div>
-        </div>
-      </section>
-
       {/* BIBLIOTECA EDUCATIVA */}
       <section className="section services-seo" id="artigos" aria-labelledby="artigos-heading">
         <div className="container">
@@ -238,6 +225,14 @@ export default function App() {
             <a className="services-seo__card" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/"><h3>Como perder gordura e preservar músculos?</h3><p>O papel das proteínas, do treino e da avaliação da composição corporal.</p><span>Ler artigo →</span></a>
             <a className="services-seo__card" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/"><h3>Por que parei de emagrecer?</h3><p>O que observar antes de cortar ainda mais comida.</p><span>Ler artigo →</span></a>
             <a className="services-seo__card" href="/artigos/"><h3>Biblioteca de artigos</h3><p>Conteúdo educativo sobre emagrecimento, metabolismo e hábitos realistas.</p><span>Conhecer artigos →</span></a>
+          </div>
+          <div className="services-seo__feature">
+            <div>
+              <p className="section-tag">Orientação nutricional</p>
+              <h3>Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</h3>
+              <p>Um artigo sobre alimentação, composição corporal e cuidado sem julgamento durante o tratamento.</p>
+            </div>
+            <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler orientações →</a>
           </div>
         </div>
       </section>
