@@ -22,3 +22,6 @@
 .svc-author-photo img{width:185px;height:230px;object-fit:cover;object-position:center 25%;border-radius:16px}
 .svc-cta-portrait img{display:block;width:140px;height:150px;object-fit:cover;object-position:center 22%;border-radius:15px;margin:0 auto 25px}
 @media(max-width:760px){.svc-hero-grid{grid-template-columns:1fr}.svc-hero-photo{width:240px;max-height:300px;margin:0 auto}.svc-support-image img{width:170px;height:210px}}
+
+/* Biblioteca educativa */
+.ed-references{padding-left:22px;margin-top:20px}.ed-references li{margin:12px 0;overflow-wrap:anywhere}.ed-references a,.ed-read,.ed-link a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}.ed-link{margin-top:25px}.svc-article p+p{margin-top:17px}.svc-grid .svc-card h2{font-size:20px;line-height:1.45}.svc-card p{margin-bottom:15px}
