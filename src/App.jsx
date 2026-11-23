@@ -207,6 +207,19 @@ export default function App() {
         </div>
       </section>
 
+      <section className="section services-seo" aria-labelledby="artigo-medicacoes-titulo">
+        <div className="container">
+          <div className="section-header">
+            <p className="section-tag">Artigo assinado · Hericles Ferreira</p>
+            <h2 className="section-title" id="artigo-medicacoes-titulo">Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</h2>
+            <p className="section-sub">Saiba como cuidar da ingestão de proteínas, hidratação e composição corporal durante um tratamento medicamentoso para emagrecimento.</p>
+          </div>
+          <div className="text-center">
+            <a className="wa-btn wa-btn--outline" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo e orientações nutricionais</a>
+          </div>
+        </div>
+      </section>
+
       {/* BENEFÍCIOS */}
       <section className="section benefits">
         <div className="container">
@@ -353,6 +366,7 @@ export default function App() {
             <a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a>
             <a href="/consultoria-nutricional-online/">Consultoria online</a>
             <a href="/acompanhamento-nutricional/">Acompanhamento</a>
+            <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Alimentação e medicações</a>
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
             <a href="#faq">FAQ</a>
