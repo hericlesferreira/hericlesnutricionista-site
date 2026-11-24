@@ -615,3 +615,55 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   .journey-rotator-track > span { display:none; height:auto; }
   .journey-rotator-track > span:first-child { display:block; }
 }
+
+
+/* Compactar cards da jornada */
+.journey-grid {
+  gap:14px;
+}
+.journey-card {
+  border-radius:24px;
+}
+.journey-card__media {
+  aspect-ratio:16/8.8;
+}
+.journey-card__body {
+  padding:24px 26px 28px;
+  gap:0;
+}
+.journey-card__content {
+  max-width:none;
+}
+.journey-card__heading {
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:10px;
+}
+.journey-card__number {
+  flex:0 0 auto;
+  font:700 14px/1 Inter,Arial,sans-serif;
+  letter-spacing:.08em;
+  color:rgb(29 29 31 / .38);
+}
+.journey-card__eyebrow {
+  margin:0;
+  font-size:11px;
+}
+.journey-card h3 {
+  margin:0 0 10px;
+  font-size:clamp(20px,2vw,27px);
+  line-height:1.18;
+}
+.journey-card__content > p:last-of-type {
+  font-size:14px;
+  line-height:1.62;
+}
+.journey-card__link {
+  margin-top:16px;
+}
+@media(max-width:768px) {
+  .journey-grid { gap:12px; }
+  .journey-card__media { aspect-ratio:16/9.2; }
+  .journey-card__body { padding:22px 22px 24px; }
+}
