@@ -430,8 +430,8 @@ export default function App() {
               <span>@nutrihericles</span>
             </div>
             <div className="sobre__actions">
-              <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
-              <a className="wa-btn wa-btn--outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e método</a>
+              <WaBtn href={WA_LINK} variant="primary">Fale comigo agora</WaBtn>
+              <a className="wa-btn wa-btn--outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e consultório</a>
             </div>
           </div>
         </div>
