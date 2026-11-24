@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const base = 'https://www.nutrihericles.com.br'
@@ -6,6 +6,14 @@ const author = base + '/#professional'
 const img = base + '/img/hericles-ferreira-retrato-perfil.webp'
 const image = '/img/hericles-ferreira-sofa-profissional.webp'
 const contact = 'https://api.whatsapp.com/send?phone=5547988602379&text=' + encodeURIComponent('Olá, Hericles! Li um artigo do seu site e gostaria de saber mais sobre acompanhamento nutricional.')
+const bloggerPosts = JSON.parse(await readFile(new URL('../data/blogger-posts.json', import.meta.url), 'utf8'))
+
+const sanitizeBloggerHtml = (html = '') => String(html)
+  .replace(/<script[\s\S]*?<\/script>/gi, '')
+  .replace(/<style[\s\S]*?<\/style>/gi, '')
+  .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
+  .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*')/gi, '')
+  .replace(/javascript:/gi, '')
 export const articles = [
   {
     slug: 'como-emagrecer-sem-passar-fome',
@@ -182,6 +190,47 @@ function render(article) {
     '<section class="svc-end"><div class="svc-wrap"><h2>Sua estratégia precisa caber na sua vida</h2><p>Atendimento presencial em Joinville e consultoria nutricional online, conforme a necessidade de cada pessoa.</p><a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a><p class="ed-link"><a href="'+article.relatedService+'">'+esc(article.relatedLabel)+' →</a></p></div></section>'+
     '</article></main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><a href="/artigos/">Todos os artigos</a> · <a href="/sobre-hericles-ferreira/">Sobre o autor</a></div></footer>')
 }
+function renderBlogger(post) {
+  const path='/artigos/'+post.slug+'/'
+  const url=base+path
+  const published=post.published ? new Date(post.published).toLocaleDateString('pt-BR',{timeZone:'UTC'}) : ''
+  const graph={
+    '@context':'https://schema.org',
+    '@graph':[
+      {'@type':'Article','@id':url+'#article',headline:post.title,description:post.description,inLanguage:'pt-BR',
+        author:{'@id':author},publisher:{'@id':base+'/#business'},datePublished:post.published,dateModified:post.updated||post.published,
+        image:post.image||img,mainEntityOfPage:{'@id':url+'#webpage'}},
+      {'@type':'WebPage','@id':url+'#webpage',url,name:post.title,description:post.description,inLanguage:'pt-BR',
+        isPartOf:{'@id':base+'/#website'},about:{'@id':author},breadcrumb:{'@id':url+'#breadcrumbs'}},
+      {'@type':'Person','@id':author,name:'Hericles Ferreira',jobTitle:'Nutricionista',identifier:'CRN-10 12284',url:base+'/sobre-hericles-ferreira/',image:img},
+      {'@type':'BreadcrumbList','@id':url+'#breadcrumbs',itemListElement:[
+        {'@type':'ListItem',position:1,name:'Início',item:base+'/'},
+        {'@type':'ListItem',position:2,name:'Artigos',item:base+'/artigos/'},
+        {'@type':'ListItem',position:3,name:post.title,item:url}
+      ]}
+    ]
+  }
+  const robots=post.isTest?'noindex,nofollow':'index,follow'
+  const head='<title>'+esc(post.title)+' | Hericles Ferreira Nutricionista</title>'+
+    '<meta name="description" content="'+esc(post.description)+'"><meta name="robots" content="'+robots+'">'+
+    '<link rel="canonical" href="'+url+'">'+
+    '<meta property="og:type" content="article"><meta property="og:locale" content="pt_BR">'+
+    '<meta property="og:title" content="'+esc(post.title)+'"><meta property="og:description" content="'+esc(post.description)+'">'+
+    '<meta property="og:url" content="'+url+'"><meta property="og:image" content="'+esc(post.image||img)+'">'+
+    '<meta name="twitter:card" content="summary_large_image">'+
+    '<script type="application/ld+json">'+JSON.stringify(graph).replaceAll('<','\\u003c')+'</script>'
+  const preview=post.isTest?'<p class="svc-kicker">Prévia do Blogger · somente teste local</p>':'<p class="svc-kicker">Artigo educativo</p>'
+  const header='<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a><nav aria-label="Navegação"><a href="/artigos/">Artigos</a><a href="/sobre-hericles-ferreira/">Sobre mim</a><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a></nav><a class="svc-header-cta" href="'+contact+'">Agendar</a></div></header>'
+  return shell(head,header+'<main><article>'+
+    '<section class="svc-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(post.title)+'</nav>'+
+    preview+'<h1>'+esc(post.title)+'</h1><p class="svc-lead">'+esc(post.description)+'</p>'+
+    '<div class="svc-author-mini"><img src="/img/hericles-ferreira-retrato-perfil.webp" alt="Retrato profissional de Hericles Ferreira" width="82" height="82" decoding="async">'+
+    '<p><strong><a href="/sobre-hericles-ferreira/">Hericles Ferreira</a></strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento'+(published?'<br><small>Publicado em '+published+'</small>':'')+'</p></div></div></section>'+
+    '<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow"><div class="svc-article blogger-article">'+sanitizeBloggerHtml(post.contentHtml)+'</div></div></section>'+
+    '<section class="svc-end"><div class="svc-wrap"><h2>Sua estratégia precisa caber na sua vida</h2><p>Atendimento presencial em Joinville e consultoria nutricional online.</p><a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a></div></section>'+
+    '</article></main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><a href="/artigos/">Todos os artigos</a> · <a href="/sobre-hericles-ferreira/">Sobre o autor</a></div></footer>')
+}
+
 function renderIndex(){
   const url=base+'/artigos/'
   const schema={'@context':'https://schema.org','@graph':[
@@ -193,7 +242,9 @@ function renderIndex(){
     '<meta name="description" content="Artigos educativos de Hericles Ferreira, nutricionista em Joinville, sobre emagrecimento, composição corporal e alimentação real.">'+
     '<link rel="canonical" href="'+url+'"><meta name="robots" content="index,follow">'+
     '<script type="application/ld+json">'+JSON.stringify(schema)+'</script>'
-  const cards=articles.map(a=>'<article class="svc-card"><p class="svc-kicker">Leitura educativa</p><h2><a href="'+linked(a)+'">'+esc(a.title)+'</a></h2><p>'+esc(a.description)+'</p><p><a class="ed-read" href="'+linked(a)+'">Ler artigo →</a></p></article>').join('')
+  const bloggerCards=bloggerPosts.map(post=>'<article class="svc-card"><p class="svc-kicker">'+(post.isTest?'Prévia do Blogger':'Novo no blog')+'</p><h2><a href="/artigos/'+esc(post.slug)+'/">'+esc(post.title)+'</a></h2><p>'+esc(post.description)+'</p><p><a class="ed-read" href="/artigos/'+esc(post.slug)+'/">Ler artigo →</a></p></article>').join('')
+  const nativeCards=articles.map(a=>'<article class="svc-card"><p class="svc-kicker">Leitura educativa</p><h2><a href="'+linked(a)+'">'+esc(a.title)+'</a></h2><p>'+esc(a.description)+'</p><p><a class="ed-read" href="'+linked(a)+'">Ler artigo →</a></p></article>').join('')
+  const cards=bloggerCards+nativeCards
   return shell(head,'<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a><nav><a href="/">Início</a><a href="/sobre-hericles-ferreira/">Sobre o autor</a></nav><a class="svc-header-cta" href="'+contact+'">Agendar</a></div></header>'+
    '<main><section class="svc-hero"><div class="svc-wrap"><p class="svc-eyebrow">Biblioteca de conteúdo educativo</p><h1>Artigos sobre emagrecimento e nutrição</h1><p class="svc-lead">Informação clara, referências confiáveis e estratégias que fazem sentido na vida real. Por Hericles Ferreira, nutricionista, CRN-10 12284.</p></div></section>'+
    '<section class="svc-section"><div class="svc-wrap"><div class="svc-grid">'+cards+'</div><p class="ed-link"><a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Leia também: alimentação durante o uso de Mounjaro, Ozempic e tirzepatida →</a></p></div></section></main>'+
@@ -208,5 +259,10 @@ export async function generateEducationalArticles(){
     await mkdir(path,{recursive:true})
     await writeFile(join(path,'index.html'),render(article),'utf8')
   }
-  console.log('SEO: biblioteca e '+articles.length+' artigos educativos gerados.')
+  for(const post of bloggerPosts){
+    const path=join(indexDir,post.slug)
+    await mkdir(path,{recursive:true})
+    await writeFile(join(path,'index.html'),renderBlogger(post),'utf8')
+  }
+  console.log('SEO: biblioteca, '+articles.length+' artigos nativos e '+bloggerPosts.length+' artigo(s) do Blogger gerados.')
 }
