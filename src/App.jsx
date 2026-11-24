@@ -489,24 +489,46 @@ export default function App() {
 
       {/* LOCALIZAÇÃO */}
       <section className="section localizacao" id="localizacao" aria-labelledby="localizacao-titulo">
-        <div className="container localizacao__inner">
-          <div>
+        <div className="container">
+          <div className="localizacao__header">
             <p className="section-tag">Atendimento presencial em Joinville</p>
             <h2 className="section-title" id="localizacao-titulo">Onde fica o consultório?</h2>
-            <img className="localizacao__photo" src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira atendendo paciente no consultório de Joinville" loading="lazy" decoding="async" width="220" height="300" />
-            <p className="localizacao__address">{ADDRESS}</p>
-            <p className="localizacao__description">Atendimento nutricional presencial em Joinville e consultoria online para todo o Brasil. Entre em contato para agendar seu atendimento.</p>
-            <div className="localizacao__actions">
-              <a className="wa-btn wa-btn--outline" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
-              <WaBtn href={WA_PRESENCIAL} variant="primary">Agendar atendimento</WaBtn>
+            <p className="localizacao__description">Meu consultório fica em Joinville/SC, com atendimento presencial em um espaço preparado para avaliação, acompanhamento e definição da sua estratégia nutricional.</p>
+          </div>
+
+          <div className="localizacao__grid">
+            <div className="localizacao__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.4864640924357!2d-48.804348630362256!3d-26.26342059590358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafed6802f801%3A0xb15dc1c82143089b!2sMais%20que%20Rubis%20Studio%20-%20Est%C3%A9tica%20e%20Micropigmenta%C3%A7%C3%A3o%20by%20Girlane%20Ferreira!5e0!3m2!1spt-BR!2sbr!4v1795549649378!5m2!1spt-BR!2sbr"
+                title="Localização do consultório de Hericles Ferreira em Joinville"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+
+            <div className="localizacao__info">
+              <div className="localizacao__card">
+                <strong>Hericles Ferreira | Nutricionista</strong>
+                <span>CRN-10 12284</span>
+                <span>Especialização em Metabolismo e Emagrecimento</span>
+                <address>{ADDRESS}</address>
+                <a href="tel:+5547988602379">(47) 98860-2379</a>
+              </div>
+              <div className="localizacao__actions">
+                <a className="wa-btn wa-btn--outline" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+                <WaBtn href={WA_PRESENCIAL} variant="primary">Agendar consulta</WaBtn>
+              </div>
             </div>
           </div>
-          <div className="localizacao__card">
-            <strong>Hericles Ferreira | Nutricionista</strong>
-            <span>CRN-10 12284</span>
-            <span>Especialização em Metabolismo e Emagrecimento</span>
-            <address>{ADDRESS}</address>
-            <a href="tel:+5547988602379">(47) 98860-2379</a>
+
+          <div className="localizacao__gallery" aria-label="Fotos da clínica">
+            <figure>
+              <img src="/img/IMG_5939.jpeg" alt="Ambiente da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img src="/img/IMG_5974.jpeg" alt="Estrutura da clínica para atendimento nutricional presencial em Joinville" loading="lazy" decoding="async" />
+            </figure>
           </div>
         </div>
       </section>
