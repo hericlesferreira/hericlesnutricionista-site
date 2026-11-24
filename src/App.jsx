@@ -414,6 +414,9 @@ export default function App() {
           <img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="container sobre__inner">
+          <div className="sobre__mobile-avatar" aria-hidden="true">
+            <img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async" />
+          </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
             <h2 className="section-title light">Atuação em <span className="accent">metabolismo, emagrecimento e hipertrofia</span></h2>
