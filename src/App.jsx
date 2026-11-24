@@ -69,7 +69,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__logo">
-          <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="38" decoding="async" />
+          <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
           <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
@@ -331,7 +331,7 @@ export default function App() {
       <footer className="footer">
         <div className="container footer__inner">
           <div className="footer__brand">
-            <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="48" decoding="async" />
+            <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
             <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
             <address className="footer__address">{ADDRESS}</address>
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
