@@ -234,3 +234,13 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 .navbar__logo img,.footer__brand img {filter:none;width:auto;height:auto;object-fit:contain}
 .navbar__logo img {width:min(196px,36vw);max-height:46px}
 .footer__brand img {width:min(230px,100%);max-height:55px}
+
+
+/* Priority 10: defer heavy below-the-fold result gallery rendering */
+.resultados {
+  content-visibility:auto;
+  contain-intrinsic-size:900px;
+}
+.transf-side img {
+  aspect-ratio:4/5;
+}
