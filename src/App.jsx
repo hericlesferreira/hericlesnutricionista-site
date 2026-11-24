@@ -271,23 +271,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* SERVIÇOS ESPECIALIZADOS */}
-      <section className="section services-seo" id="servicos">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Áreas de atuação</p>
-            <h2 className="section-title">Encontre o acompanhamento ideal para seu objetivo</h2>
-            <p className="section-sub">Conheça os serviços de nutrição em Joinville e as modalidades de atendimento online.</p>
-          </div>
-          <div className="services-seo__grid">
-            <a className="services-seo__card" href="/nutricionista-emagrecimento-joinville/"><h3>Emagrecimento em Joinville</h3><p>Estratégias para reduzir gordura corporal com alimentação adaptada à rotina.</p><span>Conhecer o atendimento →</span></a>
-            <a className="services-seo__card" href="/nutricionista-esportivo-joinville/"><h3>Nutrição esportiva</h3><p>Planejamento alimentar para hipertrofia, musculação e composição corporal.</p><span>Saiba como funciona →</span></a>
-            <a className="services-seo__card" href="/consultoria-nutricional-online/"><h3>Consultoria online</h3><p>Questionário inicial, plano alimentar individualizado e acompanhamento digital.</p><span>Explorar consultoria →</span></a>
-            <a className="services-seo__card" href="/acompanhamento-nutricional/"><h3>Acompanhamento nutricional</h3><p>Check-ins semanais, suporte e ajustes conforme sua evolução.</p><span>Conhecer o acompanhamento →</span></a>
-          </div>
-        </div>
-      </section>
-
       {/* BIBLIOTECA EDUCATIVA */}
       <section className="section services-seo" id="artigos" aria-labelledby="artigos-heading">
         <div className="container">
