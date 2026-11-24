@@ -524,10 +524,10 @@ export default function App() {
 
           <div className="localizacao__gallery" aria-label="Fotos da clínica">
             <figure>
-              <img src="/img/IMG_5939.jpeg" alt="Ambiente da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async" />
+              <img src="/img/consultorio.webp" alt="Consultório de Hericles Ferreira para atendimento nutricional em Joinville" loading="lazy" decoding="async" />
             </figure>
             <figure>
-              <img src="/img/IMG_5974.jpeg" alt="Estrutura da clínica para atendimento nutricional presencial em Joinville" loading="lazy" decoding="async" />
+              <img src="/img/clinica.webp" alt="Fachada da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async" />
             </figure>
           </div>
         </div>
