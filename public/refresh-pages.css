@@ -165,3 +165,10 @@ a:focus-visible,summary:focus-visible,.svc-button:focus-visible,.svc-outline:foc
 .svc-results-note {max-width:70ch;color:#65656b;font-size:13px;line-height:1.7;margin-top:24px}
 @media(max-width:840px){.svc-results-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.svc-results-grid{grid-template-columns:1fr}.svc-results-side img{max-height:350px}.svc-brand img{width:150px}}
+
+
+/* Priority 10: defer large comparison galleries until near viewport */
+.svc-results {
+  content-visibility:auto;
+  contain-intrinsic-size:960px;
+}
