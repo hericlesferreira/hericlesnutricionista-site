@@ -21,6 +21,57 @@ const faqs = [
   { q: "Qual é o endereço do atendimento presencial?", a: "Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Para agendar, entre em contato pelo WhatsApp." },
 ]
 
+const journeySteps = [
+  {
+    n: '01',
+    eyebrow: 'Antes da consulta',
+    title: 'Sua consulta começa antes de você chegar',
+    text: 'No questionário pré-consulta eu levanto pontos importantes sobre sua saúde, hábitos e rotina. Assim, nosso encontro começa com contexto e aproveitamos melhor cada minuto da consulta.'
+  },
+  {
+    n: '02',
+    eyebrow: 'Avaliação',
+    title: 'Eu entendo a sua realidade a fundo',
+    text: 'Aqui começa a operação. Conversamos sobre seu histórico de saúde e comportamento, rotina, exames, dificuldades do dia a dia e tudo o que pode influenciar sua evolução.'
+  },
+  {
+    n: '03',
+    eyebrow: 'Avaliação física',
+    title: 'Seu progresso deixa de ser achismo',
+    text: 'Realizamos a avaliação física para criar um ponto de partida e acompanhar sua evolução ao longo do processo com dados, contexto e comparação.'
+  },
+  {
+    n: '04',
+    eyebrow: 'Plano alimentar',
+    title: 'A estratégia nasce da sua vida, não de uma folha pronta',
+    text: 'Após a consulta, eu elaboro o plano inicial da operação com base no que conversamos, respeitando sua rotina, preferências e objetivo.'
+  },
+  {
+    n: '05',
+    eyebrow: 'Check-in semanal',
+    title: 'Toda sexta-feira, a estratégia volta para a mesa',
+    text: 'Você me conta como foi a semana, onde o planejamento funcionou, onde travou e como está sua adesão. Assim conseguimos acompanhar a fase do processo e ajustar o caminho.'
+  },
+  {
+    n: '06',
+    eyebrow: 'Suporte',
+    title: 'O acompanhamento não termina quando você sai do consultório',
+    text: 'Entre os encontros, você tem meu suporte pelo WhatsApp para esclarecer dúvidas e realizar alterações no planejamento quando a vida real pedir um ajuste.'
+  },
+  {
+    n: '07',
+    eyebrow: 'App exclusivo',
+    title: 'Tudo o que construímos fica organizado em um só lugar',
+    text: 'No aplicativo você acessa o planejamento alimentar, avaliação física, dados dos nossos encontros e materiais que usamos ao longo da jornada.'
+  },
+  {
+    n: '08',
+    eyebrow: 'Caixa de Ferramentas do Nutri',
+    title: 'Recursos práticos para fazer o plano funcionar fora do papel',
+    text: 'Você também recebe acesso à minha Caixa de Ferramentas, um espaço exclusivo com recursos e materiais pensados para facilitar sua rotina e ajudar a colocar o planejamento nutricional em prática.'
+  }
+]
+
 const transformacoes = [
   { antes: '/img/antes1.png', depois: '/img/depois1.png' },
   { antes: '/img/antes11.png', depois: '/img/depois11.png' },
@@ -146,49 +197,53 @@ export default function App() {
       {/* COMO FUNCIONA */}
       <section className="section como-funciona" id="como-funciona">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Consulta nutricional</p>
-            <h2 className="section-title">Sua jornada para emagrecer e evoluir começa aqui</h2>
-            <p className="section-sub">Escolha atendimento presencial em Joinville ou consultoria online para receber uma estratégia nutricional personalizada.</p>
+          <div className="journey-intro">
+            <p className="section-tag">Seu acompanhamento</p>
+            <h2 className="section-title journey-title">
+              <span>Sua jornada para</span>
+              <span className="journey-rotator" aria-label="emagrecer, hipertrofiar, crescer, evoluir ou viver de verdade">
+                <span className="journey-rotator-track" aria-hidden="true">
+                  <span>emagrecer</span>
+                  <span>hipertrofiar</span>
+                  <span>crescer</span>
+                  <span>evoluir</span>
+                  <span>viver de verdade</span>
+                  <span>emagrecer</span>
+                </span>
+              </span>
+              <span>começa aqui</span>
+            </h2>
+            <p className="journey-lead">
+              Da primeira resposta no questionário aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. Você entende a estratégia, acompanha sua evolução e tem suporte e ferramentas para fazer o plano funcionar na vida real.
+            </p>
           </div>
-          <div className="cards-row">
-            <div className="service-card">
-              <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" decoding="async" width="220" height="300" />
-                <span className="service-card__badge">📍 Joinville/SC</span>
-              </div>
-              <div className="service-card__body">
-                <h3>Consulta nutricional presencial em Joinville</h3>
-                <p>Atendimento individual no consultório, com avaliação física completa e estratégia alimentar para perda de gordura, ganho de massa magra e melhora da performance.</p>
-                <ul className="check-list">
-                  <li>Questionário pré-consulta detalhado</li>
-                  <li>Avaliação física completa</li>
-                  <li>Plano alimentar personalizado para emagrecimento ou hipertrofia</li>
-                  <li>Suporte contínuo via WhatsApp com feedback semanal</li>
-                  <li>Acesso ao Dietitian</li>
-                </ul>
-                <WaBtn href={WA_PRESENCIAL} variant="outline">Agendar consulta presencial</WaBtn>
-              </div>
-            </div>
-            <div className="service-card">
-              
-              <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira utilizando o notebook para planejamento nutricional" loading="lazy" decoding="async" width="220" height="300" />
-                <span className="service-card__badge">🌐 Online</span>
-              </div>
-              <div className="service-card__body">
-                <h3>Consultoria nutricional online</h3>
-                <p>Praticidade para evoluir onde você estiver, com plano alimentar, ajustes semanais e acompanhamento focado em composição corporal.</p>
-                <ul className="check-list">
-                  <li>Questionário inicial completo</li>
-                  <li>Planejamento alimentar para emagrecer, definir ou ganhar massa magra</li>
-                  <li>Avaliações periódicas por fotos e feedback</li>
-                  <li>Suporte semanal por ferramenta exclusiva</li>
-                  <li>Acesso ao Dietitian</li>
-                </ul>
-                <WaBtn href={WA_ONLINE} variant="primary">Quero a consultoria online</WaBtn>
-              </div>
-            </div>
+
+          <div className="journey-grid" aria-label="Etapas do acompanhamento nutricional">
+            {journeySteps.map((step) => (
+              <article className="journey-card" key={step.n}>
+                <div className="journey-card__number" aria-hidden="true">{step.n}</div>
+                <div className="journey-card__content">
+                  <p className="journey-card__eyebrow">{step.eyebrow}</p>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                  {step.n === '08' && (
+                    <a
+                      className="journey-card__link"
+                      href="https://caixadeferramentasnutri.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Conhecer a Caixa de Ferramentas →
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="journey-cta">
+            <p>Você não recebe apenas um plano alimentar. Recebe uma estratégia que continua sendo acompanhada depois da consulta.</p>
+            <WaBtn href={WA_LINK} variant="primary">Agendar consulta</WaBtn>
           </div>
         </div>
       </section>
