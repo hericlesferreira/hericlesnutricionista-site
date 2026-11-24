@@ -100,6 +100,12 @@ const transformacoes = [
     image: '/img/Leonardo.png',
   },
   {
+    nome: 'Daniela',
+    perfil: 'Pré-diabetes e hipotireoidismo',
+    descricao: 'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',
+    image: '/img/Daniela.png',
+  },
+  {
     nome: 'Gabriel',
     idade: 28,
     antes: '80kg',
@@ -128,12 +134,6 @@ const transformacoes = [
     perfil: 'Obesidade',
     descricao: 'Recomposição corporal com maior perda de gordura',
     image: '/img/Hericles.png',
-  },
-  {
-    nome: 'Daniela',
-    perfil: 'Pré-diabetes e hipotireoidismo',
-    descricao: 'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',
-    image: '/img/Daniela.png',
   },
 ]
 
