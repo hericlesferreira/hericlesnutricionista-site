@@ -97,7 +97,7 @@ const transformacoes = [
     tempo: '3 meses',
     perfil: 'Falso magro',
     descricao: 'Definição corporal + perda de gordura + ganho de massa',
-    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Leonardo.png',
+    image: '/img/Leonardo.png',
   },
   {
     nome: 'Gabriel',
@@ -107,7 +107,7 @@ const transformacoes = [
     tempo: '3 meses',
     perfil: 'Falso magro',
     descricao: 'Ganho de massa + redução de gordura',
-    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Volnei.png',
+    image: '/img/Gabriel.png',
   },
   {
     nome: 'Djonatan',
@@ -117,7 +117,23 @@ const transformacoes = [
     tempo: '5 meses',
     perfil: 'Falso magro',
     descricao: 'Perda de gordura + definição muscular',
-    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Djonatan.png',
+    image: '/img/Djonatan.png',
+  },
+  {
+    nome: 'Hericles',
+    idade: 30,
+    antes: '115kg',
+    depois: '84kg',
+    tempo: '5 meses',
+    perfil: 'Obesidade',
+    descricao: 'Recomposição corporal com maior perda de gordura',
+    image: '/img/Hericles.png',
+  },
+  {
+    nome: 'Daniela',
+    perfil: 'Pré-diabetes e hipotireoidismo',
+    descricao: 'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',
+    image: '/img/Daniela.png',
   },
 ]
 
@@ -374,14 +390,16 @@ export default function App() {
                     loading="lazy"
                     decoding="async"
                   />
-                  <span className="result-story__time">{t.tempo}</span>
+                  {t.tempo && <span className="result-story__time">{t.tempo}</span>}
                 </div>
                 <div className="result-story__content">
-                  <div className="result-story__weights">
-                    <div><strong>{t.antes}</strong><span>Antes</span></div>
-                    <div><strong>{t.depois}</strong><span>Depois</span></div>
-                  </div>
-                  <h3>{t.nome}, {t.idade} anos</h3>
+                  {t.antes && t.depois && (
+                    <div className="result-story__weights">
+                      <div><strong>{t.antes}</strong><span>Antes</span></div>
+                      <div><strong>{t.depois}</strong><span>Depois</span></div>
+                    </div>
+                  )}
+                  <h3>{t.nome}{t.idade ? `, ${t.idade} anos` : ''}</h3>
                   <p className="result-story__profile">{t.perfil}</p>
                   <p className="result-story__desc">{t.descricao}</p>
                 </div>
