@@ -294,13 +294,13 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 .hero {
   position:relative;
   background:#fff;
-  padding-top:var(--nav-h);
+  padding-top:0;
   overflow:hidden;
   isolation:isolate;
 }
 .hero__media {
   position:absolute;
-  inset:var(--nav-h) 0 0;
+  inset:0;
   z-index:0;
   pointer-events:none;
 }
@@ -318,7 +318,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   content:"";
   position:absolute;
   inset:0;
-  background:rgb(0 0 0 / .22);
+  background:transparent;
 }
 .hero__inner {
   position:relative;
@@ -361,10 +361,10 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 }
 @media(max-width:768px) {
   .hero {
-    padding-top:var(--nav-h);
+    padding-top:0;
   }
   .hero__media {
-    inset:var(--nav-h) 0 0;
+    inset:0;
   }
   .hero__media img {
     object-position:center top;
