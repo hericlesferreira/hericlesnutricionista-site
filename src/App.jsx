@@ -27,7 +27,7 @@ const journeySteps = [
     eyebrow: 'Pré-consulta',
     title: 'Sua consulta começa antes de você chegar',
     text: 'No questionário pré-consulta eu levanto pontos importantes sobre sua saúde, hábitos e rotina. Assim, nosso encontro começa com contexto e aproveitamos melhor cada minuto da consulta.',
-    image: '/img/passo1.jpeg',
+    image: '/img/hericles-ferreira-questionario-pre-consulta-nutricional-joinville.webp',
     alt: 'Etapa de pré-consulta do acompanhamento nutricional.'
   },
   {
@@ -35,7 +35,7 @@ const journeySteps = [
     eyebrow: 'Consulta',
     title: 'Eu entendo a sua realidade',
     text: 'Em consulta vou entender melhor seu histórico de saúde e comportamento, rotina, exames, dificuldades do dia a dia e tudo o que puder influenciar na sua evolução.',
-    image: '/img/passo2.jpg',
+    image: '/img/consulta-nutricional-hericles-ferreira-joinville.webp',
     alt: 'Consulta nutricional com Hericles Ferreira.'
   },
   {
@@ -43,7 +43,7 @@ const journeySteps = [
     eyebrow: 'Avaliação física',
     title: 'Bioimpedância e dobras cutâneas',
     text: 'Realizamos a avaliação física para criar um ponto de partida e acompanhar sua evolução ao longo do processo com dados, contexto e comparação. Sempre realizamos bioimpedância + circunferências + dobras cutâneas.',
-    image: '/img/passo3.jpeg',
+    image: '/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp',
     alt: 'Avaliação física durante o acompanhamento nutricional.'
   },
   {
@@ -51,7 +51,7 @@ const journeySteps = [
     eyebrow: 'Plano alimentar',
     title: 'Plano personalizado e individualizado',
     text: 'Após a consulta, eu elaboro o plano inicial da operação com base no que conversamos, respeitando sua rotina, preferências e objetivo.',
-    image: '/img/passo4.jpeg',
+    image: '/img/plano-alimentar-personalizado-hericles-ferreira.webp',
     alt: 'Planejamento alimentar individualizado.'
   },
   {
@@ -59,7 +59,7 @@ const journeySteps = [
     eyebrow: 'Check-in semanal',
     title: 'Toda sexta-feira',
     text: 'Temos um aplicativo exclusivo de acompanhamento, onde acompanhamos como foi a semana, onde o planejamento funcionou, onde travou e como está sua adesão. Assim conseguimos acompanhar a fase e ajustar o caminho.',
-    image: '/img/passo5.jpg',
+    image: '/img/check-in-semanal-acompanhamento-nutricional.webp',
     alt: 'Check-in semanal do acompanhamento nutricional.'
   },
   {
@@ -67,7 +67,7 @@ const journeySteps = [
     eyebrow: 'Suporte',
     title: 'Acompanhamento',
     text: 'Entre os encontros, você tem meu suporte pelo WhatsApp para esclarecer dúvidas e realizar alterações no planejamento quando a rotina pedir um ajuste.',
-    image: '/img/hericles-ferreira-retrato-perfil.webp',
+    image: '/img/suporte-whatsapp-nutricionista-hericles-ferreira.webp',
     alt: 'Hericles Ferreira, nutricionista responsável pelo acompanhamento.'
   },
   {
@@ -75,7 +75,7 @@ const journeySteps = [
     eyebrow: 'App exclusivo',
     title: 'Tudo o que construímos fica organizado em um só lugar',
     text: 'No aplicativo você acessa o planejamento alimentar, avaliação física, dados dos nossos encontros e materiais que usamos ao longo da jornada.',
-    image: '/img/hericles-ferreira-consultoria-online.webp',
+    image: '/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp',
     alt: 'Acompanhamento nutricional com acesso digital ao planejamento.'
   },
   {
@@ -83,7 +83,7 @@ const journeySteps = [
     eyebrow: 'Recursos exclusivos',
     title: 'Caixa de Ferramentas do Nutri',
     text: 'Você também recebe acesso à minha Caixa de Ferramentas, um espaço exclusivo com recursos e materiais pensados para facilitar sua rotina e ajudar a colocar o planejamento nutricional em prática.',
-    image: '/img/hericles-ferreira-sofa-profissional.webp',
+    image: '/img/caixa-de-ferramentas-nutri-hericles-ferreira.webp',
     alt: 'Recursos exclusivos disponíveis durante o acompanhamento nutricional.'
   }
 ]
@@ -343,7 +343,7 @@ export default function App() {
       <section className="section sobre bg-dark-section" id="sobre">
         <div className="container sobre__inner">
           <div className="sobre__img-wrap">
-            <img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" decoding="async" width="220" height="300" />
+            <img src="/img/caixa-de-ferramentas-nutri-hericles-ferreira.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" decoding="async" width="220" height="300" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
