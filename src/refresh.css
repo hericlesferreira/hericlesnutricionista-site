@@ -1265,8 +1265,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   border-radius:0;
   background:#fff;
   overflow:hidden;
-  display:grid;
-  grid-template-rows:44% 56%;
+  display:block;
 }
 .article-card--square .article-card__image {
   aspect-ratio:auto;
