@@ -1257,12 +1257,12 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   gap:18px;
 }
 .article-card--square {
-  --card-radius:24px;
+  --card-radius:0px;
   --card-space:8px;
   aspect-ratio:1/1;
   padding:var(--card-space);
   border:1px solid rgb(0 0 0 / .12);
-  border-radius:var(--card-radius);
+  border-radius:0;
   background:#fff;
   overflow:hidden;
   display:grid;
@@ -1271,7 +1271,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 .article-card--square .article-card__image {
   aspect-ratio:auto;
   height:100%;
-  border-radius:calc(var(--card-radius) - var(--card-space));
+  border-radius:0;
   overflow:hidden;
 }
 .article-card--square .article-card__body {
