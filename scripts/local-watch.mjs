@@ -14,9 +14,16 @@ function currentBranch() {
   const r = spawnSync('git', ['branch', '--show-current'], { encoding: 'utf8', shell: process.platform === 'win32' })
   return (r.stdout || '').trim()
 }
-function hasLocalChanges() {
+function localChanges() {
   const r = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8', shell: process.platform === 'win32' })
-  return Boolean((r.stdout || '').trim())
+  return (r.stdout || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean)
+}
+function hasBlockingLocalChanges() {
+  const ignored = new Set(['data/blogger-posts.json'])
+  return localChanges().some(line => {
+    const path = line.slice(3).trim()
+    return !ignored.has(path)
+  })
 }
 function remoteChanged() {
   spawnSync('git', ['fetch', 'origin', BRANCH], { stdio: 'ignore', shell: process.platform === 'win32' })
@@ -42,7 +49,7 @@ function syncAndBuild() {
       console.log('⚠️ Branch atual diferente de ' + BRANCH + '. Mantendo apenas o servidor local.')
       return
     }
-    if (hasLocalChanges()) {
+    if (hasBlockingLocalChanges()) {
       console.log('⚠️ Existem alterações locais não commitadas. Pull automático pausado para não sobrescrever seu trabalho.')
       return
     }
