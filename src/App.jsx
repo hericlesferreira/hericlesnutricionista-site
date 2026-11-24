@@ -206,10 +206,10 @@ function NavBar({ menuOpen, setMenuOpen }) {
           <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
-          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
-          <a href="#servicos" onClick={() => setMenuOpen(false)}>Áreas de atuação</a>
-          <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Sobre mim</a>
-          <a href="/artigos/" onClick={() => setMenuOpen(false)}>Artigos</a>
+          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
+          <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
+          <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre mim</a>
+          <a href="#artigos" onClick={() => setMenuOpen(false)}>Artigos</a>
           <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar</WaBtn>
         </nav>
         <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
