@@ -24,51 +24,67 @@ const faqs = [
 const journeySteps = [
   {
     n: '01',
-    eyebrow: 'Antes da consulta',
+    eyebrow: 'Pré-consulta',
     title: 'Sua consulta começa antes de você chegar',
-    text: 'No questionário pré-consulta eu levanto pontos importantes sobre sua saúde, hábitos e rotina. Assim, nosso encontro começa com contexto e aproveitamos melhor cada minuto da consulta.'
+    text: 'No questionário pré-consulta eu levanto pontos importantes sobre sua saúde, hábitos e rotina. Assim, nosso encontro começa com contexto e aproveitamos melhor cada minuto da consulta.',
+    image: '/img/passo1.jpeg',
+    alt: 'Etapa de pré-consulta do acompanhamento nutricional.'
   },
   {
     n: '02',
-    eyebrow: 'Avaliação',
-    title: 'Eu entendo a sua realidade a fundo',
-    text: 'Aqui começa a operação. Conversamos sobre seu histórico de saúde e comportamento, rotina, exames, dificuldades do dia a dia e tudo o que pode influenciar sua evolução.'
+    eyebrow: 'Consulta',
+    title: 'Eu entendo a sua realidade',
+    text: 'Em consulta vou entender melhor seu histórico de saúde e comportamento, rotina, exames, dificuldades do dia a dia e tudo o que puder influenciar na sua evolução.',
+    image: '/img/passo2.jpg',
+    alt: 'Consulta nutricional com Hericles Ferreira.'
   },
   {
     n: '03',
     eyebrow: 'Avaliação física',
-    title: 'Seu progresso deixa de ser achismo',
-    text: 'Realizamos a avaliação física para criar um ponto de partida e acompanhar sua evolução ao longo do processo com dados, contexto e comparação.'
+    title: 'Bioimpedância e dobras cutâneas',
+    text: 'Realizamos a avaliação física para criar um ponto de partida e acompanhar sua evolução ao longo do processo com dados, contexto e comparação. Sempre realizamos bioimpedância + circunferências + dobras cutâneas.',
+    image: '/img/passo3.jpeg',
+    alt: 'Avaliação física durante o acompanhamento nutricional.'
   },
   {
     n: '04',
     eyebrow: 'Plano alimentar',
-    title: 'A estratégia nasce da sua vida, não de uma folha pronta',
-    text: 'Após a consulta, eu elaboro o plano inicial da operação com base no que conversamos, respeitando sua rotina, preferências e objetivo.'
+    title: 'Plano personalizado e individualizado',
+    text: 'Após a consulta, eu elaboro o plano inicial da operação com base no que conversamos, respeitando sua rotina, preferências e objetivo.',
+    image: '/img/passo4.jpeg',
+    alt: 'Planejamento alimentar individualizado.'
   },
   {
     n: '05',
     eyebrow: 'Check-in semanal',
-    title: 'Toda sexta-feira, a estratégia volta para a mesa',
-    text: 'Você me conta como foi a semana, onde o planejamento funcionou, onde travou e como está sua adesão. Assim conseguimos acompanhar a fase do processo e ajustar o caminho.'
+    title: 'Toda sexta-feira',
+    text: 'Temos um aplicativo exclusivo de acompanhamento, onde acompanhamos como foi a semana, onde o planejamento funcionou, onde travou e como está sua adesão. Assim conseguimos acompanhar a fase e ajustar o caminho.',
+    image: '/img/passo5.jpg',
+    alt: 'Check-in semanal do acompanhamento nutricional.'
   },
   {
     n: '06',
     eyebrow: 'Suporte',
-    title: 'O acompanhamento não termina quando você sai do consultório',
-    text: 'Entre os encontros, você tem meu suporte pelo WhatsApp para esclarecer dúvidas e realizar alterações no planejamento quando a vida real pedir um ajuste.'
+    title: 'Acompanhamento',
+    text: 'Entre os encontros, você tem meu suporte pelo WhatsApp para esclarecer dúvidas e realizar alterações no planejamento quando a rotina pedir um ajuste.',
+    image: '/img/hericles-ferreira-retrato-perfil.webp',
+    alt: 'Hericles Ferreira, nutricionista responsável pelo acompanhamento.'
   },
   {
     n: '07',
     eyebrow: 'App exclusivo',
     title: 'Tudo o que construímos fica organizado em um só lugar',
-    text: 'No aplicativo você acessa o planejamento alimentar, avaliação física, dados dos nossos encontros e materiais que usamos ao longo da jornada.'
+    text: 'No aplicativo você acessa o planejamento alimentar, avaliação física, dados dos nossos encontros e materiais que usamos ao longo da jornada.',
+    image: '/img/hericles-ferreira-consultoria-online.webp',
+    alt: 'Acompanhamento nutricional com acesso digital ao planejamento.'
   },
   {
     n: '08',
-    eyebrow: 'Caixa de Ferramentas do Nutri',
-    title: 'Recursos práticos para fazer o plano funcionar fora do papel',
-    text: 'Você também recebe acesso à minha Caixa de Ferramentas, um espaço exclusivo com recursos e materiais pensados para facilitar sua rotina e ajudar a colocar o planejamento nutricional em prática.'
+    eyebrow: 'Recursos exclusivos',
+    title: 'Caixa de Ferramentas do Nutri',
+    text: 'Você também recebe acesso à minha Caixa de Ferramentas, um espaço exclusivo com recursos e materiais pensados para facilitar sua rotina e ajudar a colocar o planejamento nutricional em prática.',
+    image: '/img/hericles-ferreira-sofa-profissional.webp',
+    alt: 'Recursos exclusivos disponíveis durante o acompanhamento nutricional.'
   }
 ]
 
@@ -214,28 +230,33 @@ export default function App() {
               <span>começa aqui</span>
             </h2>
             <p className="journey-lead">
-              Da primeira resposta no questionário aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. Você entende a estratégia, acompanha sua evolução e tem suporte e ferramentas para fazer o plano funcionar na vida real.
+              Do primeiro contato aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. E a nossa jornada é assim:
             </p>
           </div>
 
           <div className="journey-grid" aria-label="Etapas do acompanhamento nutricional">
             {journeySteps.map((step) => (
               <article className="journey-card" key={step.n}>
-                <div className="journey-card__number" aria-hidden="true">{step.n}</div>
-                <div className="journey-card__content">
-                  <p className="journey-card__eyebrow">{step.eyebrow}</p>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                  {step.n === '08' && (
-                    <a
-                      className="journey-card__link"
-                      href="https://caixadeferramentasnutri.vercel.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Conhecer a Caixa de Ferramentas →
-                    </a>
-                  )}
+                <div className="journey-card__media">
+                  <img src={step.image} alt={step.alt} loading="lazy" decoding="async" width="900" height="700" />
+                </div>
+                <div className="journey-card__body">
+                  <div className="journey-card__number" aria-hidden="true">{step.n}</div>
+                  <div className="journey-card__content">
+                    <p className="journey-card__eyebrow">{step.eyebrow}</p>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                    {step.n === '08' && (
+                      <a
+                        className="journey-card__link"
+                        href="https://caixadeferramentasnutri.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Conhecer a Caixa de Ferramentas →
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
