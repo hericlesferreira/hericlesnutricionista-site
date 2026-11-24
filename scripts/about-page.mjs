@@ -64,7 +64,7 @@ const html = `<!doctype html>
 <meta name="robots" content="index,follow">
 <meta name="author" content="Hericles Ferreira">
 <link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="/img/hericles-ferreira-retrato-institucional.webp" fetchpriority="high">
-<link rel="icon" href="/img/logo-light.ico">
+<link rel="icon" href="/img/favicon-hericles.png">
 <meta property="og:type" content="profile"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${image}">
