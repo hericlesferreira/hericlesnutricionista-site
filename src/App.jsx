@@ -89,12 +89,36 @@ const journeySteps = [
 ]
 
 const transformacoes = [
-  { antes: '/img/antes1.png', depois: '/img/depois1.png' },
-  { antes: '/img/antes11.png', depois: '/img/depois11.png' },
-  { antes: '/img/antes2.png', depois: '/img/depois2.png' },
-  { antes: '/img/antes22.png', depois: '/img/depois22.png' },
-  { antes: '/img/antes3.png', depois: '/img/depois3.png' },
-  { antes: '/img/antes33.png', depois: '/img/depois33.png' },
+  {
+    nome: 'Leonardo',
+    idade: 24,
+    antes: '85kg',
+    depois: '79,5kg',
+    tempo: '3 meses',
+    perfil: 'Falso magro',
+    descricao: 'Definição corporal + perda de gordura + ganho de massa',
+    image: '/img/transformacao-leonardo.png',
+  },
+  {
+    nome: 'Gabriel',
+    idade: 28,
+    antes: '80kg',
+    depois: '74kg',
+    tempo: '3 meses',
+    perfil: 'Falso magro',
+    descricao: 'Ganho de massa + redução de gordura',
+    image: '/img/transformacao-gabriel.png',
+  },
+  {
+    nome: 'Djonatan',
+    idade: 30,
+    antes: '87kg',
+    depois: '77kg',
+    tempo: '5 meses',
+    perfil: 'Falso magro',
+    descricao: 'Perda de gordura + definição muscular',
+    image: '/img/transformacao-djonatan.png',
+  },
 ]
 
 function WaBtn({ href = WA_LINK, children, variant = 'primary', className = '' }) {
@@ -334,28 +358,36 @@ export default function App() {
       {/* TRANSFORMAÇÕES */}
       <section className="section resultados" id="resultados">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header resultados__header">
             <p className="section-tag">Resultados</p>
             <h2 className="section-title">Transformações reais</h2>
-            <p className="section-sub">Registros de evolução corporal de pacientes acompanhados. Cada trajetória é individual e os resultados não são garantidos.</p>
-          </div>
-          <div className="transf-grid">
-            {transformacoes.map((t, i) => (
-              <div className="transf-card" key={i}>
-                <div className="transf-pair">
-                  <div className="transf-side">
-                    <span className="transf-label">Antes</span>
-                    <img src={t.antes} alt="Registro antes do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
-                  </div>
-                  <div className="transf-side">
-                    <span className="transf-label after">Depois</span>
-                    <img src={t.depois} alt="Registro depois do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
-                  </div>
-                </div>
-              </div>
-            ))}
+            <p className="section-sub">Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p>
           </div>
 
+          <div className="results-showcase">
+            {transformacoes.map((t) => (
+              <article className="result-story" key={t.nome}>
+                <div className="result-story__visual">
+                  <img
+                    src={t.image}
+                    alt={`Transformação corporal de ${t.nome}: comparação antes e depois do acompanhamento nutricional`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="result-story__time">{t.tempo}</span>
+                </div>
+                <div className="result-story__content">
+                  <div className="result-story__weights">
+                    <div><strong>{t.antes}</strong><span>Antes</span></div>
+                    <div><strong>{t.depois}</strong><span>Depois</span></div>
+                  </div>
+                  <h3>{t.nome}, {t.idade} anos</h3>
+                  <p className="result-story__profile">{t.perfil}</p>
+                  <p className="result-story__desc">{t.descricao}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
