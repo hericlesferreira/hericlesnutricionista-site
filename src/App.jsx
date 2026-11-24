@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import bloggerPosts from '../data/blogger-posts.json'
 import './App.css'
 import './refresh.css'
 
@@ -8,6 +9,57 @@ const ADDRESS = 'Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC, CEP 89224
 const WA_LINK = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Estava%20no%20seu%20site%20e%20quero%20um%20acompanhamento%20nutricional%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consultoria%20online%20para%20emagrecimento%20e%20hipertrofia."
 const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
+
+
+const strategicArticles = [
+  {
+    href: '/artigos/como-emagrecer-sem-passar-fome/',
+    category: 'Emagrecimento',
+    title: 'Como emagrecer sem passar fome?',
+    description: 'Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.',
+    image: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2',
+    alt: 'Hericles Ferreira durante atendimento nutricional em Joinville',
+  },
+  {
+    href: '/artigos/como-perder-gordura-sem-perder-massa-muscular/',
+    category: 'Composição corporal',
+    title: 'Como perder gordura sem perder massa muscular?',
+    description: 'Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.',
+    image: '/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp',
+    alt: 'Avaliação de composição corporal durante acompanhamento nutricional',
+  },
+  {
+    href: '/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/',
+    category: 'Metabolismo',
+    title: 'Por que parei de emagrecer mesmo fazendo dieta?',
+    description: 'O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.',
+    image: '/img/plano-alimentar-personalizado-hericles-ferreira.webp',
+    alt: 'Planejamento alimentar personalizado elaborado por Hericles Ferreira',
+  },
+  {
+    href: '/alimentacao-mounjaro-ozempic-tirzepatida/',
+    category: 'Tratamento e alimentação',
+    title: 'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida',
+    description: 'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.',
+    image: '/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp',
+    alt: 'Acompanhamento nutricional e planejamento alimentar',
+  },
+]
+
+const bloggerArticles = (Array.isArray(bloggerPosts) ? bloggerPosts : []).map((post) => ({
+  href: `/artigos/${post.slug}/`,
+  category: post.labels?.[0] || 'Nutrição',
+  title: post.title,
+  description: post.description,
+  image: post.image || '/img/hericles-ferreira-retrato-institucional.webp',
+  alt: post.title,
+  published: post.published,
+}))
+
+const homeArticles = [
+  ...strategicArticles,
+  ...bloggerArticles.filter((post) => !strategicArticles.some((fixed) => fixed.href === post.href)),
+]
 
 const faqs = [
   {
@@ -223,6 +275,22 @@ function NavBar({ menuOpen, setMenuOpen }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [visibleArticleCount, setVisibleArticleCount] = useState(6)
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.article-card--reveal:not(.is-visible)')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' })
+
+    cards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [visibleArticleCount])
 
   return (
     <div className="app">
@@ -346,55 +414,43 @@ export default function App() {
               <p className="section-tag">Leituras do Nutri</p>
               <h2 className="section-title" id="artigos-heading">Artigos que escrevi recentemente</h2>
             </div>
-            <a className="articles-home__all" href="/artigos/">Ver todos os artigos →</a>
+            <a className="articles-home__all" href="/artigos/">Ver todos os artigos <span aria-hidden="true">→</span></a>
           </div>
 
           <div className="articles-home__grid">
-            <article className="article-card article-card--featured">
-              <a className="article-card__image" href="/artigos/como-emagrecer-sem-passar-fome/" aria-label="Ler artigo Como emagrecer sem passar fome">
-                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional em Joinville" loading="lazy" decoding="async" />
-              </a>
-              <div className="article-card__body">
-                <div className="article-card__meta"><span>Emagrecimento</span><span>Hericles Ferreira</span></div>
-                <h3><a href="/artigos/como-emagrecer-sem-passar-fome/">Como emagrecer sem passar fome?</a></h3>
-                <p>Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.</p>
-                <a className="article-card__link" href="/artigos/como-emagrecer-sem-passar-fome/">Ler artigo →</a>
-              </div>
-            </article>
-
-            <article className="article-card">
-              <a className="article-card__image" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/" aria-label="Ler artigo Como perder gordura sem perder massa muscular">
-                <img src="/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp" alt="Avaliação de composição corporal durante acompanhamento nutricional" loading="lazy" decoding="async" />
-              </a>
-              <div className="article-card__body">
-                <div className="article-card__meta"><span>Composição corporal</span><span>Hericles Ferreira</span></div>
-                <h3><a href="/artigos/como-perder-gordura-sem-perder-massa-muscular/">Como perder gordura sem perder massa muscular?</a></h3>
-                <p>Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.</p>
-                <a className="article-card__link" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/">Ler artigo →</a>
-              </div>
-            </article>
-
-            <article className="article-card">
-              <a className="article-card__image" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/" aria-label="Ler artigo Por que parei de emagrecer mesmo fazendo dieta">
-                <img src="/img/plano-alimentar-personalizado-hericles-ferreira.webp" alt="Planejamento alimentar personalizado elaborado por Hericles Ferreira" loading="lazy" decoding="async" />
-              </a>
-              <div className="article-card__body">
-                <div className="article-card__meta"><span>Metabolismo</span><span>Hericles Ferreira</span></div>
-                <h3><a href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/">Por que parei de emagrecer mesmo fazendo dieta?</a></h3>
-                <p>O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.</p>
-                <a className="article-card__link" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/">Ler artigo →</a>
-              </div>
-            </article>
+            {homeArticles.slice(0, visibleArticleCount).map((article, index) => (
+              <article
+                className="article-card article-card--square article-card--reveal"
+                key={article.href}
+                style={{ '--article-delay': `${Math.min(index % 6, 5) * 55}ms` }}
+              >
+                <a className="article-card__image" href={article.href} aria-label={`Ler artigo ${article.title}`}>
+                  <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
+                </a>
+                <div className="article-card__body">
+                  <div className="article-card__meta">
+                    <span>{article.category}</span>
+                    <span>Hericles Ferreira</span>
+                  </div>
+                  <h3><a href={article.href}>{article.title}</a></h3>
+                  <p>{article.description}</p>
+                  <a className="article-card__link" href={article.href}>Ler artigo →</a>
+                </div>
+              </article>
+            ))}
           </div>
 
-          <article className="article-card article-card--wide">
-            <div className="article-card__wide-copy">
-              <div className="article-card__meta"><span>Tratamento e alimentação</span><span>Hericles Ferreira</span></div>
-              <h3><a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</a></h3>
-              <p>Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento, sem julgamento e sem terrorismo alimentar.</p>
-              <a className="article-card__link" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo →</a>
+          {visibleArticleCount < homeArticles.length && (
+            <div className="articles-home__more">
+              <button
+                type="button"
+                className="articles-home__more-btn"
+                onClick={() => setVisibleArticleCount((count) => count + 6)}
+              >
+                Mostrar mais
+              </button>
             </div>
-          </article>
+          )}
         </div>
       </section>
 
