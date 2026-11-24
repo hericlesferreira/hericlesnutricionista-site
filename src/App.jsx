@@ -424,18 +424,20 @@ export default function App() {
                 key={article.href}
                 style={{ '--article-delay': `${Math.min(index % 6, 5) * 55}ms` }}
               >
-                <a className="article-card__image" href={article.href} aria-label={`Ler artigo ${article.title}`}>
-                  <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
-                </a>
-                <div className="article-card__body">
-                  <div className="article-card__meta">
-                    <span>{article.category}</span>
-                    <span>Hericles Ferreira</span>
+                <a className="article-card__cover" href={article.href} aria-label={`Ler artigo ${article.title}`}>
+                  <div className="article-card__image">
+                    <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
                   </div>
-                  <h3><a href={article.href}>{article.title}</a></h3>
-                  <p>{article.description}</p>
-                  <a className="article-card__link" href={article.href}>Ler artigo →</a>
-                </div>
+                  <div className="article-card__body">
+                    <div className="article-card__meta">
+                      <span>{article.category}</span>
+                      <span>Hericles Ferreira</span>
+                    </div>
+                    <h3>{article.title}</h3>
+                    <p>{article.description}</p>
+                    <span className="article-card__link">Ler artigo →</span>
+                  </div>
+                </a>
               </article>
             ))}
           </div>
