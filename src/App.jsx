@@ -10,15 +10,42 @@ const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%
 const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 
 const faqs = [
-  { q: "Como funciona a consulta nutricional presencial em Joinville?", a: "O atendimento presencial envolve avaliação individualizada, análise da rotina alimentar e avaliação física conforme sua necessidade. O plano alimentar é elaborado a partir das informações da consulta." },
-  { q: "Como funciona a consultoria nutricional online?", a: "A consultoria online começa com um questionário detalhado que substitui a consulta presencial nessa modalidade. Com base nas respostas, elaboro seu planejamento alimentar e realizo o acompanhamento digital conforme o serviço contratado." },
-  { q: "Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?", a: "Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades. Ajustamos quantidades e frequência em vez de adotar proibições sem necessidade." },
-  { q: "O acompanhamento inclui contato depois do plano alimentar?", a: "As modalidades de acompanhamento oferecem check-ins semanais e suporte conforme as condições contratadas, para avaliar dificuldades e orientar eventuais ajustes." },
-  { q: "É possível ganhar massa muscular e perder gordura?", a: "Dependendo do histórico e do contexto, mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia é individualizada e a evolução é acompanhada." },
-  { q: "Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?", a: "Sim. O acompanhamento nutricional pode ajudar a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento. A prescrição e o monitoramento dos medicamentos cabem ao médico." },
-  { q: "Quanto tempo demora para receber o plano alimentar?", a: "O prazo informado para elaboração do plano após a avaliação é de até 72 horas, considerando o recebimento das informações necessárias." },
-  { q: "Onde encontro o plano e as orientações?", a: "O aplicativo Dietitian reúne documentos, planejamento alimentar, receitas e orientações disponibilizadas durante o acompanhamento." },
-  { q: "Qual é o endereço do atendimento presencial?", a: "Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Para agendar, entre em contato pelo WhatsApp." },
+  {
+    q: "Como funciona a consulta nutricional presencial?",
+    a: "Antes da nossa consulta presencial, você recebe nosso questionário pré-consulta. Depois, temos nossa consulta presencial, onde entendemos sua rotina, hábitos alimentares e comportamento. Realizamos a avaliação física e definimos como será seu novo plano alimentar."
+  },
+  {
+    q: "Como funciona a consultoria online?",
+    a: "A consultoria online começa com um questionário detalhado que substitui a consulta presencial. Com base nas respostas, elaboro seu planejamento alimentar."
+  },
+  {
+    q: "Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?",
+    a: "Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades."
+  },
+  {
+    q: "O acompanhamento inclui contato depois do plano alimentar?",
+    a: "Sim! Além do meu suporte diário por WhatsApp, temos o check-in semanal."
+  },
+  {
+    q: "É possível ganhar massa muscular e perder gordura?",
+    a: "Sim. Tudo depende do histórico e contexto. Mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia precisa ser individualizada."
+  },
+  {
+    q: "Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?",
+    a: "Sim. Acompanho pessoas que fazem uso de medicação para emagrecer. O planejamento nutricional ajuda a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento."
+  },
+  {
+    q: "Quanto tempo demora para receber o planejamento alimentar?",
+    a: "Após nossa consulta, o prazo para entrega do planejamento alimentar e orientações nutricionais é de 72h."
+  },
+  {
+    q: "Onde encontro o plano e as orientações?",
+    a: "Além de receber todo o planejamento e orientações por WhatsApp, você também recebe acesso ao nosso aplicativo Dietitian, onde acessa o plano alimentar, receitas, prescrições e exames."
+  },
+  {
+    q: "Qual é o endereço do atendimento presencial?",
+    a: "Meu consultório fica na Rua Areia Branca, 1035, Jardim Iririú, em Joinville/SC."
+  },
 ]
 
 const journeySteps = [
@@ -450,7 +477,6 @@ export default function App() {
       <section className="section faq-section" id="faq">
         <div className="container">
           <div className="section-header">
-            <p className="section-tag">Dúvidas</p>
             <h2 className="section-title">Perguntas frequentes</h2>
           </div>
           <FAQ />
