@@ -175,7 +175,7 @@ function render(p) {
 <title>${esc(p.title)}</title><meta name="description" content="${esc(p.description)}">
 <meta name="robots" content="index,follow"><meta name="author" content="Hericles Ferreira">
 <link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="${photo.hero}" fetchpriority="high">
-<link rel="icon" href="/img/logo-light.ico">
+<link rel="icon" href="/img/favicon-hericles.png">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(p.title)}"><meta property="og:description" content="${esc(p.description)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${origin}${photo.hero}">
