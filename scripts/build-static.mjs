@@ -20,7 +20,7 @@ try {
   const html = await readFile(htmlPath, 'utf8')
   const placeholder = '<div id="root"></div>'
   if (!html.includes(placeholder)) throw new Error('Root HTML não encontrado.')
-  if (!markup.includes('Uma alimentação que funciona na sua vida.') || !markup.includes('Perguntas frequentes')) {
+  if (!markup.includes('hero__rotator') || !markup.includes('que cabe') || !markup.includes('na sua vida') || !markup.includes('Perguntas frequentes')) {
     throw new Error('HTML pré-renderizado incompleto.')
   }
   await writeFile(htmlPath, html.replace(placeholder, `<div id="root">${markup}</div>`), 'utf8')

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import bloggerPosts from '../data/blogger-posts.json'
 import './App.css'
 import './refresh.css'
 
@@ -9,25 +10,210 @@ const WA_LINK = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1
 const WA_ONLINE = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consultoria%20online%20para%20emagrecimento%20e%20hipertrofia."
 const WA_PRESENCIAL = "https://api.whatsapp.com/send?phone=5547988602379&text=Ol%C3%A1%2C%20H%C3%A9ricles!%20Tenho%20interesse%20na%20consulta%20presencial%20em%20Joinville%20para%20emagrecer%20e%20ganhar%20massa%20magra."
 
+
+const strategicArticles = [
+  {
+    href: '/artigos/como-emagrecer-sem-passar-fome/',
+    category: 'Emagrecimento',
+    title: 'Como emagrecer sem passar fome?',
+    description: 'Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.',
+    image: '/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2',
+    alt: 'Hericles Ferreira durante atendimento nutricional em Joinville',
+  },
+  {
+    href: '/artigos/como-perder-gordura-sem-perder-massa-muscular/',
+    category: 'Composição corporal',
+    title: 'Como perder gordura sem perder massa muscular?',
+    description: 'Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.',
+    image: '/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp',
+    alt: 'Avaliação de composição corporal durante acompanhamento nutricional',
+  },
+  {
+    href: '/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/',
+    category: 'Metabolismo',
+    title: 'Por que parei de emagrecer mesmo fazendo dieta?',
+    description: 'O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.',
+    image: '/img/plano-alimentar-personalizado-hericles-ferreira.webp',
+    alt: 'Planejamento alimentar personalizado elaborado por Hericles Ferreira',
+  },
+  {
+    href: '/alimentacao-mounjaro-ozempic-tirzepatida/',
+    category: 'Tratamento e alimentação',
+    title: 'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida',
+    description: 'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.',
+    image: '/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp',
+    alt: 'Acompanhamento nutricional e planejamento alimentar',
+  },
+]
+
+const bloggerArticles = (Array.isArray(bloggerPosts) ? bloggerPosts : []).map((post) => ({
+  href: `/artigos/${post.slug}/`,
+  category: post.labels?.[0] || 'Nutrição',
+  title: post.title,
+  description: post.description,
+  image: post.image || '/img/hericles-ferreira-retrato-institucional.webp',
+  alt: post.title,
+  published: post.published,
+}))
+
+const homeArticles = [
+  ...strategicArticles,
+  ...bloggerArticles.filter((post) => !strategicArticles.some((fixed) => fixed.href === post.href)),
+]
+
 const faqs = [
-  { q: "Como funciona a consulta nutricional presencial em Joinville?", a: "O atendimento presencial envolve avaliação individualizada, análise da rotina alimentar e avaliação física conforme sua necessidade. O plano alimentar é elaborado a partir das informações da consulta." },
-  { q: "Como funciona a consultoria nutricional online?", a: "A consultoria online começa com um questionário detalhado que substitui a consulta presencial nessa modalidade. Com base nas respostas, elaboro seu planejamento alimentar e realizo o acompanhamento digital conforme o serviço contratado." },
-  { q: "Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?", a: "Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades. Ajustamos quantidades e frequência em vez de adotar proibições sem necessidade." },
-  { q: "O acompanhamento inclui contato depois do plano alimentar?", a: "As modalidades de acompanhamento oferecem check-ins semanais e suporte conforme as condições contratadas, para avaliar dificuldades e orientar eventuais ajustes." },
-  { q: "É possível ganhar massa muscular e perder gordura?", a: "Dependendo do histórico e do contexto, mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia é individualizada e a evolução é acompanhada." },
-  { q: "Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?", a: "Sim. O acompanhamento nutricional pode ajudar a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento. A prescrição e o monitoramento dos medicamentos cabem ao médico." },
-  { q: "Quanto tempo demora para receber o plano alimentar?", a: "O prazo informado para elaboração do plano após a avaliação é de até 72 horas, considerando o recebimento das informações necessárias." },
-  { q: "Onde encontro o plano e as orientações?", a: "O aplicativo Dietitian reúne documentos, planejamento alimentar, receitas e orientações disponibilizadas durante o acompanhamento." },
-  { q: "Qual é o endereço do atendimento presencial?", a: "Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Para agendar, entre em contato pelo WhatsApp." },
+  {
+    q: "Como funciona a consulta nutricional presencial?",
+    a: "Antes da nossa consulta presencial, você recebe nosso questionário pré-consulta. Depois, temos nossa consulta presencial, onde entendemos sua rotina, hábitos alimentares e comportamento. Realizamos a avaliação física e definimos como será seu novo plano alimentar."
+  },
+  {
+    q: "Como funciona a consultoria online?",
+    a: "A consultoria online começa com um questionário detalhado que substitui a consulta presencial. Com base nas respostas, elaboro seu planejamento alimentar."
+  },
+  {
+    q: "Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?",
+    a: "Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades."
+  },
+  {
+    q: "O acompanhamento inclui contato depois do plano alimentar?",
+    a: "Sim! Além do meu suporte diário por WhatsApp, temos o check-in semanal."
+  },
+  {
+    q: "É possível ganhar massa muscular e perder gordura?",
+    a: "Sim. Tudo depende do histórico e contexto. Mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia precisa ser individualizada."
+  },
+  {
+    q: "Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?",
+    a: "Sim. Acompanho pessoas que fazem uso de medicação para emagrecer. O planejamento nutricional ajuda a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento."
+  },
+  {
+    q: "Quanto tempo demora para receber o planejamento alimentar?",
+    a: "Após nossa consulta, o prazo para entrega do planejamento alimentar e orientações nutricionais é de 72h."
+  },
+  {
+    q: "Onde encontro o plano e as orientações?",
+    a: "Além de receber todo o planejamento e orientações por WhatsApp, você também recebe acesso ao nosso aplicativo Dietitian, onde acessa o plano alimentar, receitas, prescrições e exames."
+  },
+  {
+    q: "Qual é o endereço do atendimento presencial?",
+    a: "Meu consultório fica na Rua Areia Branca, 1035, Jardim Iririú, em Joinville/SC."
+  },
+]
+
+const journeySteps = [
+  {
+    n: '01',
+    eyebrow: 'Pré-consulta',
+    title: 'Sua consulta começa antes de você chegar',
+    text: 'No questionário pré-consulta eu levanto pontos importantes sobre sua saúde, hábitos e rotina. Assim, nosso encontro começa com contexto e aproveitamos melhor cada minuto da consulta.',
+    image: '/img/hericles-ferreira-questionario-pre-consulta-nutricional-joinville.webp',
+    alt: 'Etapa de pré-consulta do acompanhamento nutricional.'
+  },
+  {
+    n: '02',
+    eyebrow: 'Consulta',
+    title: 'Eu entendo a sua realidade',
+    text: 'Em consulta vou entender melhor seu histórico de saúde e comportamento, rotina, exames, dificuldades do dia a dia e tudo o que puder influenciar na sua evolução.',
+    image: '/img/consulta-nutricional-hericles-ferreira-joinville.webp',
+    alt: 'Consulta nutricional com Hericles Ferreira.'
+  },
+  {
+    n: '03',
+    eyebrow: 'Avaliação física',
+    title: 'Bioimpedância e dobras cutâneas',
+    text: 'Realizamos a avaliação física para criar um ponto de partida e acompanhar sua evolução ao longo do processo com dados, contexto e comparação. Sempre realizamos bioimpedância + circunferências + dobras cutâneas.',
+    image: '/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp',
+    alt: 'Avaliação física durante o acompanhamento nutricional.'
+  },
+  {
+    n: '04',
+    eyebrow: 'Plano alimentar',
+    title: 'Plano personalizado e individualizado',
+    text: 'Após a consulta, eu elaboro o plano inicial da operação com base no que conversamos, respeitando sua rotina, preferências e objetivo.',
+    image: '/img/plano-alimentar-personalizado-hericles-ferreira.webp',
+    alt: 'Planejamento alimentar individualizado.'
+  },
+  {
+    n: '05',
+    eyebrow: 'Check-in semanal',
+    title: 'Toda sexta-feira',
+    text: 'Temos um aplicativo exclusivo de acompanhamento, onde acompanhamos como foi a semana, onde o planejamento funcionou, onde travou e como está sua adesão. Assim conseguimos acompanhar a fase e ajustar o caminho.',
+    image: '/img/check-in-semanal-acompanhamento-nutricional.webp',
+    alt: 'Check-in semanal do acompanhamento nutricional.'
+  },
+  {
+    n: '06',
+    eyebrow: 'Suporte',
+    title: 'Acompanhamento',
+    text: 'Entre os encontros, você tem meu suporte pelo WhatsApp para esclarecer dúvidas e realizar alterações no planejamento quando a rotina pedir um ajuste.',
+    image: '/img/suporte-whatsapp-nutricionista-hericles-ferreira.webp',
+    alt: 'Hericles Ferreira, nutricionista responsável pelo acompanhamento.'
+  },
+  {
+    n: '07',
+    eyebrow: 'App exclusivo',
+    title: 'Tudo o que construímos fica organizado em um só lugar',
+    text: 'No aplicativo você acessa o planejamento alimentar, avaliação física, dados dos nossos encontros e materiais que usamos ao longo da jornada.',
+    image: '/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp',
+    alt: 'Acompanhamento nutricional com acesso digital ao planejamento.'
+  },
+  {
+    n: '08',
+    eyebrow: 'Recursos exclusivos',
+    title: 'Caixa de Ferramentas do Nutri',
+    text: 'Você também recebe acesso à minha Caixa de Ferramentas, um espaço exclusivo com recursos e materiais pensados para facilitar sua rotina e ajudar a colocar o planejamento nutricional em prática.',
+    image: '/img/caixa-de-ferramentas-nutri-hericles-ferreira.webp',
+    alt: 'Recursos exclusivos disponíveis durante o acompanhamento nutricional.'
+  }
 ]
 
 const transformacoes = [
-  { antes: '/img/antes1.png', depois: '/img/depois1.png' },
-  { antes: '/img/antes11.png', depois: '/img/depois11.png' },
-  { antes: '/img/antes2.png', depois: '/img/depois2.png' },
-  { antes: '/img/antes22.png', depois: '/img/depois22.png' },
-  { antes: '/img/antes3.png', depois: '/img/depois3.png' },
-  { antes: '/img/antes33.png', depois: '/img/depois33.png' },
+  {
+    nome: 'Leonardo',
+    idade: 24,
+    antes: '85kg',
+    depois: '79,5kg',
+    tempo: '3 meses',
+    perfil: 'Falso magro',
+    descricao: 'Definição corporal + perda de gordura + ganho de massa',
+    image: '/img/Leonardo.png',
+  },
+  {
+    nome: 'Daniela',
+    perfil: 'Pré-diabetes e hipotireoidismo',
+    descricao: 'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',
+    image: '/img/Daniela.png',
+  },
+  {
+    nome: 'Gabriel',
+    idade: 28,
+    antes: '80kg',
+    depois: '74kg',
+    tempo: '3 meses',
+    perfil: 'Falso magro',
+    descricao: 'Ganho de massa + redução de gordura',
+    image: '/img/Gabriel.png',
+  },
+  {
+    nome: 'Djonatan',
+    idade: 30,
+    antes: '87kg',
+    depois: '77kg',
+    tempo: '5 meses',
+    perfil: 'Falso magro',
+    descricao: 'Perda de gordura + definição muscular',
+    image: '/img/Djonatan.png',
+  },
+  {
+    nome: 'Hericles',
+    idade: 30,
+    antes: '115kg',
+    depois: '84kg',
+    tempo: '5 meses',
+    perfil: 'Obesidade',
+    descricao: 'Recomposição corporal com maior perda de gordura',
+    image: '/img/Hericles.png',
+  },
 ]
 
 function WaBtn({ href = WA_LINK, children, variant = 'primary', className = '' }) {
@@ -69,13 +255,13 @@ function NavBar({ menuOpen, setMenuOpen }) {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__logo">
-          <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="38" decoding="async" />
+          <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
-          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
-          <a href="#servicos" onClick={() => setMenuOpen(false)}>Áreas de atuação</a>
-          <a href="/sobre-hericles-ferreira/" onClick={() => setMenuOpen(false)}>Sobre mim</a>
-          <a href="/artigos/" onClick={() => setMenuOpen(false)}>Artigos</a>
+          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
+          <a href="#resultados" onClick={() => setMenuOpen(false)}>Resultados</a>
+          <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre mim</a>
+          <a href="#artigos" onClick={() => setMenuOpen(false)}>Artigos</a>
           <WaBtn href={WA_LINK} variant="nav" className="nav-cta">Agendar</WaBtn>
         </nav>
         <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -89,6 +275,22 @@ function NavBar({ menuOpen, setMenuOpen }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [visibleArticleCount, setVisibleArticleCount] = useState(6)
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.article-card--reveal:not(.is-visible)')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' })
+
+    cards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [visibleArticleCount])
 
   return (
     <div className="app">
@@ -96,12 +298,27 @@ export default function App() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero__bg-gradient" />
+        <div className="hero__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/img/hero-home-mobile.png" />
+            <img src="/img/hero-home-desktop.png" alt="" fetchPriority="high" decoding="async" />
+          </picture>
+        </div>
         <div className="container hero__inner">
           <div className="hero__text">
             <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              Uma alimentação que funciona na sua vida.
+              <span className="hero__rotator" aria-label="alimentação, dieta, acompanhamento ou planejamento">
+                <span className="hero__rotator-track" aria-hidden="true">
+                  <span>alimentação</span>
+                  <span>dieta</span>
+                  <span>acompanhamento</span>
+                  <span>planejamento</span>
+                  <span>alimentação</span>
+                </span>
+              </span>
+              <span className="hero__title-line">que cabe</span>
+              <span className="hero__title-line">na sua vida</span>
             </h1>
             <p className="hero__desc">
               Emagrecimento e ganho de massa muscular com acompanhamento individualizado, sem dietas extremas e sem abrir mão do que você gosta.
@@ -112,13 +329,8 @@ export default function App() {
               <li><span>🍽️</span> Flexibilidade, sem restrições desnecessárias</li>
             </ul>
             <div className="hero__ctas">
-              <WaBtn href={WA_LINK} variant="primary">Agendar acompanhamento</WaBtn>
-              <a href="#como-funciona" className="btn-ghost">Conhecer o atendimento →</a>
-            </div>
-          </div>
-          <div className="hero__img-wrap">
-            <div className="hero__img-frame">
-              <img src="/img/hericles-ferreira-retrato-institucional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" className="hero__photo" width="500" height="468" fetchPriority="high" decoding="async" />
+              <WaBtn href={WA_LINK} variant="primary">Agendar consulta</WaBtn>
+              <a href="/sobre-hericles-ferreira/" className="btn-ghost">Conheça meu trabalho →</a>
             </div>
           </div>
         </div>
@@ -126,7 +338,7 @@ export default function App() {
           <div className="container hero__stats-inner">
             <div className="stat"><strong>Online & Presencial</strong><span>Joinville/SC</span></div>
             <div className="stat-divider" />
-            <div className="stat"><strong>72h</strong><span>Plano alimentar personalizado</span></div>
+            <div className="stat"><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div>
             <div className="stat-divider" />
             <div className="stat"><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div>
           </div>
@@ -136,134 +348,163 @@ export default function App() {
       {/* COMO FUNCIONA */}
       <section className="section como-funciona" id="como-funciona">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Consulta nutricional</p>
-            <h2 className="section-title">Sua jornada para emagrecer e evoluir começa aqui</h2>
-            <p className="section-sub">Escolha atendimento presencial em Joinville ou consultoria online para receber uma estratégia nutricional personalizada.</p>
+          <div className="journey-intro">
+            <p className="section-tag">Seu acompanhamento</p>
+            <h2 className="section-title journey-title">
+              <span>Sua jornada para</span>
+              <span className="journey-rotator" aria-label="emagrecer, hipertrofiar, crescer, evoluir ou viver de verdade">
+                <span className="journey-rotator-track" aria-hidden="true">
+                  <span>emagrecer</span>
+                  <span>hipertrofiar</span>
+                  <span>crescer</span>
+                  <span>evoluir</span>
+                  <span>viver de verdade</span>
+                  <span>emagrecer</span>
+                </span>
+              </span>
+              <span>começa aqui</span>
+            </h2>
+            <p className="journey-lead">
+              Do primeiro contato aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. E a nossa jornada é assim:
+            </p>
           </div>
-          <div className="cards-row">
-            <div className="service-card">
-              <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" decoding="async" width="220" height="300" />
-                <span className="service-card__badge">📍 Joinville/SC</span>
-              </div>
-              <div className="service-card__body">
-                <h3>Consulta nutricional presencial em Joinville</h3>
-                <p>Atendimento individual no consultório, com avaliação física completa e estratégia alimentar para perda de gordura, ganho de massa magra e melhora da performance.</p>
-                <ul className="check-list">
-                  <li>Questionário pré-consulta detalhado</li>
-                  <li>Avaliação física completa</li>
-                  <li>Plano alimentar personalizado para emagrecimento ou hipertrofia</li>
-                  <li>Suporte contínuo via WhatsApp com feedback semanal</li>
-                  <li>Acesso ao Dietitian</li>
-                </ul>
-                <WaBtn href={WA_PRESENCIAL} variant="outline">Agendar consulta presencial</WaBtn>
-              </div>
-            </div>
-            <div className="service-card">
-              
-              <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira utilizando o notebook para planejamento nutricional" loading="lazy" decoding="async" width="220" height="300" />
-                <span className="service-card__badge">🌐 Online</span>
-              </div>
-              <div className="service-card__body">
-                <h3>Consultoria nutricional online</h3>
-                <p>Praticidade para evoluir onde você estiver, com plano alimentar, ajustes semanais e acompanhamento focado em composição corporal.</p>
-                <ul className="check-list">
-                  <li>Questionário inicial completo</li>
-                  <li>Planejamento alimentar para emagrecer, definir ou ganhar massa magra</li>
-                  <li>Avaliações periódicas por fotos e feedback</li>
-                  <li>Suporte semanal por ferramenta exclusiva</li>
-                  <li>Acesso ao Dietitian</li>
-                </ul>
-                <WaBtn href={WA_ONLINE} variant="primary">Quero a consultoria online</WaBtn>
-              </div>
-            </div>
+
+          <div className="journey-grid" aria-label="Etapas do acompanhamento nutricional">
+            {journeySteps.map((step) => (
+              <article className="journey-card" key={step.n}>
+                <div className="journey-card__media">
+                  <img src={step.image} alt={step.alt} loading="lazy" decoding="async" width="900" height="700" />
+                </div>
+                <div className="journey-card__body">
+                  <div className="journey-card__content">
+                    <div className="journey-card__heading">
+                      <span className="journey-card__number" aria-hidden="true">{step.n}</span>
+                      <p className="journey-card__eyebrow">{step.eyebrow}</p>
+                    </div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                    {step.n === '08' && (
+                      <a
+                        className="journey-card__link"
+                        href="https://caixadeferramentasnutri.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Conhecer a Caixa de Ferramentas →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="journey-cta">
+            <p>Você não recebe apenas um plano alimentar. Recebe uma estratégia que continua sendo acompanhada depois da consulta.</p>
+            <WaBtn href={WA_LINK} variant="primary">Agendar consulta</WaBtn>
           </div>
         </div>
       </section>
 
-      {/* SERVIÇOS ESPECIALIZADOS */}
-      <section className="section services-seo" id="servicos">
+      {/* ARTIGOS */}
+      <section className="section articles-home" id="artigos" aria-labelledby="artigos-heading">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Áreas de atuação</p>
-            <h2 className="section-title">Encontre o acompanhamento ideal para seu objetivo</h2>
-            <p className="section-sub">Conheça os serviços de nutrição em Joinville e as modalidades de atendimento online.</p>
-          </div>
-          <div className="services-seo__grid">
-            <a className="services-seo__card" href="/nutricionista-emagrecimento-joinville/"><h3>Emagrecimento em Joinville</h3><p>Estratégias para reduzir gordura corporal com alimentação adaptada à rotina.</p><span>Conhecer o atendimento →</span></a>
-            <a className="services-seo__card" href="/nutricionista-esportivo-joinville/"><h3>Nutrição esportiva</h3><p>Planejamento alimentar para hipertrofia, musculação e composição corporal.</p><span>Saiba como funciona →</span></a>
-            <a className="services-seo__card" href="/consultoria-nutricional-online/"><h3>Consultoria online</h3><p>Questionário inicial, plano alimentar individualizado e acompanhamento digital.</p><span>Explorar consultoria →</span></a>
-            <a className="services-seo__card" href="/acompanhamento-nutricional/"><h3>Acompanhamento nutricional</h3><p>Check-ins semanais, suporte e ajustes conforme sua evolução.</p><span>Conhecer o acompanhamento →</span></a>
-          </div>
-        </div>
-      </section>
-
-      {/* BIBLIOTECA EDUCATIVA */}
-      <section className="section services-seo" id="artigos" aria-labelledby="artigos-heading">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Conteúdo educativo</p>
-            <h2 className="section-title" id="artigos-heading">Emagrecimento sem achismo</h2>
-            <p className="section-sub">Artigos assinados por Hericles Ferreira, nutricionista, com explicações claras e fontes científicas.</p>
-          </div>
-          <div className="services-seo__grid">
-            <a className="services-seo__card" href="/artigos/como-emagrecer-sem-passar-fome/"><h3>Como emagrecer sem passar fome?</h3><p>Volume, saciedade e flexibilidade alimentar para uma rotina possível.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/"><h3>Como perder gordura e preservar músculos?</h3><p>O papel das proteínas, do treino e da avaliação da composição corporal.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/"><h3>Por que parei de emagrecer?</h3><p>O que observar antes de cortar ainda mais comida.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/"><h3>Biblioteca de artigos</h3><p>Conteúdo educativo sobre emagrecimento, metabolismo e hábitos realistas.</p><span>Conhecer artigos →</span></a>
-          </div>
-          <div className="services-seo__feature">
+          <div className="articles-home__header">
             <div>
-              <p className="section-tag">Orientação nutricional</p>
-              <h3>Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</h3>
-              <p>Um artigo sobre alimentação, composição corporal e cuidado sem julgamento durante o tratamento.</p>
+              <p className="section-tag">Leituras do Nutri</p>
+              <h2 className="section-title" id="artigos-heading">Artigos que escrevi recentemente</h2>
             </div>
-            <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler orientações →</a>
+            <a className="articles-home__all" href="/artigos/">Ver todos os artigos <span aria-hidden="true">→</span></a>
           </div>
+
+          <div className="articles-home__grid">
+            {homeArticles.slice(0, visibleArticleCount).map((article, index) => (
+              <article
+                className="article-card article-card--square article-card--reveal"
+                key={article.href}
+                style={{ '--article-delay': `${Math.min(index % 6, 5) * 55}ms` }}
+              >
+                <a className="article-card__image" href={article.href} aria-label={`Ler artigo ${article.title}`}>
+                  <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
+                </a>
+                <div className="article-card__body">
+                  <div className="article-card__meta">
+                    <span>{article.category}</span>
+                    <span>Hericles Ferreira</span>
+                  </div>
+                  <h3><a href={article.href}>{article.title}</a></h3>
+                  <p>{article.description}</p>
+                  <a className="article-card__link" href={article.href}>Ler artigo →</a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {visibleArticleCount < homeArticles.length && (
+            <div className="articles-home__more">
+              <button
+                type="button"
+                className="articles-home__more-btn"
+                onClick={() => setVisibleArticleCount((count) => count + 6)}
+              >
+                Mostrar mais
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
       {/* TRANSFORMAÇÕES */}
       <section className="section resultados" id="resultados">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Resultados</p>
+          <div className="section-header resultados__header">
             <h2 className="section-title">Transformações reais</h2>
-            <p className="section-sub">Registros de evolução corporal de pacientes acompanhados. Cada trajetória é individual e os resultados não são garantidos.</p>
-          </div>
-          <div className="transf-grid">
-            {transformacoes.map((t, i) => (
-              <div className="transf-card" key={i}>
-                <div className="transf-pair">
-                  <div className="transf-side">
-                    <span className="transf-label">Antes</span>
-                    <img src={t.antes} alt="Registro antes do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
-                  </div>
-                  <div className="transf-side">
-                    <span className="transf-label after">Depois</span>
-                    <img src={t.depois} alt="Registro depois do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
-                  </div>
-                </div>
-              </div>
-            ))}
+            <p className="section-sub">Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p>
           </div>
 
+          <div className="results-showcase">
+            {transformacoes.map((t) => (
+              <article className="result-story" key={t.nome}>
+                <div className="result-story__visual">
+                  <img
+                    src={t.image}
+                    alt={`Transformação corporal de ${t.nome}: comparação antes e depois do acompanhamento nutricional`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {t.tempo && <span className="result-story__time">{t.tempo}</span>}
+                </div>
+                <div className="result-story__content">
+                  {t.antes && t.depois && (
+                    <div className="result-story__weights">
+                      <div><strong>{t.antes}</strong><span>Antes</span></div>
+                      <div><strong>{t.depois}</strong><span>Depois</span></div>
+                    </div>
+                  )}
+                  <h3>{t.nome}{t.idade ? `, ${t.idade} anos` : ''}</h3>
+                  <p className="result-story__profile">{t.perfil}</p>
+                  <p className="result-story__desc">{t.descricao}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* SOBRE */}
-      <section className="section sobre bg-dark-section" id="sobre">
+      <section className="section sobre sobre--background" id="sobre">
+        <div className="sobre__media" aria-hidden="true">
+          <img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async" />
+        </div>
         <div className="container sobre__inner">
-          <div className="sobre__img-wrap">
-            <img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" decoding="async" width="220" height="300" />
+          <div className="sobre__mobile-avatar" aria-hidden="true">
+            <img src="/img/perfil-hericles-nutricionista.jpg" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
-            <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo, Emagrecimento e Hipertrofia</span></h2>
-            <p>Sou Hericles Ferreira, nutricionista em Joinville/SC, registrado no CRN-10 sob o número 12284, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
-            <p>Minha jornada começou de dentro: passei pelo processo de emagrecimento sem orientação e entendi na prática o caos das informações divergentes, dietas extremas e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
+            <h2 className="section-title light">Atuação em <span className="accent">metabolismo, emagrecimento e hipertrofia</span></h2>
+            <p>Sou Hericles Ferreira, nutricionista em Joinville/SC, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
+            <p>Apaixonado por comida e pelos momentos que envolvem comida, minha relação com a nutrição começou em um processo muito pessoal. Quando precisei de ajuda para emagrecer, encontrei muitas informações divergentes na internet e me deparei com profissionais que me passavam dietas irreais e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
             <p>Hoje minha missão é simples: <strong>ajudar você a emagrecer, ganhar massa magra e sustentar resultados com estratégia, clareza e sem terrorismo nutricional.</strong></p>
             <div className="sobre__creds">
               <span>📋 CRN-10 12284</span>
@@ -272,8 +513,8 @@ export default function App() {
               <span>@nutrihericles</span>
             </div>
             <div className="sobre__actions">
-              <WaBtn href={WA_LINK} variant="primary">Falar com o nutricionista</WaBtn>
-              <a className="wa-btn wa-btn--outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e método</a>
+              <WaBtn href={WA_LINK} variant="primary">Fale comigo agora</WaBtn>
+              <a className="wa-btn wa-btn--outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e consultório</a>
             </div>
           </div>
         </div>
@@ -282,9 +523,9 @@ export default function App() {
       {/* CTA URGÊNCIA */}
       <section className="section cta-urgencia">
         <div className="container cta-urgencia__inner">
-          <h2>Você não precisa tentar outra dieta da moda.<br /><span className="accent">Precisa de estratégia para o seu corpo.</span></h2>
-          <p>Chega de planos genéricos. Agende sua consulta nutricional e receba um caminho personalizado para emagrecer, ganhar massa magra e evoluir com segurança.</p>
-          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta nutricional</WaBtn>
+          <h2>Você não precisa tentar outra dieta da moda.<br />Precisa de estratégia para <span className="accent accent--italic">você.</span></h2>
+          <p>Chega de planos genéricos. Agende sua consulta e receba um planejamento personalizado para evoluir de verdade.</p>
+          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta</WaBtn>
         </div>
       </section>
 
@@ -292,7 +533,6 @@ export default function App() {
       <section className="section faq-section" id="faq">
         <div className="container">
           <div className="section-header">
-            <p className="section-tag">Dúvidas</p>
             <h2 className="section-title">Perguntas frequentes</h2>
           </div>
           <FAQ />
@@ -305,24 +545,46 @@ export default function App() {
 
       {/* LOCALIZAÇÃO */}
       <section className="section localizacao" id="localizacao" aria-labelledby="localizacao-titulo">
-        <div className="container localizacao__inner">
-          <div>
+        <div className="container">
+          <div className="localizacao__header">
             <p className="section-tag">Atendimento presencial em Joinville</p>
             <h2 className="section-title" id="localizacao-titulo">Onde fica o consultório?</h2>
-            <img className="localizacao__photo" src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira atendendo paciente no consultório de Joinville" loading="lazy" decoding="async" width="220" height="300" />
-            <p className="localizacao__address">{ADDRESS}</p>
-            <p className="localizacao__description">Atendimento nutricional presencial em Joinville e consultoria online para todo o Brasil. Entre em contato para agendar seu atendimento.</p>
-            <div className="localizacao__actions">
-              <a className="wa-btn wa-btn--outline" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
-              <WaBtn href={WA_PRESENCIAL} variant="primary">Agendar atendimento</WaBtn>
+            <p className="localizacao__description">Meu consultório fica em Joinville/SC, com atendimento presencial em um espaço preparado para avaliação, acompanhamento e definição da sua estratégia nutricional.</p>
+          </div>
+
+          <div className="localizacao__grid">
+            <div className="localizacao__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.4864640924357!2d-48.804348630362256!3d-26.26342059590358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafed6802f801%3A0xb15dc1c82143089b!2sMais%20que%20Rubis%20Studio%20-%20Est%C3%A9tica%20e%20Micropigmenta%C3%A7%C3%A3o%20by%20Girlane%20Ferreira!5e0!3m2!1spt-BR!2sbr!4v1795549649378!5m2!1spt-BR!2sbr"
+                title="Localização do consultório de Hericles Ferreira em Joinville"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+
+            <div className="localizacao__info">
+              <div className="localizacao__card">
+                <strong>Hericles Ferreira | Nutricionista</strong>
+                <span>CRN-10 12284</span>
+                <span>Especialização em Metabolismo e Emagrecimento</span>
+                <address>{ADDRESS}</address>
+                <a href="tel:+5547988602379">(47) 98860-2379</a>
+              </div>
+              <div className="localizacao__actions">
+                <a className="wa-btn wa-btn--outline" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+                <WaBtn href={WA_PRESENCIAL} variant="primary">Agendar consulta</WaBtn>
+              </div>
             </div>
           </div>
-          <div className="localizacao__card">
-            <strong>Hericles Ferreira | Nutricionista</strong>
-            <span>CRN-10 12284</span>
-            <span>Especialização em Metabolismo e Emagrecimento</span>
-            <address>{ADDRESS}</address>
-            <a href="tel:+5547988602379">(47) 98860-2379</a>
+
+          <div className="localizacao__gallery" aria-label="Fotos da clínica">
+            <figure>
+              <img src="/img/consultorio.webp" alt="Consultório de Hericles Ferreira para atendimento nutricional em Joinville" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img src="/img/clinica.webp" alt="Fachada da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async" />
+            </figure>
           </div>
         </div>
       </section>
@@ -331,7 +593,7 @@ export default function App() {
       <footer className="footer">
         <div className="container footer__inner">
           <div className="footer__brand">
-            <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="48" decoding="async" />
+            <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
             <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
             <address className="footer__address">{ADDRESS}</address>
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>

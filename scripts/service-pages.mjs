@@ -153,7 +153,7 @@ const pages = [
 
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 const nav = pages.map(p => '<a href="/' + p.slug + '/">' + esc(p.nav) + '</a>').join('')
-const footer = '<img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
+const footer = '<img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
 const card = ([title, description]) => '<article class="svc-card"><h3>' + esc(title) + '</h3><p>' + esc(description) + '</p></article>'
 function render(p) {
   const photo = photos[p.slug]
@@ -184,7 +184,7 @@ function render(p) {
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
+<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
 <main>
 <section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>

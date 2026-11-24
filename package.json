@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "node scripts/build-static.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "local": "node scripts/local-watch.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.4",
