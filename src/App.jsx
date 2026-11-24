@@ -440,9 +440,9 @@ export default function App() {
       {/* CTA URGÊNCIA */}
       <section className="section cta-urgencia">
         <div className="container cta-urgencia__inner">
-          <h2>Você não precisa tentar outra dieta da moda.<br /><span className="accent">Precisa de estratégia para o seu corpo.</span></h2>
-          <p>Chega de planos genéricos. Agende sua consulta nutricional e receba um caminho personalizado para emagrecer, ganhar massa magra e evoluir com segurança.</p>
-          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta nutricional</WaBtn>
+          <h2>Você não precisa tentar outra dieta da moda.<br />Precisa de estratégia para <span className="accent accent--italic">você.</span></h2>
+          <p>Chega de planos genéricos. Agende sua consulta e receba um planejamento personalizado para evoluir de verdade.</p>
+          <WaBtn href={WA_LINK} variant="primary" className="cta-big">Agendar consulta</WaBtn>
         </div>
       </section>
 
