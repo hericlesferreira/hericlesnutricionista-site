@@ -48,7 +48,7 @@ function renderTransformations(p) {
     ? 'Comparativos corporais de pacientes acompanhados. Não representam necessariamente casos de hipertrofia isolada; cada evolução depende do objetivo e da estratégia individual.'
     : 'Registros de antes e depois de pacientes acompanhados. Resultados individuais variam e não representam uma promessa de emagrecimento.'
   return '<section class="svc-section svc-muted svc-results"><div class="svc-wrap"><p class="svc-kicker">Acompanhamento na prática</p><h2>'+title+'</h2><p class="svc-results-note">'+text+'</p><div class="svc-results-grid">'+
-    transformations.map(([before,after],i)=>'<div class="svc-results-card"><div class="svc-results-pair"><figure class="svc-results-side"><img src="/img/'+before+'" alt="Registro anterior da evolução corporal '+(i+1)+'" loading="lazy" width="300" height="375"><figcaption>Antes</figcaption></figure><figure class="svc-results-side"><img src="/img/'+after+'" alt="Registro posterior da evolução corporal '+(i+1)+'" loading="lazy" width="300" height="375"><figcaption>Depois</figcaption></figure></div></div>').join('')+
+    transformations.map(([before,after],i)=>'<div class="svc-results-card"><div class="svc-results-pair"><figure class="svc-results-side"><img src="/img/'+before+'" alt="Registro anterior da evolução corporal '+(i+1)+'" loading="lazy" decoding="async" fetchpriority="low" width="300" height="375"><figcaption>Antes</figcaption></figure><figure class="svc-results-side"><img src="/img/'+after+'" alt="Registro posterior da evolução corporal '+(i+1)+'" loading="lazy" decoding="async" fetchpriority="low" width="300" height="375"><figcaption>Depois</figcaption></figure></div></div>').join('')+
     '</div><p class="svc-results-note">As fotografias ilustram trajetórias individuais. As condições e os resultados variam conforme cada pessoa.</p></div></section>'
 }
 
@@ -153,7 +153,7 @@ const pages = [
 
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 const nav = pages.map(p => '<a href="/' + p.slug + '/">' + esc(p.nav) + '</a>').join('')
-const footer = '<img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
+const footer = '<img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>' + esc(address) + '</p><p><a href="tel:+5547988602379">(47) 98860-2379</a> · <a href="https://www.instagram.com/nutrihericles/" rel="noopener noreferrer" target="_blank">Instagram</a></p>'
 const card = ([title, description]) => '<article class="svc-card"><h3>' + esc(title) + '</h3><p>' + esc(description) + '</p></article>'
 function render(p) {
   const photo = photos[p.slug]
@@ -174,7 +174,7 @@ function render(p) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(p.title)}</title><meta name="description" content="${esc(p.description)}">
 <meta name="robots" content="index,follow"><meta name="author" content="Hericles Ferreira">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="${photo.hero}" fetchpriority="high">
 <link rel="icon" href="/img/logo-light.ico">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(p.title)}"><meta property="og:description" content="${esc(p.description)}">
@@ -184,16 +184,16 @@ function render(p) {
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
+<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
 <main>
 <section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
 <p class="svc-eyebrow">${esc(p.label)} · CRN-10 12284</p><h1>${esc(p.heading)}</h1>
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
-</div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high"></div></section>
+</div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
+<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
 ${renderTransformations(p)}
 <section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
