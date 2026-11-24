@@ -136,7 +136,7 @@ export default function App() {
           <div className="container hero__stats-inner">
             <div className="stat"><strong>Online & Presencial</strong><span>Joinville/SC</span></div>
             <div className="stat-divider" />
-            <div className="stat"><strong>72h</strong><span>Plano alimentar personalizado</span></div>
+            <div className="stat"><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div>
             <div className="stat-divider" />
             <div className="stat"><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div>
           </div>
