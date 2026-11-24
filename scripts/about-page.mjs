@@ -21,7 +21,8 @@ const structuredData = {
       image,
       sameAs: [
         'https://www.instagram.com/nutrihericles/',
-        'https://www.linkedin.com/in/hericlesnutri'
+        'https://www.linkedin.com/in/hericlesnutri',
+        'https://www.doctoralia.com.br/hericles-ferreira/nutricionista/joinville'
       ],
       alumniOf: [
         { '@type': 'CollegeOrUniversity', name: 'Católica de Santa Catarina' },
@@ -118,6 +119,8 @@ const html = `<!doctype html>
 <p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Também ofereço consultoria nutricional online para pessoas de outras cidades, quando a modalidade for adequada às suas necessidades.</p>
 <p style="margin-top:16px"><a style="color:var(--lime);text-decoration:underline" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Como chegar ao consultório no Google Maps</a></p>
 <p style="margin-top:16px">Telefone/WhatsApp: <a style="color:var(--lime)" href="tel:+5547988602379">(47) 98860-2379</a>. Instagram: <a style="color:var(--lime)" href="https://www.instagram.com/nutrihericles/" target="_blank" rel="noopener noreferrer">@nutrihericles</a>.</p>
+<h2 style="margin-top:36px">Perfis profissionais</h2>
+<p>Você também pode encontrar informações sobre minha atuação nas plataformas <a style="color:#405600;text-decoration:underline" href="https://www.doctoralia.com.br/hericles-ferreira/nutricionista/joinville" target="_blank" rel="noopener noreferrer">Doctoralia</a> e <a style="color:#405600;text-decoration:underline" href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
 <h2 style="margin-top:36px">Conteúdo e orientações de minha autoria</h2>
 <p>Além dos atendimentos, compartilho orientações educativas sobre alimentação, emagrecimento, ganho de massa muscular e saúde metabólica. Um exemplo é meu artigo sobre cuidados nutricionais durante o uso de medicamentos para emagrecimento, desenvolvido a partir de orientações que entrego aos pacientes.</p>
 <p style="margin-top:16px"><a class="svc-more-link" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo sobre alimentação, Mounjaro e Ozempic →</a></p>
