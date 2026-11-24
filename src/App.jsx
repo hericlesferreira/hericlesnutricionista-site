@@ -96,12 +96,16 @@ export default function App() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero__bg-gradient" />
+        <div className="hero__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/img/hero-home-mobile.png" />
+            <img src="/img/hero-home-desktop.png" alt="" fetchPriority="high" decoding="async" />
+          </picture>
+        </div>
         <div className="container hero__inner">
           <div className="hero__text">
             <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              <span className="hero__title-line">Um</span>
               <span className="hero__rotator" aria-label="alimentação, dieta, acompanhamento ou planejamento">
                 <span className="hero__rotator-track" aria-hidden="true">
                   <span>alimentação</span>
@@ -111,7 +115,7 @@ export default function App() {
                   <span>alimentação</span>
                 </span>
               </span>
-              <span className="hero__title-line">que funciona</span>
+              <span className="hero__title-line">que cabe</span>
               <span className="hero__title-line">na sua vida</span>
             </h1>
             <p className="hero__desc">
@@ -123,13 +127,8 @@ export default function App() {
               <li><span>🍽️</span> Flexibilidade, sem restrições desnecessárias</li>
             </ul>
             <div className="hero__ctas">
-              <WaBtn href={WA_LINK} variant="primary">Agendar acompanhamento</WaBtn>
-              <a href="#como-funciona" className="btn-ghost">Conhecer o atendimento →</a>
-            </div>
-          </div>
-          <div className="hero__img-wrap">
-            <div className="hero__img-frame">
-              <img src="/img/hericles-ferreira-retrato-institucional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" className="hero__photo" width="500" height="468" fetchPriority="high" decoding="async" />
+              <WaBtn href={WA_LINK} variant="primary">Agendar consulta</WaBtn>
+              <a href="/sobre-hericles-ferreira/" className="btn-ghost">Conheça meu trabalho →</a>
             </div>
           </div>
         </div>
