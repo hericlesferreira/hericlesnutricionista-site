@@ -101,7 +101,16 @@ export default function App() {
           <div className="hero__text">
             <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              Uma alimentação que funciona na sua vida.
+              <span className="hero__rotator" aria-label="Uma alimentação, uma dieta, um acompanhamento ou um planejamento que funciona na sua vida">
+                <span className="hero__rotator-track" aria-hidden="true">
+                  <span>Uma alimentação</span>
+                  <span>Uma dieta</span>
+                  <span>Um acompanhamento</span>
+                  <span>Um planejamento</span>
+                  <span>Uma alimentação</span>
+                </span>
+              </span>
+              <span className="hero__title-static">que funciona na sua vida.</span>
             </h1>
             <p className="hero__desc">
               Emagrecimento e ganho de massa muscular com acompanhamento individualizado, sem dietas extremas e sem abrir mão do que você gosta.
