@@ -1259,7 +1259,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 .article-card--square {
   --card-radius:0px;
   --card-space:8px;
-  min-height:calc(100% + 50px);
+  min-height:calc(100% + 20px);
   padding:var(--card-space);
   border:1px solid rgb(0 0 0 / .12);
   border-radius:0;
