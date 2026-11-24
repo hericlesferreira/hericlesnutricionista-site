@@ -265,7 +265,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   line-height:1.12em;
   white-space:nowrap;
 }
-.hero__title-static {
+.hero__title-line {
   display:block;
 }
 @keyframes heroWordFlip {
@@ -276,7 +276,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   100% { transform:translateY(-4.48em); }
 }
 @media(max-width:480px) {
-  .hero__rotator-track > span { white-space:normal; }
+  .hero__rotator-track > span { white-space:nowrap; }
 }
 @media(prefers-reduced-motion:reduce) {
   .hero__rotator { height:auto; overflow:visible; }
