@@ -28,8 +28,9 @@ export function sharedFooter() {
       '</div>'+
       '<div class="site-footer__links">'+
         '<h4>Explore</h4>'+
-        '<a href="/#como-funciona">Como funciona</a>'+
-        '<a href="/#resultados">Resultados</a>'+
+        '<a href="/#como-funciona">Atendimentos</a>'+
+        '<a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a>'+
+        '<a href="/consultoria-nutricional-online/">Consultoria online</a>'+
         '<a href="/#sobre">Sobre mim</a>'+
         '<a href="/#artigos">Artigos</a>'+
         '<a href="/#localizacao">Localização</a>'+
