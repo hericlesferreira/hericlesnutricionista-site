@@ -409,11 +409,11 @@ export default function App() {
       </section>
 
       {/* SOBRE */}
-      <section className="section sobre bg-dark-section" id="sobre">
+      <section className="section sobre sobre--background" id="sobre">
+        <div className="sobre__media" aria-hidden="true">
+          <img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async" />
+        </div>
         <div className="container sobre__inner">
-          <div className="sobre__img-wrap">
-            <img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" decoding="async" width="220" height="300" />
-          </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
             <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo, Emagrecimento e Hipertrofia</span></h2>
