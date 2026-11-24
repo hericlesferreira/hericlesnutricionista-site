@@ -1304,12 +1304,16 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   font-size:12px;
 }
 .article-card--reveal {
-  opacity:0;
-  transform:translateY(22px);
+  opacity:1;
+  transform:translateY(0);
   transition:
     opacity .55s ease var(--article-delay,0ms),
     transform .55s ease var(--article-delay,0ms),
     border-color .2s ease;
+}
+.article-card--reveal.is-reveal-pending {
+  opacity:0;
+  transform:translateY(22px);
 }
 .article-card--reveal.is-visible {
   opacity:1;
