@@ -416,9 +416,9 @@ export default function App() {
         <div className="container sobre__inner">
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
-            <h2 className="section-title light">Atuação em<br /><span className="accent">Metabolismo, Emagrecimento e Hipertrofia</span></h2>
-            <p>Sou Hericles Ferreira, nutricionista em Joinville/SC, registrado no CRN-10 sob o número 12284, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
-            <p>Minha jornada começou de dentro: passei pelo processo de emagrecimento sem orientação e entendi na prática o caos das informações divergentes, dietas extremas e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
+            <h2 className="section-title light">Atuação em <span className="accent">metabolismo, emagrecimento e hipertrofia</span></h2>
+            <p>Sou Hericles Ferreira, nutricionista em Joinville/SC, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>
+            <p>Apaixonado por comida e pelos momentos que envolvem comida, minha relação com a nutrição começou em um processo muito pessoal. Quando precisei de ajuda para emagrecer, encontrei muitas informações divergentes na internet e me deparei com profissionais que me passavam dietas irreais e promessas vazias. Por isso, aprofundei meus estudos em bioquímica, fisiologia, doenças metabólicas e composição corporal.</p>
             <p>Hoje minha missão é simples: <strong>ajudar você a emagrecer, ganhar massa magra e sustentar resultados com estratégia, clareza e sem terrorismo nutricional.</strong></p>
             <div className="sobre__creds">
               <span>📋 CRN-10 12284</span>
