@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { sharedHeader, sharedFooter } from './shared-layout.mjs'
 
 const origin = 'https://www.nutrihericles.com.br'
 const slug = 'alimentacao-mounjaro-ozempic-tirzepatida'
@@ -46,8 +47,7 @@ const html = `<!doctype html>
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a>
-<nav aria-label="Navegação"><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a><a href="/acompanhamento-nutricional/">Acompanhamento</a><a href="/consultoria-nutricional-online/">Consultoria online</a></nav><a class="svc-header-cta" href="${whatsapp}">Agendar</a></div></header>
+${sharedHeader(whatsapp)}
 <main>
 <article>
 <section class="svc-hero"><div class="svc-wrap svc-narrow">
@@ -142,7 +142,7 @@ const html = `<!doctype html>
 <a class="svc-button" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
 </div></section>
 </article>
-</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Início</a> · <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a></p></div></footer>
+</main>${sharedFooter()}
 </body></html>`
 
 export async function generateMedicationPage() {
