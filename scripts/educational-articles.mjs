@@ -271,7 +271,7 @@ function renderIndex(){
       alt:'Planejamento alimentar personalizado elaborado por Hericles Ferreira'
     },
     {
-      href:'/alimentacao-mounjaro-ozempic-tirzepatida/',
+      href:'/artigos/alimentacao-mounjaro-ozempic-tirzepatida/',
       category:'Tratamento e alimentação',
       title:'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida',
       description:'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.',
