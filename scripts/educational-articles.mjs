@@ -243,13 +243,76 @@ function renderIndex(){
     '<meta name="description" content="Artigos educativos de Hericles Ferreira, nutricionista em Joinville, sobre emagrecimento, composição corporal e alimentação real.">'+
     '<link rel="canonical" href="'+url+'"><meta name="robots" content="index,follow">'+
     '<script type="application/ld+json">'+JSON.stringify(schema)+'</script>'
-  const bloggerCards=bloggerPosts.map(post=>'<article class="svc-card"><p class="svc-kicker">'+(post.labels?.length?post.labels.map(esc).join(' · '):'Novo no blog')+'</p><h2><a href="/artigos/'+esc(post.slug)+'/">'+esc(post.title)+'</a></h2><p>'+esc(post.description)+'</p><p><a class="ed-read" href="/artigos/'+esc(post.slug)+'/">Ler artigo →</a></p></article>').join('')
-  const nativeCards=articles.map(a=>'<article class="svc-card"><p class="svc-kicker">Leitura educativa</p><h2><a href="'+linked(a)+'">'+esc(a.title)+'</a></h2><p>'+esc(a.description)+'</p><p><a class="ed-read" href="'+linked(a)+'">Ler artigo →</a></p></article>').join('')
-  const cards=bloggerCards+nativeCards
+
+  const strategic = [
+    {
+      href:'/artigos/como-emagrecer-sem-passar-fome/',
+      category:'Emagrecimento',
+      title:'Como emagrecer sem passar fome?',
+      description:'Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.',
+      image:'/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2',
+      alt:'Hericles Ferreira durante atendimento nutricional em Joinville'
+    },
+    {
+      href:'/artigos/como-perder-gordura-sem-perder-massa-muscular/',
+      category:'Composição corporal',
+      title:'Como perder gordura sem perder massa muscular?',
+      description:'Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.',
+      image:'/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp',
+      alt:'Avaliação de composição corporal durante acompanhamento nutricional'
+    },
+    {
+      href:'/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/',
+      category:'Metabolismo',
+      title:'Por que parei de emagrecer mesmo fazendo dieta?',
+      description:'O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.',
+      image:'/img/plano-alimentar-personalizado-hericles-ferreira.webp',
+      alt:'Planejamento alimentar personalizado elaborado por Hericles Ferreira'
+    },
+    {
+      href:'/alimentacao-mounjaro-ozempic-tirzepatida/',
+      category:'Tratamento e alimentação',
+      title:'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida',
+      description:'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.',
+      image:'/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp',
+      alt:'Acompanhamento nutricional e planejamento alimentar'
+    }
+  ]
+
+  const blogger = bloggerPosts.map(post=>({
+    href:'/artigos/'+post.slug+'/',
+    category:post.labels?.[0] || 'Nutrição',
+    title:post.title,
+    description:post.description,
+    image:post.image || '/img/hericles-ferreira-retrato-institucional.webp',
+    alt:post.title
+  }))
+
+  const items=[...strategic,...blogger.filter(post=>!strategic.some(item=>item.href===post.href))]
+  const cards=items.map((item,index)=>
+    '<article class="articles-index-card'+(index>=6?' is-hidden':'')+'" data-article-card>'+
+      '<a class="articles-index-card__cover" href="'+esc(item.href)+'" aria-label="Ler artigo '+esc(item.title)+'">'+
+        '<div class="articles-index-card__image"><img src="'+esc(item.image)+'" alt="'+esc(item.alt)+'" loading="lazy" decoding="async"></div>'+
+        '<div class="articles-index-card__body">'+
+          '<div class="articles-index-card__meta"><span>'+esc(item.category)+'</span><span>Hericles Ferreira</span></div>'+
+          '<h2>'+esc(item.title)+'</h2>'+
+          '<p>'+esc(item.description)+'</p>'+
+          '<span class="articles-index-card__link">Ler artigo →</span>'+
+        '</div>'+
+      '</a>'+
+    '</article>'
+  ).join('')
+
+  const moreButton=items.length>6
+    ? '<div class="articles-index-more"><button type="button" id="articles-index-more">Mostrar mais</button></div>'
+    : ''
+
+  const behavior='<script>(function(){const btn=document.getElementById("articles-index-more");if(!btn)return;btn.addEventListener("click",function(){const hidden=[...document.querySelectorAll("[data-article-card].is-hidden")];hidden.slice(0,6).forEach(el=>el.classList.remove("is-hidden"));if(!document.querySelector("[data-article-card].is-hidden"))btn.remove();});})();</script>'
+
   return shell(head,'<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a><nav><a href="/">Início</a><a href="/sobre-hericles-ferreira/">Sobre o autor</a></nav><a class="svc-header-cta" href="'+contact+'">Agendar</a></div></header>'+
-   '<main><section class="svc-hero"><div class="svc-wrap"><p class="svc-eyebrow">Biblioteca de conteúdo educativo</p><h1>Artigos sobre emagrecimento e nutrição</h1><p class="svc-lead">Informação clara, referências confiáveis e estratégias que fazem sentido na vida real. Por Hericles Ferreira, nutricionista, CRN-10 12284.</p></div></section>'+
-   '<section class="svc-section"><div class="svc-wrap"><div class="svc-grid">'+cards+'</div><p class="ed-link"><a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Leia também: alimentação durante o uso de Mounjaro, Ozempic e tirzepatida →</a></p></div></section></main>'+
-   '<footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async">Hericles Ferreira · CRN-10 12284 · Joinville/SC</div></footer>')
+   '<main><section class="svc-hero"><div class="svc-wrap"><p class="svc-eyebrow">Leituras do Nutri</p><h1>Artigos sobre emagrecimento e nutrição</h1><p class="svc-lead">Informação clara, referências confiáveis e estratégias que fazem sentido na vida real. Por Hericles Ferreira, nutricionista, CRN-10 12284.</p></div></section>'+
+   '<section class="svc-section articles-index"><div class="svc-wrap"><div class="articles-index-grid">'+cards+'</div>'+moreButton+'</div></section></main>'+
+   '<footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async">Hericles Ferreira · CRN-10 12284 · Joinville/SC</div></footer>'+behavior)
 }
 export async function generateEducationalArticles(){
   const indexDir=join('dist','artigos')
