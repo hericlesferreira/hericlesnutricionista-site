@@ -375,7 +375,6 @@ export default function App() {
       <section className="section resultados" id="resultados">
         <div className="container">
           <div className="section-header resultados__header">
-            <p className="section-tag">Resultados</p>
             <h2 className="section-title">Transformações reais</h2>
             <p className="section-sub">Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p>
           </div>
