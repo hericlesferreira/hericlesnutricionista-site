@@ -415,7 +415,7 @@ export default function App() {
         </div>
         <div className="container sobre__inner">
           <div className="sobre__mobile-avatar" aria-hidden="true">
-            <img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async" />
+            <img src="/img/perfil-hericles-nutricionista.jpg" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
