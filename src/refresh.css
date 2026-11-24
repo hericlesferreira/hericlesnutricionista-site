@@ -1116,3 +1116,9 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
     color:#1d1d1f;
   }
 }
+
+
+.accent--italic {
+  font-style:italic;
+  color:#526900;
+}
