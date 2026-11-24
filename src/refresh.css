@@ -259,7 +259,7 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   display:flex;
   flex-direction:column;
   will-change:transform;
-  animation:heroWordFlip 12s cubic-bezier(.72,0,.28,1) infinite;
+  animation:heroWordFlip 9s cubic-bezier(.72,0,.28,1) infinite;
 }
 .hero__rotator-track > span {
   display:block;
@@ -300,7 +300,11 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 }
 .hero__media {
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  right:0;
+  height:100vh;
+  height:100svh;
   z-index:0;
   pointer-events:none;
 }
@@ -325,8 +329,10 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
   z-index:1;
   display:flex;
   align-items:center;
-  min-height:700px;
-  padding-block:clamp(66px,8vw,110px);
+  min-height:100vh;
+  min-height:100svh;
+  padding-top:calc(var(--nav-h) + clamp(44px,6vw,82px));
+  padding-bottom:clamp(54px,7vw,88px);
 }
 .hero__text {
   position:relative;
@@ -353,7 +359,8 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 @media(max-width:960px) {
   .hero__inner {
     display:flex;
-    min-height:680px;
+    min-height:100vh;
+    min-height:100svh;
   }
   .hero__text {
     width:min(590px,66vw);
@@ -364,7 +371,11 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
     padding-top:0;
   }
   .hero__media {
-    inset:0;
+    top:0;
+    left:0;
+    right:0;
+    height:100vh;
+    height:100svh;
   }
   .hero__media img {
     object-position:center top;
@@ -373,9 +384,11 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
     background:rgb(0 0 0 / .28);
   }
   .hero__inner {
-    min-height:650px;
+    min-height:100vh;
+    min-height:100svh;
     align-items:flex-end;
-    padding-block:64px 48px;
+    padding-top:calc(var(--nav-h) + 48px);
+    padding-bottom:48px;
   }
   .hero__text {
     width:100%;
@@ -390,8 +403,9 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 }
 @media(max-width:480px) {
   .hero__inner {
-    min-height:620px;
-    padding-top:54px;
+    min-height:100vh;
+    min-height:100svh;
+    padding-top:calc(var(--nav-h) + 40px);
     padding-bottom:40px;
   }
   .hero__title {
