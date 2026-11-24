@@ -144,6 +144,8 @@ const server = createServer(async (req, res) => {
 })
 
 console.log('🚀 Preparando ambiente local...')
+console.log('📰 Sincronizando Blogger na inicialização...')
+syncBlogger()
 build()
 server.listen(PORT, '127.0.0.1', () => {
   console.log('\n👀 Preview automático: http://localhost:' + PORT)
