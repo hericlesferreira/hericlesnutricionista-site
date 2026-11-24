@@ -73,10 +73,7 @@ function syncAndBuild() {
     if (remoteChanged()) {
       console.log('\n⬇️ Nova alteração detectada no GitHub. Atualizando...')
       const r = run('git', ['pull', '--ff-only', 'origin', BRANCH])
-      if (r.status === 0) {
-        syncBlogger()
-        build()
-      }
+      if (r.status === 0) build()
     }
   } finally {
     rebuilding = false
@@ -147,8 +144,6 @@ const server = createServer(async (req, res) => {
 })
 
 console.log('🚀 Preparando ambiente local...')
-console.log('📰 Sincronizando artigos do Blogger...')
-syncBlogger()
 build()
 server.listen(PORT, '127.0.0.1', () => {
   console.log('\n👀 Preview automático: http://localhost:' + PORT)
@@ -158,15 +153,31 @@ server.listen(PORT, '127.0.0.1', () => {
 
 setInterval(syncAndBuild, 5000)
 
-setInterval(() => {
-  if (rebuilding || currentBranch() !== BRANCH || hasBlockingLocalChanges()) return
-  rebuilding = true
-  try {
-    if (syncBlogger()) {
-      console.log('\n📰 Novo conteúdo detectado no Blogger.')
-      build()
+function scheduleBloggerSyncAtSix() {
+  const now = new Date()
+  const next = new Date(now)
+  next.setHours(6, 0, 0, 0)
+  if (next <= now) next.setDate(next.getDate() + 1)
+
+  const delay = next.getTime() - now.getTime()
+  console.log('📰 Próxima verificação do Blogger: ' + next.toLocaleString('pt-BR'))
+
+  setTimeout(() => {
+    if (!rebuilding && currentBranch() === BRANCH && !hasBlockingLocalChanges()) {
+      rebuilding = true
+      try {
+        if (syncBlogger()) {
+          console.log('\n📰 Novo conteúdo detectado no Blogger.')
+          build()
+        } else {
+          console.log('📰 Blogger verificado às 06h. Nenhum artigo novo.')
+        }
+      } finally {
+        rebuilding = false
+      }
     }
-  } finally {
-    rebuilding = false
-  }
-}, 30000)
+    scheduleBloggerSyncAtSix()
+  }, delay)
+}
+
+scheduleBloggerSyncAtSix()
