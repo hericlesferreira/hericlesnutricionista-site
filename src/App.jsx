@@ -97,7 +97,7 @@ const transformacoes = [
     tempo: '3 meses',
     perfil: 'Falso magro',
     descricao: 'Definição corporal + perda de gordura + ganho de massa',
-    image: '/img/transformacao-leonardo.png',
+    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Leonardo.png',
   },
   {
     nome: 'Gabriel',
@@ -107,7 +107,7 @@ const transformacoes = [
     tempo: '3 meses',
     perfil: 'Falso magro',
     descricao: 'Ganho de massa + redução de gordura',
-    image: '/img/transformacao-gabriel.png',
+    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Volnei.png',
   },
   {
     nome: 'Djonatan',
@@ -117,7 +117,7 @@ const transformacoes = [
     tempo: '5 meses',
     perfil: 'Falso magro',
     descricao: 'Perda de gordura + definição muscular',
-    image: '/img/transformacao-djonatan.png',
+    image: 'https://raw.githubusercontent.com/hericlesferreira/lp-hericlesnutri/main/src/assets/Djonatan.png',
   },
 ]
 
