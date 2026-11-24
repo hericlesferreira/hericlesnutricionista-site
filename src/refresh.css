@@ -1036,3 +1036,42 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
     object-position:35% center;
   }
 }
+
+
+/* Quem sou eu: fundo claro sem sobreposição */
+.sobre--background::after {
+  display:none;
+}
+.sobre--background .sobre__text {
+  color:#1d1d1f;
+}
+.sobre--background .section-tag,
+.sobre--background .section-title,
+.sobre--background .sobre__text p,
+.sobre--background .sobre__creds {
+  color:#1d1d1f;
+}
+.sobre--background .sobre__text > p {
+  color:#4f4f54;
+}
+.sobre--background .sobre__text strong {
+  color:#1d1d1f;
+}
+.sobre--background .sobre__creds span {
+  color:#4f4f54;
+}
+.sobre--background .section-title .accent {
+  color:#526900;
+}
+.sobre--background .wa-btn--outline {
+  color:#1d1d1f;
+  border-color:rgb(29 29 31 / .25);
+}
+.sobre--background .wa-btn--outline:hover {
+  border-color:rgb(29 29 31 / .5);
+}
+@media(max-width:900px) {
+  .sobre--background::after {
+    display:none;
+  }
+}
