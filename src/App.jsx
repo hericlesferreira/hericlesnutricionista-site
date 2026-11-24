@@ -69,7 +69,7 @@ function NavBar({ menuOpen, setMenuOpen }) {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__logo">
-          <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="38" />
+          <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="38" decoding="async" />
         </a>
         <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
           <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Atendimento</a>
@@ -118,7 +118,7 @@ export default function App() {
           </div>
           <div className="hero__img-wrap">
             <div className="hero__img-frame">
-              <img src="/img/hericles-ferreira-retrato-institucional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" className="hero__photo" width="500" height="468" fetchPriority="high" />
+              <img src="/img/hericles-ferreira-retrato-institucional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" className="hero__photo" width="500" height="468" fetchPriority="high" decoding="async" />
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function App() {
           <div className="cards-row">
             <div className="service-card">
               <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" width="220" height="300" />
+                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional presencial em Joinville" loading="lazy" decoding="async" width="220" height="300" />
                 <span className="service-card__badge">📍 Joinville/SC</span>
               </div>
               <div className="service-card__body">
@@ -163,7 +163,7 @@ export default function App() {
             <div className="service-card">
               
               <div className="service-card__img-wrap">
-                <img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira utilizando o notebook para planejamento nutricional" loading="lazy" width="220" height="300" />
+                <img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira utilizando o notebook para planejamento nutricional" loading="lazy" decoding="async" width="220" height="300" />
                 <span className="service-card__badge">🌐 Online</span>
               </div>
               <div className="service-card__body">
@@ -239,11 +239,11 @@ export default function App() {
                 <div className="transf-pair">
                   <div className="transf-side">
                     <span className="transf-label">Antes</span>
-                    <img src={t.antes} alt="Registro antes do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" />
+                    <img src={t.antes} alt="Registro antes do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
                   </div>
                   <div className="transf-side">
                     <span className="transf-label after">Depois</span>
-                    <img src={t.depois} alt="Registro depois do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" />
+                    <img src={t.depois} alt="Registro depois do acompanhamento nutricional, em comparação de evolução corporal" loading="lazy" decoding="async" fetchPriority="low" width="300" height="375" />
                   </div>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function App() {
       <section className="section sobre bg-dark-section" id="sobre">
         <div className="container sobre__inner">
           <div className="sobre__img-wrap">
-            <img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" width="220" height="300" />
+            <img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira, nutricionista em Joinville, em retrato profissional" loading="lazy" decoding="async" width="220" height="300" />
           </div>
           <div className="sobre__text">
             <p className="section-tag">Quem sou eu</p>
@@ -309,7 +309,7 @@ export default function App() {
           <div>
             <p className="section-tag">Atendimento presencial em Joinville</p>
             <h2 className="section-title" id="localizacao-titulo">Onde fica o consultório?</h2>
-            <img className="localizacao__photo" src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira atendendo paciente no consultório de Joinville" loading="lazy" width="220" height="300" />
+            <img className="localizacao__photo" src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira atendendo paciente no consultório de Joinville" loading="lazy" decoding="async" width="220" height="300" />
             <p className="localizacao__address">{ADDRESS}</p>
             <p className="localizacao__description">Atendimento nutricional presencial em Joinville e consultoria online para todo o Brasil. Entre em contato para agendar seu atendimento.</p>
             <div className="localizacao__actions">
@@ -331,7 +331,7 @@ export default function App() {
       <footer className="footer">
         <div className="container footer__inner">
           <div className="footer__brand">
-            <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="48" />
+            <img src="/img/logo-hericles-oficial.png" alt="Hericles Nutricionista" height="48" decoding="async" />
             <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
             <address className="footer__address">{ADDRESS}</address>
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>

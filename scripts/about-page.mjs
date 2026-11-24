@@ -63,8 +63,8 @@ const html = `<!doctype html>
 <title>${title}</title><meta name="description" content="${description}">
 <meta name="robots" content="index,follow">
 <meta name="author" content="Hericles Ferreira">
-<link rel="canonical" href="${url}">
-<link rel="icon" href="/img/logo-light.ico">
+<link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="/img/hericles-ferreira-retrato-institucional.webp" fetchpriority="high">
+<link rel="icon" href="/img/favicon-hericles.png">
 <meta property="og:type" content="profile"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${image}">
@@ -74,7 +74,7 @@ const html = `<!doctype html>
 <script type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</script>
 </head><body>
 <header class="svc-header"><div class="svc-wrap svc-header-row">
-<a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"></a>
+<a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a>
 <nav aria-label="Navegação"><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a><a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a><a href="/consultoria-nutricional-online/">Consultoria online</a></nav>
 <a class="svc-header-cta" href="${wa}">Conversar</a></div></header>
 <main>
@@ -86,7 +86,7 @@ const html = `<!doctype html>
 <p class="svc-lead">Minha proposta é encaixar a dieta na realidade de cada paciente, e não o contrário. Sem soluções milagrosas, com estratégia, acompanhamento e respeito à sua rotina.</p>
 <a class="svc-button" href="${wa}">Falar sobre meu objetivo</a>
 </div>
-<img class="svc-hero-photo" src="/img/hericles-ferreira-retrato-institucional.webp" alt="Hericles Ferreira, nutricionista, em retrato profissional" width="300" height="410" fetchpriority="high">
+<img class="svc-hero-photo" src="/img/hericles-ferreira-retrato-institucional.webp" alt="Hericles Ferreira, nutricionista, em retrato profissional" width="300" height="410" fetchpriority="high" decoding="async">
 </div></section>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
 <p class="svc-kicker">Minha trajetória</p><h2>Antes de orientar, vivi o processo de mudança</h2>
@@ -129,7 +129,7 @@ const html = `<!doctype html>
 <p>O objetivo é construir uma estratégia alimentar que você consiga colocar em prática e ajustar ao longo do acompanhamento.</p>
 <a class="svc-button" href="${wa}">Conversar com Hericles Ferreira</a>
 </div></section>
-</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Página inicial</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a> · <a href="/consultoria-nutricional-online/">Consultoria online</a></p></div></footer>
+</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Página inicial</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a> · <a href="/consultoria-nutricional-online/">Consultoria online</a></p></div></footer>
 </body></html>`
 
 export async function generateAboutPage() {
