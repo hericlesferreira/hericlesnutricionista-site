@@ -271,28 +271,63 @@ export default function App() {
         </div>
       </section>
 
-      {/* BIBLIOTECA EDUCATIVA */}
-      <section className="section services-seo" id="artigos" aria-labelledby="artigos-heading">
+      {/* ARTIGOS */}
+      <section className="section articles-home" id="artigos" aria-labelledby="artigos-heading">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Conteúdo educativo</p>
-            <h2 className="section-title" id="artigos-heading">Emagrecimento sem achismo</h2>
-            <p className="section-sub">Artigos assinados por Hericles Ferreira, nutricionista, com explicações claras e fontes científicas.</p>
-          </div>
-          <div className="services-seo__grid">
-            <a className="services-seo__card" href="/artigos/como-emagrecer-sem-passar-fome/"><h3>Como emagrecer sem passar fome?</h3><p>Volume, saciedade e flexibilidade alimentar para uma rotina possível.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/"><h3>Como perder gordura e preservar músculos?</h3><p>O papel das proteínas, do treino e da avaliação da composição corporal.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/"><h3>Por que parei de emagrecer?</h3><p>O que observar antes de cortar ainda mais comida.</p><span>Ler artigo →</span></a>
-            <a className="services-seo__card" href="/artigos/"><h3>Biblioteca de artigos</h3><p>Conteúdo educativo sobre emagrecimento, metabolismo e hábitos realistas.</p><span>Conhecer artigos →</span></a>
-          </div>
-          <div className="services-seo__feature">
+          <div className="articles-home__header">
             <div>
-              <p className="section-tag">Orientação nutricional</p>
-              <h3>Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</h3>
-              <p>Um artigo sobre alimentação, composição corporal e cuidado sem julgamento durante o tratamento.</p>
+              <p className="section-tag">Leituras do Nutri</p>
+              <h2 className="section-title" id="artigos-heading">Artigos que escrevi recentemente</h2>
             </div>
-            <a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler orientações →</a>
+            <a className="articles-home__all" href="/artigos/">Ver todos os artigos →</a>
           </div>
+
+          <div className="articles-home__grid">
+            <article className="article-card article-card--featured">
+              <a className="article-card__image" href="/artigos/como-emagrecer-sem-passar-fome/" aria-label="Ler artigo Como emagrecer sem passar fome">
+                <img src="/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2" alt="Hericles Ferreira durante atendimento nutricional em Joinville" loading="lazy" decoding="async" />
+              </a>
+              <div className="article-card__body">
+                <div className="article-card__meta"><span>Emagrecimento</span><span>Hericles Ferreira</span></div>
+                <h3><a href="/artigos/como-emagrecer-sem-passar-fome/">Como emagrecer sem passar fome?</a></h3>
+                <p>Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.</p>
+                <a className="article-card__link" href="/artigos/como-emagrecer-sem-passar-fome/">Ler artigo →</a>
+              </div>
+            </article>
+
+            <article className="article-card">
+              <a className="article-card__image" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/" aria-label="Ler artigo Como perder gordura sem perder massa muscular">
+                <img src="/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp" alt="Avaliação de composição corporal durante acompanhamento nutricional" loading="lazy" decoding="async" />
+              </a>
+              <div className="article-card__body">
+                <div className="article-card__meta"><span>Composição corporal</span><span>Hericles Ferreira</span></div>
+                <h3><a href="/artigos/como-perder-gordura-sem-perder-massa-muscular/">Como perder gordura sem perder massa muscular?</a></h3>
+                <p>Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.</p>
+                <a className="article-card__link" href="/artigos/como-perder-gordura-sem-perder-massa-muscular/">Ler artigo →</a>
+              </div>
+            </article>
+
+            <article className="article-card">
+              <a className="article-card__image" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/" aria-label="Ler artigo Por que parei de emagrecer mesmo fazendo dieta">
+                <img src="/img/plano-alimentar-personalizado-hericles-ferreira.webp" alt="Planejamento alimentar personalizado elaborado por Hericles Ferreira" loading="lazy" decoding="async" />
+              </a>
+              <div className="article-card__body">
+                <div className="article-card__meta"><span>Metabolismo</span><span>Hericles Ferreira</span></div>
+                <h3><a href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/">Por que parei de emagrecer mesmo fazendo dieta?</a></h3>
+                <p>O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.</p>
+                <a className="article-card__link" href="/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/">Ler artigo →</a>
+              </div>
+            </article>
+          </div>
+
+          <article className="article-card article-card--wide">
+            <div className="article-card__wide-copy">
+              <div className="article-card__meta"><span>Tratamento e alimentação</span><span>Hericles Ferreira</span></div>
+              <h3><a href="/alimentacao-mounjaro-ozempic-tirzepatida/">Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida</a></h3>
+              <p>Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento, sem julgamento e sem terrorismo alimentar.</p>
+              <a className="article-card__link" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo →</a>
+            </div>
+          </article>
         </div>
       </section>
 
