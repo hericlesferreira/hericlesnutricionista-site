@@ -244,3 +244,43 @@ body { background:#fff;color:#1d1d1f;font-family:Inter,Arial,sans-serif;line-hei
 .transf-side img {
   aspect-ratio:4/5;
 }
+
+
+/* Hero rotating keyword */
+.hero__rotator {
+  display:block;
+  height:1.12em;
+  overflow:hidden;
+  margin-bottom:.02em;
+}
+.hero__rotator-track {
+  display:flex;
+  flex-direction:column;
+  will-change:transform;
+  animation:heroWordFlip 12s cubic-bezier(.72,0,.28,1) infinite;
+}
+.hero__rotator-track > span {
+  display:block;
+  height:1.12em;
+  line-height:1.12em;
+  white-space:nowrap;
+}
+.hero__title-static {
+  display:block;
+}
+@keyframes heroWordFlip {
+  0%, 18% { transform:translateY(0); }
+  25%, 43% { transform:translateY(-1.12em); }
+  50%, 68% { transform:translateY(-2.24em); }
+  75%, 93% { transform:translateY(-3.36em); }
+  100% { transform:translateY(-4.48em); }
+}
+@media(max-width:480px) {
+  .hero__rotator-track > span { white-space:normal; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero__rotator { height:auto; overflow:visible; }
+  .hero__rotator-track { animation:none!important; transform:none!important; }
+  .hero__rotator-track > span { display:none; height:auto; }
+  .hero__rotator-track > span:first-child { display:block; }
+}
