@@ -74,7 +74,7 @@ const html = `<!doctype html>
 <script type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</script>
 </head><body>
 <header class="svc-header"><div class="svc-wrap svc-header-row">
-<a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a>
+<a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a>
 <nav aria-label="Navegação"><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a><a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a><a href="/consultoria-nutricional-online/">Consultoria online</a></nav>
 <a class="svc-header-cta" href="${wa}">Conversar</a></div></header>
 <main>
@@ -129,7 +129,7 @@ const html = `<!doctype html>
 <p>O objetivo é construir uma estratégia alimentar que você consiga colocar em prática e ajustar ao longo do acompanhamento.</p>
 <a class="svc-button" href="${wa}">Conversar com Hericles Ferreira</a>
 </div></section>
-</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Página inicial</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a> · <a href="/consultoria-nutricional-online/">Consultoria online</a></p></div></footer>
+</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Página inicial</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a> · <a href="/consultoria-nutricional-online/">Consultoria online</a></p></div></footer>
 </body></html>`
 
 export async function generateAboutPage() {
