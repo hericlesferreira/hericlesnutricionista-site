@@ -36,7 +36,7 @@ const html = `<!doctype html>
 <meta name="description" content="${description}">
 <meta name="robots" content="index,follow">
 <meta name="author" content="Hericles Ferreira">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="/img/hericles-ferreira-retrato-perfil.webp?v=2" fetchpriority="high">
 <link rel="icon" href="/img/logo-light.ico">
 <meta property="og:type" content="article"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
@@ -46,7 +46,7 @@ const html = `<!doctype html>
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"></a>
+<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"></a>
 <nav aria-label="Navegação"><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a><a href="/acompanhamento-nutricional/">Acompanhamento</a><a href="/consultoria-nutricional-online/">Consultoria online</a></nav><a class="svc-header-cta" href="${whatsapp}">Agendar</a></div></header>
 <main>
 <article>
@@ -56,7 +56,7 @@ const html = `<!doctype html>
 <h1>O que comer durante o uso de Mounjaro, Ozempic e tirzepatida?</h1>
 <p class="svc-lead">A medicação pode ajudar a controlar o apetite, mas a alimentação continua importante para sua saúde, energia, composição corporal e manutenção dos resultados.</p>
 <div class="svc-author-mini">
-<img src="/img/hericles-ferreira-retrato-perfil.webp?v=2" alt="Hericles Ferreira, nutricionista e autor do artigo" width="92" height="92">
+<img src="/img/hericles-ferreira-retrato-perfil.webp?v=2" alt="Hericles Ferreira, nutricionista e autor do artigo" width="92" height="92" decoding="async">
 <p><strong>Por Hericles Ferreira</strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento<br><small>Atualizado em 23/11/2026</small></p>
 </div>
 <div class="svc-actions"><a class="svc-button" href="${whatsapp}">Quero acompanhamento nutricional</a></div>
@@ -124,7 +124,7 @@ const html = `<!doctype html>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
 <p class="svc-kicker">Sobre o autor</p>
 <h2>Hericles Ferreira, nutricionista em Joinville</h2>
-<figure class="svc-author-photo"><img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira sentado em ambiente profissional" loading="lazy" width="320" height="420"><figcaption>Hericles Ferreira · Nutricionista, CRN-10 12284</figcaption></figure>
+<figure class="svc-author-photo"><img src="/img/hericles-ferreira-sofa-profissional.webp?v=2" alt="Hericles Ferreira sentado em ambiente profissional" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Nutricionista, CRN-10 12284</figcaption></figure>
 <p>Sou nutricionista registrado no CRN-10 sob o número 12284, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu. Meu trabalho busca encaixar o planejamento alimentar na realidade de cada paciente, sem terrorismo alimentar.</p>
 <p style="margin-top:16px">Atendo presencialmente em Joinville, na Rua Areia Branca, 1035, Jardim Iririú, e ofereço consultoria nutricional online. O acompanhamento pode incluir planejamento personalizado, check-ins semanais, suporte e ajustes de acordo com a modalidade contratada.</p>
 <h2 style="margin-top:36px">Referências e atualização</h2>
@@ -137,12 +137,12 @@ const html = `<!doctype html>
 </div></section>
 
 <section class="svc-end"><div class="svc-wrap">
-<div class="svc-cta-portrait"><img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira no ambiente de trabalho, realizando planejamento nutricional" loading="lazy" width="220" height="300"></div><h2>Já usa medicação para emagrecimento ou está pensando em começar?</h2>
+<div class="svc-cta-portrait"><img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira no ambiente de trabalho, realizando planejamento nutricional" loading="lazy" decoding="async" width="220" height="300"></div><h2>Já usa medicação para emagrecimento ou está pensando em começar?</h2>
 <p>Receba acompanhamento nutricional sem julgamentos para organizar sua alimentação, avaliar sintomas, cuidar da composição corporal e construir hábitos sustentáveis, em conjunto com a equipe médica quando necessário.</p>
 <a class="svc-button" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
 </div></section>
 </article>
-</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Início</a> · <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a></p></div></footer>
+</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-hericles-oficial.png" alt="Hericles Nutri" width="190" height="36" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Início</a> · <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a></p></div></footer>
 </body></html>`
 
 export async function generateMedicationPage() {
