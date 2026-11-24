@@ -241,9 +241,11 @@ export default function App() {
                   <img src={step.image} alt={step.alt} loading="lazy" decoding="async" width="900" height="700" />
                 </div>
                 <div className="journey-card__body">
-                  <div className="journey-card__number" aria-hidden="true">{step.n}</div>
                   <div className="journey-card__content">
-                    <p className="journey-card__eyebrow">{step.eyebrow}</p>
+                    <div className="journey-card__heading">
+                      <span className="journey-card__number" aria-hidden="true">{step.n}</span>
+                      <p className="journey-card__eyebrow">{step.eyebrow}</p>
+                    </div>
                     <h3>{step.title}</h3>
                     <p>{step.text}</p>
                     {step.n === '08' && (
