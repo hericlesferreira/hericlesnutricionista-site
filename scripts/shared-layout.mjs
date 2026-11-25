@@ -5,16 +5,16 @@ export function sharedHeader(contact = siteContact) {
     '<div class="site-navbar__inner">'+
       '<a class="site-navbar__logo" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async"></a>'+
       '<nav class="site-navbar__links" data-site-nav>'+
-        '<a href="/#como-funciona">Como funciona</a>'+
-        '<a href="/#resultados">Resultados</a>'+
-        '<a href="/#sobre">Sobre mim</a>'+
-        '<a href="/#artigos">Artigos</a>'+
+        '<a href="#como-funciona" data-local-section="como-funciona">Como funciona</a>'+
+        '<a href="#resultados" data-local-section="resultados">Resultados</a>'+
+        '<a href="#sobre" data-local-section="sobre">Sobre mim</a>'+
+        '<a href="#artigos" data-local-section="artigos">Artigos</a>'+
         '<a class="site-navbar__cta" href="'+contact+'">Agendar</a>'+
       '</nav>'+
       '<button class="site-navbar__menu" type="button" aria-label="Abrir menu" aria-expanded="false" data-site-menu><span></span><span></span><span></span></button>'+
     '</div>'+
   '</header>'+
-  '<script>(function(){const b=document.querySelector("[data-site-menu]"),n=document.querySelector("[data-site-nav]");if(!b||!n)return;b.addEventListener("click",function(){const o=n.classList.toggle("is-open");b.classList.toggle("is-open",o);b.setAttribute("aria-expanded",String(o));});n.addEventListener("click",function(e){if(e.target.closest("a")){n.classList.remove("is-open");b.classList.remove("is-open");b.setAttribute("aria-expanded","false");}});})();</script>'
+  '<script>(function(){const b=document.querySelector("[data-site-menu]"),n=document.querySelector("[data-site-nav]");if(!n)return;n.querySelectorAll("[data-local-section]").forEach(function(a){const id=a.getAttribute("data-local-section");if(!document.getElementById(id))a.setAttribute("href","/#"+id);});if(!b)return;b.addEventListener("click",function(){const o=n.classList.toggle("is-open");b.classList.toggle("is-open",o);b.setAttribute("aria-expanded",String(o));});n.addEventListener("click",function(e){if(e.target.closest("a")){n.classList.remove("is-open");b.classList.remove("is-open");b.setAttribute("aria-expanded","false");}});})();</script>'
 }
 
 export function sharedFooter() {
