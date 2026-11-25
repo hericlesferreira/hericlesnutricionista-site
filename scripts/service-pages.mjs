@@ -73,6 +73,13 @@ const homeResults = [
   {nome:'Hericles',idade:'30 anos',antes:'115kg',depois:'84kg',tempo:'5 meses',perfil:'Obesidade',descricao:'Recomposição corporal com maior perda de gordura',image:'/img/Hericles.png'}
 ]
 
+function renderSportsJourney() {
+  const cards = homeJourneySteps.map(([n,eyebrow,title,text,image,alt]) =>
+    '<article class="emag-journey-card"><img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>'+n+'</span> '+esc(eyebrow)+'</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
+  ).join('')
+  return '<section class="emag-journey" id="como-funciona"><div class="svc-wrap"><div class="emag-section-intro"><p class="svc-kicker">Seu acompanhamento</p><h2>Sua jornada para <span class="sports-journey-word" aria-live="polite">performance</span> começa aqui</h2><p>Do primeiro contato aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. E a nossa jornada é assim:</p></div><div class="emag-journey-grid">'+cards+'</div></div><script>(function(){var el=document.querySelector(".sports-journey-word");if(!el)return;var words=["performance","hipertrofia","bulking","cutting"],i=0;setInterval(function(){i=(i+1)%words.length;el.classList.add("is-changing");setTimeout(function(){el.textContent=words[i];el.classList.remove("is-changing")},220)},3000)})()</script></section>'
+}
+
 function renderHomeJourney() {
   const cards = homeJourneySteps.map(([n,eyebrow,title,text,image,alt]) =>
     '<article class="emag-journey-card"><img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>'+n+'</span> '+esc(eyebrow)+'</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
@@ -157,7 +164,7 @@ const pages = [
     description: 'Nutrição esportiva em Joinville para musculação, hipertrofia, ganho de massa muscular e recomposição corporal. Planejamento ajustado à rotina e aos treinos.',
     label: 'Nutrição esportiva em Joinville',
     heading: 'Alimentação alinhada aos seus treinos e objetivos',
-    intro: 'Quer ganhar massa muscular, melhorar a composição corporal ou organizar a alimentação para os treinos? O planejamento nutricional considera intensidade, frequência dos exercícios, rotina e preferências alimentares.',
+    intro: 'Quer ganhar massa muscular, melhorar a composição corporal ou organizar a alimentação para os treinos? O meu acompanhamento e planejamento considera intensidade, frequência dos exercícios, rotina e preferências alimentares'
     benefits: [
       ['Estratégia para hipertrofia', 'Ajuste da ingestão energética e de nutrientes de acordo com os objetivos e as necessidades individuais.'],
       ['Composição corporal', 'Acompanhamento de medidas, evolução física e sinais da rotina para orientar decisões ao longo do processo.'],
@@ -282,7 +289,7 @@ ${homeLayoutSlugs.has(p.slug) ? `
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
-${homeLayoutSlugs.has(p.slug) ? renderHomeJourney() : ''}
+${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : '')}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? renderHomeResults() : renderTransformations(p)}
