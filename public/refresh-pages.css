@@ -855,3 +855,16 @@ a:focus-visible,summary:focus-visible,.svc-button:focus-visible,.svc-outline:foc
   .emag-location__actions{flex-direction:column;align-items:stretch}
   .emag-location__actions a{text-align:center}
 }
+
+
+/* Palavra animada da Journey esportiva */
+.sports-journey-word{
+  display:inline-block;
+  min-width:8.4ch;
+  color:#455c00;
+  transition:opacity .22s ease, transform .22s ease;
+}
+.sports-journey-word.is-changing{
+  opacity:0;
+  transform:translateY(8px);
+}
