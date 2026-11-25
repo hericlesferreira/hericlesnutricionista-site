@@ -30,10 +30,10 @@ export function sharedFooter() {
         '<h4>Explore</h4>'+
         '<a href="/#como-funciona">Atendimentos</a>'+
         '<a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a>'+
-        '<a href="/consultoria-nutricional-online/">Consultoria online</a>'+
-        '<a href="/#sobre">Sobre mim</a>'+
-        '<a href="/#artigos">Artigos</a>'+
-        '<a href="/#localizacao">Localização</a>'+
+        '<a href="/nutricionista-esportivo-joinville/">Nutrição esportiva</a><a href="/acompanhamento-nutricional/">Acompanhamento</a><a href="/consultoria-nutricional-online/">Consultoria online</a>'+
+        '<a href="/sobre-hericles-ferreira/">Sobre mim</a>'+
+        '<a href="/artigos/">Artigos</a>'+
+        '<a href="/sobre-hericles-ferreira/#localizacao">Localização</a>'+
       '</div>'+
       '<div class="site-footer__social">'+
         '<h4>Redes sociais</h4>'+
