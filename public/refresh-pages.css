@@ -452,3 +452,285 @@ a:focus-visible,summary:focus-visible,.svc-button:focus-visible,.svc-outline:foc
 @media(prefers-reduced-motion:reduce){
   .site-navbar__menu span{transition:none}
 }
+
+
+/* Emagrecimento em Joinville alinhado à Home */
+.emag-hero{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+  background:#111;
+}
+.emag-hero__media{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.emag-hero__media,
+.emag-hero__media img{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.emag-hero__media img{
+  object-fit:cover;
+  object-position:right center;
+}
+.emag-hero__inner{
+  position:relative;
+  z-index:1;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  padding-top:96px;
+  padding-bottom:120px;
+}
+.emag-hero__copy{
+  width:min(720px,64vw);
+  color:#fff;
+}
+.emag-breadcrumb{
+  margin-bottom:26px;
+  color:rgb(255 255 255 / .68);
+  font-size:12px;
+}
+.emag-breadcrumb a{color:inherit}
+.emag-hero__eyebrow{
+  margin:0 0 18px;
+  color:rgb(255 255 255 / .78);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.emag-hero h1{
+  margin:0;
+  max-width:820px;
+  color:#fff;
+  font:700 clamp(46px,6vw,82px)/1.07 Inter,Arial,sans-serif;
+  letter-spacing:-.055em;
+  text-wrap:balance;
+}
+.emag-hero__lead{
+  max-width:620px;
+  margin:26px 0 0;
+  color:rgb(255 255 255 / .88);
+  font-size:clamp(17px,1.6vw,21px);
+  line-height:1.6;
+}
+.emag-hero__actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+.emag-hero__secondary{
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+}
+.emag-stats{
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#f5f5f7;
+}
+.emag-stats__inner{
+  min-height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+}
+.emag-stats__inner>div{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:8px 20px;
+  text-align:center;
+}
+.emag-stats strong{color:#333;font-size:15px}
+.emag-stats span{color:#6d6d73;font-size:12px}
+.emag-stats i{
+  width:1px;
+  height:26px;
+  background:rgb(0 0 0 / .10);
+}
+
+.emag-journey{
+  padding:clamp(76px,9vw,118px) 0;
+  background:#fff;
+}
+.emag-section-intro{
+  max-width:850px;
+  margin-bottom:42px;
+}
+.emag-section-intro h2{
+  margin:0;
+  color:#1d1d1f;
+  font:700 clamp(38px,5vw,64px)/1.08 Inter,Arial,sans-serif;
+  letter-spacing:-.05em;
+}
+.emag-section-intro h2 span{color:#526900}
+.emag-section-intro>p:last-child{
+  max-width:720px;
+  margin:20px 0 0;
+  color:#66666b;
+  font-size:16px;
+  line-height:1.7;
+}
+.emag-journey-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.emag-journey-card{
+  min-width:0;
+  overflow:hidden;
+  background:#f5f5f7;
+  border-radius:24px;
+}
+.emag-journey-card>img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/8.8;
+  object-fit:cover;
+}
+.emag-journey-card__body{
+  padding:24px 26px 28px;
+}
+.emag-journey-card__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 11px;
+  color:#526900;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.emag-journey-card__eyebrow span{color:#1d1d1f}
+.emag-journey-card h3{
+  margin:0;
+  color:#1d1d1f;
+  font:700 clamp(23px,2.6vw,32px)/1.15 Inter,Arial,sans-serif;
+  letter-spacing:-.035em;
+}
+.emag-journey-card__body>p:last-child{
+  margin:14px 0 0;
+  color:#66666b;
+  font-size:14px;
+  line-height:1.65;
+}
+
+.emag-results{
+  padding:clamp(78px,9vw,118px) 0;
+  background:#1d1d1f;
+}
+.emag-section-intro--light h2{color:#fff}
+.emag-section-intro--light>p:last-child{color:#bdbdc3}
+.emag-results-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.emag-result-card{
+  overflow:hidden;
+  background:#2a2a2d;
+  border:1px solid rgb(255 255 255 / .08);
+  border-radius:24px;
+}
+.emag-result-card__visual{
+  position:relative;
+  overflow:hidden;
+}
+.emag-result-card__visual img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+.emag-result-card__time{
+  position:absolute;
+  top:14px;
+  right:14px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:#b9e801;
+  color:#1a2300;
+  font-size:11px;
+  font-weight:800;
+}
+.emag-result-card__body{
+  padding:20px;
+}
+.emag-result-card__head h3{
+  margin:0;
+  color:#fff;
+  font:700 24px/1.15 Inter,Arial,sans-serif;
+}
+.emag-result-card__head p{
+  margin:5px 0 0;
+  color:#b9e801;
+  font-size:12px;
+  font-weight:700;
+}
+.emag-result-card__stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:16px;
+}
+.emag-result-card__stats span{
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgb(255 255 255 / .07);
+  color:#d9d9dc;
+  font-size:11px;
+}
+.emag-result-card__desc{
+  margin:15px 0 0;
+  color:#c7c7cb;
+  font-size:13px;
+  line-height:1.55;
+}
+
+@media(max-width:900px){
+  .emag-results-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:768px){
+  .emag-hero__media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgb(0 0 0 / .48);
+  }
+  .emag-hero__media img{object-position:center}
+  .emag-hero__copy{width:100%}
+  .emag-hero__inner{
+    align-items:flex-end;
+    padding-top:96px;
+    padding-bottom:220px;
+  }
+  .emag-hero h1{font-size:clamp(42px,10vw,58px)}
+  .emag-stats__inner{
+    min-height:auto;
+    padding:16px 0;
+    flex-direction:column;
+    gap:6px;
+  }
+  .emag-stats i{display:none}
+  .emag-stats__inner>div{padding:5px 14px}
+  .emag-journey-grid{grid-template-columns:1fr;gap:12px}
+  .emag-journey-card>img{aspect-ratio:16/9.2}
+}
+@media(max-width:600px){
+  .emag-results-grid{grid-template-columns:1fr}
+  .emag-hero__actions{align-items:flex-start;flex-direction:column}
+}
