@@ -63,7 +63,7 @@ ${sharedHeader(whatsapp)}
 <img src="/img/hericles-ferreira-retrato-perfil.webp?v=2" alt="Hericles Ferreira, nutricionista e autor do artigo" width="92" height="92" decoding="async">
 <p><strong>Por Hericles Ferreira</strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento<br><small>Atualizado em 23/11/2026</small></p>
 </div>
-<div class="svc-actions"><a class="svc-button" href="${whatsapp}">Quero acompanhamento nutricional</a></div>
+<div class="svc-actions"><a class="svc-button track-whatsapp" href="${whatsapp}">Quero acompanhamento nutricional</a></div>
 </div></section>
 
 <section class="svc-section"><div class="svc-wrap svc-narrow">
@@ -143,7 +143,7 @@ ${sharedHeader(whatsapp)}
 <section class="svc-end"><div class="svc-wrap">
 <div class="svc-cta-portrait"><img src="/img/hericles-ferreira-consultoria-online.webp?v=2" alt="Hericles Ferreira no ambiente de trabalho, realizando planejamento nutricional" loading="lazy" decoding="async" width="220" height="300"></div><h2>Já usa medicação para emagrecimento ou está pensando em começar?</h2>
 <p>Receba acompanhamento nutricional sem julgamentos para organizar sua alimentação, avaliar sintomas, cuidar da composição corporal e construir hábitos sustentáveis, em conjunto com a equipe médica quando necessário.</p>
-<a class="svc-button" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
+<a class="svc-button track-whatsapp" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
 </div></section>
 </article>
 </main>${sharedFooter()}
