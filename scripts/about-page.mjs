@@ -1,6 +1,30 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, writeFile, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { sharedHeader, sharedFooter } from './shared-layout.mjs'
+
+const bloggerPosts = JSON.parse(await readFile(new URL('../data/blogger-posts.json', import.meta.url), 'utf8'))
+
+const strategicArticles = [
+  { href:'/artigos/como-emagrecer-sem-passar-fome/', category:'Emagrecimento', title:'Como emagrecer sem passar fome?', description:'Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.', image:'/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2' },
+  { href:'/artigos/como-perder-gordura-sem-perder-massa-muscular/', category:'Composição corporal', title:'Como perder gordura sem perder massa muscular?', description:'Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.', image:'/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp' },
+  { href:'/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/', category:'Metabolismo', title:'Por que parei de emagrecer mesmo fazendo dieta?', description:'O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.', image:'/img/plano-alimentar-personalizado-hericles-ferreira.webp' },
+  { href:'/artigos/alimentacao-mounjaro-ozempic-tirzepatida/', category:'Tratamento e alimentação', title:'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida', description:'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.', image:'/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp' }
+]
+
+const bloggerArticles = (Array.isArray(bloggerPosts) ? bloggerPosts : []).map(post => ({
+  href:'/artigos/' + post.slug + '/',
+  category:post.labels?.[0] || 'Nutrição',
+  title:post.title,
+  description:post.description,
+  image:post.image || '/img/hericles-ferreira-retrato-institucional.webp'
+}))
+
+const aboutArticles = [
+  ...strategicArticles,
+  ...bloggerArticles.filter(post => !strategicArticles.some(fixed => fixed.href === post.href))
+].slice(0,6)
+
+const renderAboutArticles = () => '<section class="service-articles" id="artigos"><div class="svc-wrap"><div class="service-articles__header"><div><p class="svc-kicker">Leituras do Nutri</p><h2>Artigos que escrevi recentemente</h2></div><a class="service-articles__all" href="/artigos/">Ver todos os artigos →</a></div><div class="service-articles__grid">' + aboutArticles.map(article => '<article class="service-article-card"><a class="service-article-card__cover" href="'+article.href+'" aria-label="Ler artigo '+article.title+'"><div class="service-article-card__image"><img src="'+article.image+'" alt="'+article.title+'" loading="lazy" decoding="async"></div><div class="service-article-card__body"><div class="service-article-card__meta"><span>'+article.category+'</span><span>Hericles Ferreira</span></div><h3>'+article.title+'</h3><p>'+article.description+'</p><span class="service-article-card__link">Ler artigo →</span></div></a></article>').join('') + '</div></div></section>'
 
 const origin = 'https://www.nutrihericles.com.br'
 const url = origin + '/sobre-hericles-ferreira/'
@@ -118,18 +142,38 @@ ${sharedHeader(wa)}
 <p style="margin-top:14px"><strong>Consulta online:</strong> realizada por videochamada, usando o Google Meet. Neste caso, fazemos a avaliação física por meio de fotos e algumas medidas que peço para você me enviar. Também envio um guia orientando como fazer essas medidas da melhor forma.</p>
 <p style="margin-top:14px"><strong>Consultoria online:</strong> A consultoria online é uma alternativa prática para quem quer organizar a alimentação sem precisar comparecer ao consultório, ou ainda para pessoas de outras cidade e países.</p>
 </div></section>
-<section class="svc-section"><div class="svc-wrap svc-narrow">
-<p class="svc-kicker">Atendimento e contato</p>
-<h2>Onde atendo?</h2>
-<p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC. Também ofereço consultoria nutricional online para pessoas de outras cidades, quando a modalidade for adequada às suas necessidades.</p>
-<p style="margin-top:16px"><a style="color:var(--lime);text-decoration:underline" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Como chegar ao consultório no Google Maps</a></p>
-<p style="margin-top:16px">Telefone/WhatsApp: <a style="color:var(--lime)" href="tel:+5547988602379">(47) 98860-2379</a>. Instagram: <a style="color:var(--lime)" href="https://www.instagram.com/nutrihericles/" target="_blank" rel="noopener noreferrer">@nutrihericles</a>.</p>
-<h2 style="margin-top:36px">Perfis profissionais</h2>
-<p>Você também pode encontrar informações sobre minha atuação nas plataformas <a style="color:#405600;text-decoration:underline" href="https://www.doctoralia.com.br/hericles-ferreira/nutricionista/joinville" target="_blank" rel="noopener noreferrer">Doctoralia</a> e <a style="color:#405600;text-decoration:underline" href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
-<h2 style="margin-top:36px">Conteúdo e orientações de minha autoria</h2>
-<p>Além dos atendimentos, compartilho orientações educativas sobre alimentação, emagrecimento, ganho de massa muscular e saúde metabólica. Um exemplo é meu artigo sobre cuidados nutricionais durante o uso de medicamentos para emagrecimento, desenvolvido a partir de orientações que entrego aos pacientes.</p>
-<p style="margin-top:16px"><a class="svc-more-link" href="/alimentacao-mounjaro-ozempic-tirzepatida/">Ler artigo sobre alimentação, Mounjaro e Ozempic →</a></p>
-</div></section>
+${renderAboutArticles()}
+<section class="about-location section localizacao" id="localizacao" aria-labelledby="localizacao-titulo">
+  <div class="svc-wrap">
+    <div class="localizacao__header">
+      <p class="svc-kicker">Atendimento presencial em Joinville</p>
+      <h2 id="localizacao-titulo">Onde fica o consultório?</h2>
+      <p class="localizacao__description">Meu consultório fica em Joinville/SC, com atendimento presencial em um espaço preparado para avaliação, acompanhamento e definição da sua estratégia nutricional.</p>
+    </div>
+    <div class="localizacao__grid">
+      <div class="localizacao__map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.4864640924357!2d-48.804348630362256!3d-26.26342059590358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafed6802f801%3A0xb15dc1c82143089b!2sMais%20que%20Rubis%20Studio%20-%20Est%C3%A9tica%20e%20Micropigmenta%C3%A7%C3%A3o%20by%20Girlane%20Ferreira!5e0!3m2!1spt-BR!2sbr!4v1795549649378!5m2!1spt-BR!2sbr" title="Localização do consultório de Hericles Ferreira em Joinville" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="localizacao__info">
+        <div class="localizacao__card">
+          <strong>Hericles Ferreira | Nutricionista</strong>
+          <span>CRN-10 12284</span>
+          <span>Especialização em Metabolismo e Emagrecimento</span>
+          <address>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC, CEP 89224-090</address>
+          <a href="tel:+5547988602379">(47) 98860-2379</a>
+        </div>
+        <div class="localizacao__actions">
+          <a class="svc-outline" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+          <a class="svc-button" href="${wa}">Agendar consulta</a>
+        </div>
+      </div>
+    </div>
+    <div class="localizacao__gallery" aria-label="Fotos da clínica">
+      <figure><img src="/img/consultorio.webp" alt="Consultório de Hericles Ferreira para atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure>
+      <figure><img src="/img/clinica.webp" alt="Fachada da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
 <section class="svc-end"><div class="svc-wrap"><h2>Seu plano precisa funcionar na sua vida</h2>
 <p>O objetivo é construir uma estratégia alimentar que você consiga colocar em prática e ajustar ao longo do acompanhamento.</p>
 <a class="svc-button" href="${wa}">Conversar com Hericles Ferreira</a>
