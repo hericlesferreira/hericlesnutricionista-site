@@ -734,3 +734,21 @@ a:focus-visible,summary:focus-visible,.svc-button:focus-visible,.svc-outline:foc
   .emag-results-grid{grid-template-columns:1fr}
   .emag-hero__actions{align-items:flex-start;flex-direction:column}
 }
+
+
+/* FAQ da página de emagrecimento alinhada à Home */
+.emag-faq h2{
+  margin:0 0 30px;
+  color:#1d1d1f;
+  font:700 clamp(36px,4.8vw,58px)/1.1 Inter,Arial,sans-serif;
+  letter-spacing:-.045em;
+}
+.emag-faq__cta{
+  margin-top:34px;
+  text-align:center;
+}
+.emag-faq__cta p{
+  margin:0 0 16px;
+  color:#66666b;
+  font-size:14px;
+}
