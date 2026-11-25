@@ -48,7 +48,9 @@ const html = `<!doctype html>
 <link rel="stylesheet" href="/service-pages.css">
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
+${trackingHead}
 </head><body>
+${trackingBody}
 ${sharedHeader(whatsapp)}
 <main>
 <article>
