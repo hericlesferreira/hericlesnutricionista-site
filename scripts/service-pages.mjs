@@ -214,7 +214,7 @@ const pages = [
     description: 'Consultoria nutricional online para emagrecimento e hipertrofia: questionário inicial, plano alimentar personalizado, acompanhamento e ajustes sem deslocamento.',
     label: 'Consultoria nutricional online',
     heading: 'Acompanhamento nutricional onde você estiver',
-    intro: 'A consultoria online é uma alternativa prática para quem quer organizar a alimentação sem precisar comparecer ao consultório. O ponto de partida é um questionário detalhado sobre rotina, objetivos e hábitos alimentares.',
+    intro: 'A consultoria online é uma alternativa prática para quem quer organizar a alimentação sem precisar comparecer ao consultório, ou ainda para pessoas de outras cidade e países.',
     benefits: [
       ['Início pelo questionário', 'Você compartilha informações sobre alimentação, rotina e objetivos por um formulário online.'],
       ['Plano alimentar individualizado', 'As orientações são elaboradas a partir das respostas e das informações necessárias para seu acompanhamento.'],
@@ -292,8 +292,9 @@ function render(p) {
 </head><body>
 ${sharedHeader(contact(p.nav))}
 <main>
+${p.slug === "consultoria-nutricional-online" ? `<style>.consultoria-hero-light .emag-breadcrumb,.consultoria-hero-light .emag-breadcrumb a,.consultoria-hero-light .emag-hero__eyebrow,.consultoria-hero-light .emag-hero__lead,.consultoria-hero-light .emag-hero__secondary{color:#242424!important}.consultoria-hero-light h1{color:#242424!important}</style>` : ""}
 ${homeLayoutSlugs.has(p.slug) ? `
-<section class="emag-hero">
+<section class="emag-hero${p.slug === "consultoria-nutricional-online" ? " consultoria-hero-light" : ""}">
   <picture class="emag-hero__media" aria-hidden="true">
     ${p.slug === 'nutricionista-esportivo-joinville'
       ? '<img src="/img/nutricionista-esportivo.webp" alt="" fetchpriority="high" decoding="async">'
@@ -318,7 +319,7 @@ ${homeLayoutSlugs.has(p.slug) ? `
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
 ${p.slug === 'consultoria-nutricional-online' ? renderOnlineJourney() : (p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''))}
-<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
+${p.slug === "consultoria-nutricional-online" ? "" : `<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' || p.slug === 'consultoria-nutricional-online' ? renderHomeResults() : renderTransformations(p))}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : ((p.slug === 'nutricionista-esportivo-joinville' || p.slug === 'consultoria-nutricional-online') ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
