@@ -912,3 +912,20 @@ a:focus-visible,summary:focus-visible,.svc-button:focus-visible,.svc-outline:foc
 .about-hero__stats-inner i{width:1px;height:32px;background:rgb(0 0 0 / .12)}
 @media(max-width:900px){.about-hero__copy{width:min(620px,72vw)}.about-hero__stats-inner{grid-template-columns:1fr 1fr 1fr}.about-hero__stats-inner i{display:none}}
 @media(max-width:700px){.about-hero::after{background:linear-gradient(180deg,rgb(0 0 0 / .08) 0%,rgb(0 0 0 / .18) 34%,rgb(0 0 0 / .72) 72%,rgb(0 0 0 / .88) 100%)}.about-hero__media img{right:0;object-position:left top}.about-hero__inner{min-height:100svh;align-items:flex-end;padding-top:calc(64px + 42px);padding-bottom:48px}.about-hero__copy{width:100%;max-width:none}.about-hero h1{max-width:12ch;font-size:clamp(38px,10vw,52px)}.about-hero__lead{max-width:34ch;font-size:16px}.about-hero__stats-inner{grid-template-columns:1fr;gap:15px;padding-block:20px}}
+
+
+/* Página Sobre: hero claro */
+.about-hero{background:#fff}
+.about-hero::after{display:none}
+.about-hero__copy{color:#1d1d1f}
+.about-hero__breadcrumb{color:#6b6b71}
+.about-hero__eyebrow{color:#516800}
+.about-hero h1{color:#1d1d1f;text-shadow:none}
+.about-hero__lead{color:#5f5f66}
+@media(max-width:700px){
+  .about-hero::after{display:none}
+  .about-hero__breadcrumb{color:#6b6b71}
+  .about-hero__eyebrow{color:#516800}
+  .about-hero h1{color:#1d1d1f}
+  .about-hero__lead{color:#5f5f66}
+}
