@@ -359,7 +359,7 @@ ${homeLayoutSlugs.has(p.slug) ? `
       <p class="emag-hero__eyebrow">${esc(p.label)} · CRN-10 12284</p>
       <h1>${esc(p.heading)}</h1>
       <p class="emag-hero__lead">${esc(p.intro)}</p>
-      <div class="emag-hero__actions"><a class="svc-button" href="${contact(p.nav)}">Agendar consulta</a><a class="emag-hero__secondary" href="/sobre-hericles-ferreira/">Conheça o meu trabalho</a></div>
+      <div class="emag-hero__actions"><a class="svc-button track-agendar" href="${contact(p.nav)}">Agendar consulta</a><a class="emag-hero__secondary" href="/sobre-hericles-ferreira/">Conheça o meu trabalho</a></div>
     </div>
   </div>
   <div class="emag-stats"><div class="svc-wrap emag-stats__inner"><div><strong>${p.slug === 'consultoria-nutricional-online' ? '100% Online' : 'Online & Presencial'}</strong><span>${p.slug === 'consultoria-nutricional-online' ? 'De onde você estiver' : 'Joinville/SC'}</span></div><i></i><div><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div><i></i><div><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div></div></div>
