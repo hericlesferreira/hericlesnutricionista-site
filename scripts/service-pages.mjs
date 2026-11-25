@@ -87,6 +87,14 @@ function renderHomeJourney() {
   return '<section class="emag-journey" id="como-funciona"><div class="svc-wrap"><div class="emag-section-intro"><p class="svc-kicker">Seu acompanhamento</p><h2>Sua jornada para <span>emagrecer</span> começa aqui</h2><p>Do primeiro contato aos ajustes de cada semana, cada etapa foi pensada para transformar uma consulta em acompanhamento de verdade. E a nossa jornada é assim:</p></div><div class="emag-journey-grid">'+cards+'</div></div></section>'
 }
 
+function renderSportsResults() {
+  const cards = homeResults.filter(item => item.nome !== 'Daniela').map(item => {
+    const stats = [item.idade,item.antes && ('Antes '+item.antes),item.depois && ('Depois '+item.depois)].filter(Boolean).map(x=>'<span>'+esc(x)+'</span>').join('')
+    return '<article class="emag-result-card"><div class="emag-result-card__visual"><img src="'+item.image+'" alt="Transformação corporal de '+esc(item.nome)+': comparação antes e depois do acompanhamento nutricional" loading="lazy" decoding="async">'+(item.tempo?'<span class="emag-result-card__time">'+esc(item.tempo)+'</span>':'')+'</div><div class="emag-result-card__body"><div class="emag-result-card__head"><div><h3>'+esc(item.nome)+'</h3><p>'+esc(item.perfil)+'</p></div></div>'+(stats?'<div class="emag-result-card__stats">'+stats+'</div>':'')+'<p class="emag-result-card__desc">'+esc(item.descricao)+'</p></div></article>'
+  }).join('')
+  return '<section class="emag-results" id="resultados"><div class="svc-wrap"><div class="emag-section-intro emag-section-intro--light"><h2>Transformações reais</h2><p>Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p></div><div class="emag-results-grid">'+cards+'</div></div></section>'
+}
+
 function renderHomeResults() {
   const cards = homeResults.map(item => {
     const stats = [item.idade,item.antes && ('Antes '+item.antes),item.depois && ('Depois '+item.depois)].filter(Boolean).map(x=>'<span>'+esc(x)+'</span>').join('')
@@ -292,7 +300,7 @@ ${homeLayoutSlugs.has(p.slug) ? `
 ${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : '')}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
-${homeLayoutSlugs.has(p.slug) ? renderHomeResults() : renderTransformations(p)}
+${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p))}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : (p.slug === 'nutricionista-esportivo-joinville' ? renderStyledFaq(p.faqs, contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
