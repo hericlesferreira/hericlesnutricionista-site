@@ -28,6 +28,7 @@ try {
   await generateMedicationPage()
   await generateAboutPage()
   await generateEducationalArticles()
+  await import('./generate-sitemap.mjs')
   await import('./validate-schema.mjs')
   console.log('SEO: HTML inicial pré-renderizado com sucesso.')
 } finally {
