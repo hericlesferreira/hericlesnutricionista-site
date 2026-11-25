@@ -168,7 +168,7 @@ function renderArticleAuthor() {
 function renderArticleCta() {
   return '<section class="svc-end article-standard-cta"><div class="svc-wrap">'+
     '<p>Atendimento presencial em Joinville e consultoria nutricional online, conforme a necessidade de cada pessoa.</p>'+
-    '<a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a>'+
+    '<a class="svc-button track-whatsapp" href="'+contact+'">Conversar sobre meu objetivo</a>'+
   '</div></section>'
 }
 function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="icon" type="image/png" href="/img/favicon-hericles.png"><link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/refresh-pages.css">${trackingHead}</head><body>${trackingBody}'+content+'</body></html>' }
