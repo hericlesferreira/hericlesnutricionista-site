@@ -2,6 +2,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { sharedHeader, sharedFooter } from './shared-layout.mjs'
 
+const bloggerPosts = JSON.parse(await readFile(new URL('../data/blogger-posts.json', import.meta.url), 'utf8'))
+
 const origin = 'https://www.nutrihericles.com.br'
 const phone = '5547988602379'
 const contact = (subject) => 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent('Olá, Hericles! Vim pelo seu site e gostaria de saber mais sobre ' + subject + '.')
@@ -128,6 +130,44 @@ function renderHomeResults() {
   return '<section class="emag-results" id="resultados"><div class="svc-wrap"><div class="emag-section-intro emag-section-intro--light"><h2>Transformações reais</h2><p>Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p></div><div class="emag-results-grid">'+cards+'</div></div></section>'
 }
 
+
+const strategicArticles = [
+  { href:'/artigos/como-emagrecer-sem-passar-fome/', title:'Como emagrecer sem passar fome?', description:'Volume, saciedade e flexibilidade alimentar para construir uma rotina que realmente seja possível manter.', image:'/img/hericles-ferreira-atendimento-nutricional-joinville.webp?v=2', category:'Emagrecimento', labels:['Emagrecimento'] },
+  { href:'/artigos/como-perder-gordura-sem-perder-massa-muscular/', title:'Como perder gordura sem perder massa muscular?', description:'Proteína, treinamento e estratégia nutricional para preservar massa muscular durante o emagrecimento.', image:'/img/avaliacao-fisica-bioimpedancia-dobras-cutaneas-joinville.webp', category:'Composição corporal', labels:['Emagrecimento','Esportiva'] },
+  { href:'/artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta/', title:'Por que parei de emagrecer mesmo fazendo dieta?', description:'O que vale a pena observar antes de simplesmente comer menos ou aumentar ainda mais as restrições.', image:'/img/plano-alimentar-personalizado-hericles-ferreira.webp', category:'Metabolismo', labels:['Emagrecimento'] },
+  { href:'/artigos/alimentacao-mounjaro-ozempic-tirzepatida/', title:'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida', description:'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.', image:'/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp', category:'Tratamento e alimentação', labels:['Emagrecimento'] }
+]
+
+const bloggerArticles = (Array.isArray(bloggerPosts) ? bloggerPosts : []).map(post => ({
+  href: '/artigos/' + post.slug + '/',
+  title: post.title,
+  description: post.description,
+  image: post.image || '/img/hericles-ferreira-retrato-institucional.webp',
+  category: post.labels?.[0] || 'Nutrição',
+  labels: post.labels || []
+}))
+
+const allArticles = [
+  ...strategicArticles,
+  ...bloggerArticles.filter(post => !strategicArticles.some(fixed => fixed.href === post.href))
+]
+
+function articleListForPage(slug) {
+  const marker = slug === 'nutricionista-emagrecimento-joinville'
+    ? 'emagrecimento'
+    : (slug === 'nutricionista-esportivo-joinville' ? 'esportiva' : null)
+  if (!marker) return allArticles
+  return allArticles.filter(article => (article.labels || []).some(label => String(label).toLowerCase() === marker))
+}
+
+function renderArticlesSection(p) {
+  const articles = articleListForPage(p.slug).slice(0, 6)
+  if (!articles.length) return ''
+  const cards = articles.map(article =>
+    '<article class="service-article-card"><a class="service-article-card__cover" href="'+article.href+'" aria-label="Ler artigo '+esc(article.title)+'"><div class="service-article-card__image"><img src="'+article.image+'" alt="'+esc(article.title)+'" loading="lazy" decoding="async"></div><div class="service-article-card__body"><div class="service-article-card__meta"><span>'+esc(article.category)+'</span><span>Hericles Ferreira</span></div><h3>'+esc(article.title)+'</h3><p>'+esc(article.description)+'</p><span class="service-article-card__link">Ler artigo →</span></div></a></article>'
+  ).join('')
+  return '<section class="service-articles" id="artigos"><div class="svc-wrap"><div class="service-articles__header"><div><p class="svc-kicker">Leituras do Nutri</p><h2>Artigos que escrevi recentemente</h2></div><a class="service-articles__all" href="/artigos/">Ver todos os artigos →</a></div><div class="service-articles__grid">'+cards+'</div></div></section>'
+}
 
 const homeFaqs = [
   ['Como funciona a consulta nutricional presencial?','Antes da nossa consulta presencial, você recebe nosso questionário pré-consulta. Depois, temos nossa consulta presencial, onde entendemos sua rotina, hábitos alimentares e comportamento. Realizamos a avaliação física e definimos como será seu novo plano alimentar.'],
@@ -331,6 +371,7 @@ ${p.slug === 'consultoria-nutricional-online' ? renderOnlineJourney() : (p.slug 
 ${(p.slug === "consultoria-nutricional-online" || p.slug === "acompanhamento-nutricional") ? "" : `<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' || p.slug === 'consultoria-nutricional-online' ? renderHomeResults() : renderTransformations(p))}
+${renderArticlesSection(p)}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : ((p.slug === 'nutricionista-esportivo-joinville' || p.slug === 'consultoria-nutricional-online') ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : (p.slug === 'acompanhamento-nutricional' ? renderStyledFaq(homeFaqs, contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`))}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
