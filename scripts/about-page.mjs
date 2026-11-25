@@ -178,7 +178,7 @@ ${renderAboutArticles()}
 </section>
 <section class="svc-end"><div class="svc-wrap"><h2>Seu plano precisa funcionar na sua vida</h2>
 <p>O objetivo é construir uma estratégia alimentar que você consiga colocar em prática e ajustar ao longo do acompanhamento.</p>
-<a class="svc-button" href="${wa}">Conversar com Hericles Ferreira</a>
+<a class="svc-button track-whatsapp" href="${wa}">Conversar com Hericles Ferreira</a>
 </div></section>
 </main>${sharedFooter()}
 </body></html>`
