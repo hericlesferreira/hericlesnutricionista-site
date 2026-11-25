@@ -110,7 +110,7 @@ ${sharedHeader(wa)}
       <p class="about-hero__eyebrow">Quem cuida da sua alimentação · CRN-10 12284</p>
       <h1>Hericles Ferreira, nutricionista em Joinville</h1>
       <p class="about-hero__lead">Minha proposta é encaixar a dieta na sua realidade, e não o contrário. Sem soluções milagrosas, com estratégia e acompanhamento.</p>
-      <div class="about-hero__actions"><a class="svc-button" href="${wa}">Agendar consulta</a></div>
+      <div class="about-hero__actions"><a class="svc-button track-agendar" href="${wa}">Agendar consulta</a></div>
     </div>
   </div>
   <div class="about-hero__stats"><div class="svc-wrap about-hero__stats-inner">
@@ -165,8 +165,8 @@ ${renderAboutArticles()}
           <a href="tel:+5547988602379">(47) 98860-2379</a>
         </div>
         <div class="localizacao__actions">
-          <a class="svc-outline" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
-          <a class="svc-button" href="${wa}">Agendar consulta</a>
+          <a class="svc-outline" class="track-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+          <a class="svc-button track-agendar" href="${wa}">Agendar consulta</a>
         </div>
       </div>
     </div>
