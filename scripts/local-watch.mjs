@@ -26,6 +26,12 @@ function hasBlockingLocalChanges() {
     return !ignored.has(path)
   })
 }
+function restoreGeneratedBloggerFile() {
+  const changed = localChanges().some(line => line.slice(3).trim() === 'data/blogger-posts.json')
+  if (changed) {
+    spawnSync('git', ['restore', '--', 'data/blogger-posts.json'], { stdio: 'ignore', shell: process.platform === 'win32' })
+  }
+}
 function remoteChanged() {
   spawnSync('git', ['fetch', 'origin', BRANCH], { stdio: 'ignore', shell: process.platform === 'win32' })
   const local = spawnSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', shell: process.platform === 'win32' }).stdout?.trim()
@@ -72,8 +78,12 @@ function syncAndBuild() {
     }
     if (remoteChanged()) {
       console.log('\n⬇️ Nova alteração detectada no GitHub. Atualizando...')
+      restoreGeneratedBloggerFile()
       const r = run('git', ['pull', '--ff-only', 'origin', BRANCH])
-      if (r.status === 0) build()
+      if (r.status === 0) {
+        syncBlogger()
+        build()
+      }
     }
   } finally {
     rebuilding = false
@@ -144,6 +154,11 @@ const server = createServer(async (req, res) => {
 })
 
 console.log('🚀 Preparando ambiente local...')
+if (currentBranch() === BRANCH && !hasBlockingLocalChanges() && remoteChanged()) {
+  console.log('⬇️ Atualizando código antes do primeiro build...')
+  restoreGeneratedBloggerFile()
+  run('git', ['pull', '--ff-only', 'origin', BRANCH])
+}
 console.log('📰 Sincronizando Blogger na inicialização...')
 syncBlogger()
 build()
