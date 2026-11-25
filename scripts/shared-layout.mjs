@@ -12,7 +12,7 @@ export function sharedHeader(contact = siteContact) {
         '<a href="#resultados" data-local-section="resultados">Resultados</a>'+
         '<a href="#sobre" data-local-section="sobre">Sobre mim</a>'+
         '<a href="#artigos" data-local-section="artigos">Artigos</a>'+
-        '<a class="site-navbar__cta" href="'+contact+'">Agendar</a>'+
+        '<a class="site-navbar__cta track-agendar" href="'+contact+'">Agendar</a>'+
       '</nav>'+
       '<button class="site-navbar__menu" type="button" aria-label="Abrir menu" aria-expanded="false" data-site-menu><span></span><span></span><span></span></button>'+
     '</div>'+
@@ -27,7 +27,7 @@ export function sharedFooter() {
         '<img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async">'+
         '<p>Hericles Ferreira | Nutricionista<br>CRN-10 12284<br>Atendimento presencial em Joinville e consultoria online.</p>'+
         '<address>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC, CEP 89224-090</address>'+
-        '<a href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>'+
+        '<a class="track-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>'+
       '</div>'+
       '<div class="site-footer__links">'+
         '<h4>Explore</h4>'+
