@@ -324,6 +324,7 @@ export default function App() {
     <div className="app">
       <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
+      <main>
       {/* HERO */}
       <section className="hero" id="home">
         <div className="hero__media" aria-hidden="true">
@@ -336,8 +337,9 @@ export default function App() {
           <div className="hero__text">
             <p className="hero__eyebrow">Nutricionista em Joinville · CRN-10 12284 · Online e presencial</p>
             <h1 className="hero__title">
-              <span className="hero__rotator" aria-label="alimentação, dieta, acompanhamento ou planejamento">
-                <span className="hero__rotator-track" aria-hidden="true">
+              <span className="sr-only">alimentação</span>
+              <span className="hero__rotator" aria-hidden="true">
+                <span className="hero__rotator-track">
                   <span>alimentação</span>
                   <span>dieta</span>
                   <span>acompanhamento</span>
@@ -380,8 +382,9 @@ export default function App() {
             <p className="section-tag">Seu acompanhamento</p>
             <h2 className="section-title journey-title">
               <span>Sua jornada para</span>
-              <span className="journey-rotator" aria-label="emagrecer, hipertrofiar, crescer, evoluir ou viver de verdade">
-                <span className="journey-rotator-track" aria-hidden="true">
+              <span className="sr-only">emagrecer</span>
+              <span className="journey-rotator" aria-hidden="true">
+                <span className="journey-rotator-track">
                   <span>emagrecer</span>
                   <span>hipertrofiar</span>
                   <span>crescer</span>
@@ -619,6 +622,8 @@ export default function App() {
         </div>
       </section>
 
+      </main>
+
       {/* FOOTER */}
       <footer className="footer">
         <div className="container footer__inner">
@@ -629,7 +634,7 @@ export default function App() {
             <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
           </div>
           <div className="footer__links">
-            <h4>Explore</h4>
+            <h2>Explore</h2>
             <a href="#como-funciona">Atendimentos</a>
             <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a>
             <a href="/consultoria-nutricional-online/">Consultoria online</a>
@@ -638,7 +643,7 @@ export default function App() {
             <a href="#localizacao">Localização</a>
           </div>
           <div className="footer__social">
-            <h4>Redes sociais</h4>
+            <h2>Redes sociais</h2>
             <a href="https://instagram.com/nutrihericles" target="_blank" rel="noopener noreferrer">Instagram · @nutrihericles</a>
             <a href="https://www.linkedin.com/in/hericlesnutri" target="_blank" rel="noopener noreferrer">LinkedIn · hericlesnutri</a>
           </div>
