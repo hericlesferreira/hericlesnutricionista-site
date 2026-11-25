@@ -204,7 +204,7 @@ function render(article) {
   const header = sharedHeader(contact)
   return shell(head,header+'<main><article>'+
     '<section class="svc-hero article-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(article.nav)+'</nav>'+
-    '<p class="svc-eyebrow">Artigo educativo · Nutrição baseada em evidências</p><h1>'+esc(article.title)+'</h1><p class="svc-lead">'+esc(article.lead)+'</p>'+
+    '<p class="svc-eyebrow">Artigo educativo · Nutrição baseada em evidências</p><h1>'+esc(article.title)+'</h1>'+
     '<div class="svc-author-mini"><img src="/img/hericles-ferreira-retrato-perfil.webp" alt="Retrato profissional de Hericles Ferreira" width="82" height="82" decoding="async">'+
     '<p><strong><a href="/sobre-hericles-ferreira/">Hericles Ferreira</a></strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento<br><small>Publicado em 23/11/2026</small></p></div></div></section>'+
     '<section class="svc-section article-reading"><div class="svc-wrap svc-narrow"><div class="svc-article"><p>'+esc(article.summary)+'</p></div>'+sections+'</div></section>'+
@@ -242,12 +242,11 @@ function renderBlogger(post) {
     '<meta property="og:url" content="'+url+'"><meta property="og:image" content="'+esc(post.image||img)+'">'+
     '<meta name="twitter:card" content="summary_large_image">'+
     '<script type="application/ld+json">'+JSON.stringify(graph).replaceAll('<','\\u003c')+'</script>'
-  const heroImage = post.image ? '<figure class="svc-support-image"><img src="'+esc(post.image)+'" alt="" loading="eager" decoding="async"></figure>' : ''
   const labels = post.labels?.length ? '<p class="svc-kicker">'+post.labels.map(esc).join(' · ')+'</p>' : '<p class="svc-kicker">Artigo educativo</p>'
   const header = sharedHeader(contact)
   return shell(head, header+'<main><article>'+
     '<section class="svc-hero article-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(post.title)+'</nav>'+
-    labels+'<h1>'+esc(post.title)+'</h1><p class="svc-lead">'+esc(post.description)+'</p>'+heroImage+
+    labels+'<h1>'+esc(post.title)+'</h1>'+
     '<div class="svc-author-mini"><img src="/img/hericles-ferreira-retrato-perfil.webp" alt="Retrato profissional de Hericles Ferreira" width="82" height="82" decoding="async">'+
     '<p><strong><a href="/sobre-hericles-ferreira/">Hericles Ferreira</a></strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento'+(published?'<br><small>Publicado em '+published+'</small>':'')+'</p></div></div></section>'+
     '<section class="svc-section article-reading"><div class="svc-wrap svc-narrow"><div class="svc-article blogger-article">'+sanitizeBloggerHtml(post.contentHtml)+'</div></div></section>'+
