@@ -73,6 +73,24 @@ const homeResults = [
   {nome:'Hericles',idade:'30 anos',antes:'115kg',depois:'84kg',tempo:'5 meses',perfil:'Obesidade',descricao:'Recomposição corporal com maior perda de gordura',image:'/img/Hericles.png'}
 ]
 
+const onlineJourneySteps = [
+  ['01','Questionário inicial','Sua consultoria começa entendendo a sua rotina','Você responde um questionário detalhado sobre alimentação, rotina, horários, preferências, dificuldades e objetivos. Ele substitui a consulta presencial nesta modalidade.','/img/hericles-ferreira-questionario-pre-consulta-nutricional-joinville.webp','Questionário inicial da consultoria nutricional online.'],
+  ['02','Análise individual','Eu estudo o seu contexto','Com suas respostas em mãos, analiso seu histórico, rotina e padrão alimentar para definir uma estratégia possível de colocar em prática no seu dia a dia.','/img/consulta-nutricional-hericles-ferreira-joinville.webp','Análise individual para consultoria nutricional online.'],
+  ['03','Planejamento','Plano personalizado e individualizado','O planejamento alimentar é construído com base nas informações que você enviou, respeitando preferências, horários, rotina e objetivo.','/img/plano-alimentar-personalizado-hericles-ferreira.webp','Planejamento alimentar individualizado da consultoria online.'],
+  ['04','Entrega digital','Seu planejamento chega até você','Você recebe o plano alimentar e as orientações de forma digital, sem precisar se deslocar até o consultório.','/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp','Entrega digital do planejamento nutricional.'],
+  ['05','Check-in semanal','Toda sexta-feira','Acompanhamos como foi sua semana, onde o planejamento funcionou, onde travou e quais dificuldades apareceram para orientar os próximos ajustes.','/img/check-in-semanal-acompanhamento-nutricional.webp','Check-in semanal da consultoria nutricional online.'],
+  ['06','Suporte','Você não fica sozinho com uma dieta','Entre os check-ins, você tem suporte pelo WhatsApp para esclarecer dúvidas e sinalizar situações que pedem adaptação no planejamento.','/img/suporte-whatsapp-nutricionista-hericles-ferreira.webp','Suporte pelo WhatsApp durante a consultoria nutricional online.'],
+  ['07','App exclusivo','Tudo organizado em um só lugar','No Dietitian você acessa seu planejamento alimentar, orientações, receitas e os materiais disponibilizados ao longo do acompanhamento.','/img/aplicativo-acompanhamento-nutricional-plano-alimentar.webp','Aplicativo da consultoria nutricional online.'],
+  ['08','Recursos exclusivos','Caixa de Ferramentas do Nutri','Você também recebe acesso à minha Caixa de Ferramentas, com recursos pensados para facilitar sua rotina e ajudar a transformar o planejamento em prática.','/img/caixa-de-ferramentas-nutri-hericles-ferreira.webp','Recursos exclusivos da consultoria nutricional online.']
+]
+
+function renderOnlineJourney() {
+  const cards = onlineJourneySteps.map(([n,eyebrow,title,text,image,alt]) =>
+    '<article class="emag-journey-card"><img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>'+n+'</span> '+esc(eyebrow)+'</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
+  ).join('')
+  return '<section class="emag-journey" id="como-funciona"><div class="svc-wrap"><div class="emag-section-intro"><p class="svc-kicker">Sua consultoria online</p><h2>Sua jornada começa <span>onde você estiver</span></h2><p>Da primeira resposta no questionário aos ajustes de cada semana, a consultoria foi pensada para transformar um atendimento online em acompanhamento de verdade.</p></div><div class="emag-journey-grid">'+cards+'</div></div></section>'
+}
+
 function renderSportsJourney() {
   const cards = homeJourneySteps.map(([n,eyebrow,title,text,image,alt]) =>
     '<article class="emag-journey-card"><img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>'+n+'</span> '+esc(eyebrow)+'</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
@@ -139,7 +157,7 @@ function renderHomeLocation(contactUrl) {
   '</div></section>'
 }
 
-const homeLayoutSlugs = new Set(['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville'])
+const homeLayoutSlugs = new Set(['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville','consultoria-nutricional-online'])
 
 const pages = [
   {
@@ -279,7 +297,9 @@ ${homeLayoutSlugs.has(p.slug) ? `
   <picture class="emag-hero__media" aria-hidden="true">
     ${p.slug === 'nutricionista-esportivo-joinville'
       ? '<img src="/img/nutricionista-esportivo.webp" alt="" fetchpriority="high" decoding="async">'
-      : '<source media="(max-width:768px)" srcset="/img/hero-home-mobile.png"><img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">'}
+      : (p.slug === 'consultoria-nutricional-online'
+        ? '<img src="/img/consultoria-online-nutricionista.webp" alt="" fetchpriority="high" decoding="async">'
+        : '<source media="(max-width:768px)" srcset="/img/hero-home-mobile.png"><img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">')}
   </picture>
   <div class="svc-wrap emag-hero__inner">
     <div class="emag-hero__copy">
@@ -290,18 +310,18 @@ ${homeLayoutSlugs.has(p.slug) ? `
       <div class="emag-hero__actions"><a class="svc-button" href="${contact(p.nav)}">Agendar consulta</a><a class="emag-hero__secondary" href="/sobre-hericles-ferreira/">Conheça o meu trabalho</a></div>
     </div>
   </div>
-  <div class="emag-stats"><div class="svc-wrap emag-stats__inner"><div><strong>Online & Presencial</strong><span>Joinville/SC</span></div><i></i><div><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div><i></i><div><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div></div></div>
+  <div class="emag-stats"><div class="svc-wrap emag-stats__inner"><div><strong>${p.slug === 'consultoria-nutricional-online' ? '100% Online' : 'Online & Presencial'}</strong><span>${p.slug === 'consultoria-nutricional-online' ? 'De onde você estiver' : 'Joinville/SC'}</span></div><i></i><div><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div><i></i><div><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div></div></div>
 </section>` : `<section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
 <p class="svc-eyebrow">${esc(p.label)} · CRN-10 12284</p><h1>${esc(p.heading)}</h1>
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
-${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : '')}
+${p.slug === 'consultoria-nutricional-online' ? renderOnlineJourney() : (p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''))}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
-${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p))}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : (p.slug === 'nutricionista-esportivo-joinville' ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
+${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' || p.slug === 'consultoria-nutricional-online' ? renderHomeResults() : renderTransformations(p))}
+${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : ((p.slug === 'nutricionista-esportivo-joinville' || p.slug === 'consultoria-nutricional-online') ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
 </main>${sharedFooter()}
