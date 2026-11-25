@@ -113,10 +113,10 @@ ${sharedHeader(wa)}
 <article class="svc-card"><h3>2. Planejar</h3><p>Definir orientações e um plano alimentar individualizado, sem proibições arbitrárias.</p></article>
 <article class="svc-card"><h3>3. Acompanhar</h3><p>Observar a evolução, conversar sobre dificuldades e ajustar a estratégia quando necessário.</p></article>
 </div>
-<h2 style="margin-top:40px">Como são as modalidades de atendimento?</h2>
-<p><strong>Consulta presencial em Joinville:</strong> realizada no consultório, com avaliação nutricional e física conforme a necessidade individual.</p>
-<p style="margin-top:14px"><strong>Consultoria nutricional online:</strong> começa por um questionário detalhado, utilizado para elaborar orientações e planejamento alimentar, com acompanhamento digital conforme a modalidade contratada. Não é a mesma modalidade de consulta presencial.</p>
-<p style="margin-top:16px">O acompanhamento pode incluir check-ins semanais, suporte pelo WhatsApp, acesso ao aplicativo Dietitian e ajustes do plano conforme o serviço contratado.</p>
+<h2 style="margin-top:40px">Atendimento presencial e online</h2>
+<p><strong>Consulta presencial:</strong> realizada no meu consultório, em Joinville, com avaliação física conforme sua necessidade.</p>
+<p style="margin-top:14px"><strong>Consulta online:</strong> realizada por videochamada, usando o Google Meet. Neste caso, fazemos a avaliação física por meio de fotos e algumas medidas que peço para você me enviar. Também envio um guia orientando como fazer essas medidas da melhor forma.</p>
+<p style="margin-top:14px"><strong>Consultoria online:</strong> A consultoria online é uma alternativa prática para quem quer organizar a alimentação sem precisar comparecer ao consultório, ou ainda para pessoas de outras cidade e países.</p>
 </div></section>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
 <p class="svc-kicker">Atendimento e contato</p>
