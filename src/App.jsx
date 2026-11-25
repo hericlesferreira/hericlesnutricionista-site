@@ -632,7 +632,7 @@ export default function App() {
             <img src="/img/logo-preta.png" alt="Hericles Nutricionista" width="2000" height="500" decoding="async" />
             <p>Hericles Ferreira | Nutricionista<br />CRN-10 12284<br />Atendimento presencial em Joinville e consultoria online.</p>
             <address className="footer__address">{ADDRESS}</address>
-            <a className="footer__maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
+            <a className="footer__maps track-maps" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Como chegar ao consultório</a>
           </div>
           <div className="footer__links">
             <h2>Explore</h2>
