@@ -289,9 +289,22 @@ function renderIndex(){
     alt:post.title
   }))
 
+  strategic[0].markers=['Emagrecimento']
+  strategic[1].markers=['Emagrecimento','Esportiva']
+  strategic[2].markers=['Emagrecimento']
+  strategic[3].markers=['Emagrecimento','Medicamentos']
+  blogger.forEach((item,index)=>{ item.markers = bloggerPosts[index]?.labels || [] })
+
   const items=[...strategic,...blogger.filter(post=>!strategic.some(item=>item.href===post.href))]
+  const normalizeMarker=value=>String(value||'').trim().toLocaleLowerCase('pt-BR')
+  const markers=[...new Set(items.flatMap(item=>item.markers||[]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'))
+  const filters='<div class="articles-index-filters" aria-label="Filtrar artigos por marcador">'+
+    '<button type="button" class="articles-index-filter is-active" data-article-filter="todos" aria-pressed="true">Todos</button>'+
+    markers.map(marker=>'<button type="button" class="articles-index-filter" data-article-filter="'+esc(normalizeMarker(marker))+'" aria-pressed="false">'+esc(marker)+'</button>').join('')+
+  '</div>'
+
   const cards=items.map((item,index)=>
-    '<article class="articles-index-card'+(index>=6?' is-hidden':'')+'" data-article-card>'+
+    '<article class="articles-index-card'+(index>=6?' is-hidden':'')+'" data-article-card data-markers="'+esc((item.markers||[]).map(normalizeMarker).join('|'))+'">'+
       '<a class="articles-index-card__cover" href="'+esc(item.href)+'" aria-label="Ler artigo '+esc(item.title)+'">'+
         '<div class="articles-index-card__image"><img src="'+esc(item.image)+'" alt="'+esc(item.alt)+'" loading="lazy" decoding="async"></div>'+
         '<div class="articles-index-card__body">'+
@@ -308,11 +321,11 @@ function renderIndex(){
     ? '<div class="articles-index-more"><button type="button" id="articles-index-more">Mostrar mais</button></div>'
     : ''
 
-  const behavior='<script>(function(){const btn=document.getElementById("articles-index-more");if(!btn)return;btn.addEventListener("click",function(){const hidden=[...document.querySelectorAll("[data-article-card].is-hidden")];hidden.slice(0,6).forEach(el=>el.classList.remove("is-hidden"));if(!document.querySelector("[data-article-card].is-hidden"))btn.remove();});})();</script>'
+  const behavior='<script>(function(){const cards=[...document.querySelectorAll("[data-article-card]")];const filters=[...document.querySelectorAll("[data-article-filter]")];const more=document.getElementById("articles-index-more");let active="todos";let visible=6;function matches(card){if(active==="todos")return true;return (card.dataset.markers||"").split("|").includes(active)}function render(){let shown=0,total=0;cards.forEach(card=>{const ok=matches(card);if(ok)total++;const display=ok&&shown<visible;if(display)shown++;card.classList.toggle("is-hidden",!display)});if(more)more.style.display=total>visible?"inline-flex":"none"}filters.forEach(btn=>btn.addEventListener("click",function(){active=this.dataset.articleFilter;visible=6;filters.forEach(x=>{const on=x===this;x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on?"true":"false")});render()}));if(more)more.addEventListener("click",function(){visible+=6;render()});render();})();</script>'
 
   return shell(head,sharedHeader(contact)+
-   '<main><section class="svc-hero"><div class="svc-wrap"><p class="svc-eyebrow">Leituras do Nutri</p><h1>Artigos sobre emagrecimento e nutrição</h1><p class="svc-lead">Informação clara, referências confiáveis e estratégias que fazem sentido na vida real. Por Hericles Ferreira, nutricionista, CRN-10 12284.</p></div></section>'+
-   '<section class="svc-section articles-index"><div class="svc-wrap"><div class="articles-index-grid">'+cards+'</div>'+moreButton+'</div></section></main>'+
+   '<main><section class="svc-hero"><div class="svc-wrap"><p class="svc-eyebrow">Leituras do Nutri</p><h1>Artigos que escrevi recentemente</h1><p class="svc-lead">Aqui você encontra informação clara e didática, com referências confiáveis e estratégias que fazem sentido na vida real.</p><p class="articles-index-author">Por Hericles Ferreira | Nutricionista CRN 10 12284</p></div></section>'+
+   '<section class="svc-section articles-index"><div class="svc-wrap">'+filters+'<div class="articles-index-grid">'+cards+'</div>'+moreButton+'</div></section></main>'+
    sharedFooter()+behavior)
 }
 export async function generateEducationalArticles(){
