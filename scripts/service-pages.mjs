@@ -106,6 +106,19 @@ function renderHomeFaq(contactUrl) {
   return '<section class="svc-section emag-faq"><div class="svc-wrap svc-narrow"><h2>Perguntas frequentes</h2><div class="svc-faq">'+items+'</div><div class="emag-faq__cta"><p>Ainda tem dúvida sobre emagrecimento, hipertrofia ou consultoria online? Me manda mensagem.</p><a class="svc-outline" href="'+contactUrl+'">Falar no WhatsApp</a></div></div></section>'
 }
 
+
+function renderHomeLocation(contactUrl) {
+  const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address)
+  return '<section class="emag-location" id="localizacao" aria-labelledby="emag-location-title"><div class="svc-wrap">'+
+    '<div class="emag-location__header"><p class="svc-kicker">Atendimento presencial em Joinville</p><h2 id="emag-location-title">Onde fica o consultório?</h2><p>Meu consultório fica em Joinville/SC, com atendimento presencial em um espaço preparado para avaliação, acompanhamento e definição da sua estratégia nutricional.</p></div>'+
+    '<div class="emag-location__grid">'+
+      '<div class="emag-location__map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.4864640924357!2d-48.804348630362256!3d-26.26342059590358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafed6802f801%3A0xb15dc1c82143089b!2sMais%20que%20Rubis%20Studio%20-%20Est%C3%A9tica%20e%20Micropigmenta%C3%A7%C3%A3o%20by%20Girlane%20Ferreira!5e0!3m2!1spt-BR!2sbr!4v1795549649378!5m2!1spt-BR!2sbr" title="Localização do consultório de Hericles Ferreira em Joinville" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'+
+      '<div class="emag-location__info"><div class="emag-location__card"><strong>Hericles Ferreira | Nutricionista</strong><span>CRN-10 12284</span><span>Especialização em Metabolismo e Emagrecimento</span><address>'+esc(address)+'</address><a href="tel:+5547988602379">(47) 98860-2379</a></div><div class="emag-location__actions"><a class="svc-outline" href="'+mapsUrl+'" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a><a class="svc-button" href="'+contactUrl+'">Agendar consulta</a></div></div>'+
+    '</div>'+
+    '<div class="emag-location__gallery"><figure><img src="/img/consultorio.webp" alt="Consultório de Hericles Ferreira para atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure><figure><img src="/img/clinica.webp" alt="Fachada da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure></div>'+
+  '</div></section>'
+}
+
 const pages = [
   {
     slug: 'nutricionista-emagrecimento-joinville',
@@ -267,7 +280,7 @@ ${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p)}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
-<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
+${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
 </main>${sharedFooter()}
 </body></html>`
 }
