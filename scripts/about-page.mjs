@@ -165,7 +165,7 @@ ${renderAboutArticles()}
           <a href="tel:+5547988602379">(47) 98860-2379</a>
         </div>
         <div class="localizacao__actions">
-          <a class="svc-outline" class="track-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
+          <a class="svc-outline track-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Areia+Branca%2C+1035%2C+Jardim+Iririu%2C+Joinville%2C+SC" target="_blank" rel="noopener noreferrer">Ver rotas no Google Maps</a>
           <a class="svc-button track-agendar" href="${wa}">Agendar consulta</a>
         </div>
       </div>
