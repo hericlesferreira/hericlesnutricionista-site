@@ -6,7 +6,7 @@ const origin = 'https://www.nutrihericles.com.br'
 const url = origin + '/sobre-hericles-ferreira/'
 const title = 'Sobre Hericles Ferreira | Nutricionista em Joinville, CRN-10 12284'
 const description = 'Conheça Hericles Ferreira, nutricionista em Joinville e pós-graduado em Metabolismo e Emagrecimento. Saiba como funciona seu acompanhamento nutricional.'
-const image = origin + '/img/hericles-ferreira-sofa-profissional.webp'
+const image = origin + '/img/quem-sou-eu.webp'
 const wa = 'https://api.whatsapp.com/send?phone=5547988602379&text=' + encodeURIComponent('Olá, Hericles! Li sua apresentação profissional no site e gostaria de saber sobre seu acompanhamento nutricional.')
 const structuredData = {
   '@context': 'https://schema.org',
@@ -64,7 +64,7 @@ const html = `<!doctype html>
 <title>${title}</title><meta name="description" content="${description}">
 <meta name="robots" content="index,follow">
 <meta name="author" content="Hericles Ferreira">
-<link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="/img/hericles-ferreira-retrato-institucional.webp" fetchpriority="high">
+<link rel="canonical" href="${url}">\n<link rel="preload" as="image" href="/img/quem-sou-eu.webp" fetchpriority="high">
 <link rel="icon" href="/img/favicon-hericles.png">
 <meta property="og:type" content="profile"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
@@ -76,16 +76,23 @@ const html = `<!doctype html>
 </head><body>
 ${sharedHeader(wa)}
 <main>
-<section class="svc-hero"><div class="svc-wrap svc-hero-grid">
-<div class="svc-hero-copy">
-<nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / Sobre o nutricionista</nav>
-<p class="svc-eyebrow">Quem cuida da sua alimentação · CRN-10 12284</p>
-<h1>Hericles Ferreira, nutricionista em Joinville</h1>
-<p class="svc-lead">Minha proposta é encaixar a dieta na realidade de cada paciente, e não o contrário. Sem soluções milagrosas, com estratégia, acompanhamento e respeito à sua rotina.</p>
-<a class="svc-button" href="${wa}">Falar sobre meu objetivo</a>
-</div>
-<img class="svc-hero-photo" src="/img/hericles-ferreira-retrato-institucional.webp" alt="Hericles Ferreira, nutricionista, em retrato profissional" width="300" height="410" fetchpriority="high" decoding="async">
-</div></section>
+<section class="about-hero">
+  <div class="about-hero__media" aria-hidden="true"><img src="/img/quem-sou-eu.webp" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="svc-wrap about-hero__inner">
+    <div class="about-hero__copy">
+      <nav class="about-hero__breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / Sobre o nutricionista</nav>
+      <p class="about-hero__eyebrow">Quem cuida da sua alimentação · CRN-10 12284</p>
+      <h1>Hericles Ferreira, nutricionista em Joinville</h1>
+      <p class="about-hero__lead">Minha proposta é encaixar a dieta na realidade de cada paciente, e não o contrário. Sem soluções milagrosas, com estratégia, acompanhamento e respeito à sua rotina.</p>
+      <div class="about-hero__actions"><a class="svc-button" href="${wa}">Falar sobre meu objetivo</a></div>
+    </div>
+  </div>
+  <div class="about-hero__stats"><div class="svc-wrap about-hero__stats-inner">
+    <div><strong>CRN-10 12284</strong><span>Nutricionista em Joinville</span></div><i></i>
+    <div><strong>Metabolismo e Emagrecimento</strong><span>Pós-graduação pela Faculdade Uniguaçu</span></div><i></i>
+    <div><strong>Online & Presencial</strong><span>Acompanhamento individualizado</span></div>
+  </div></div>
+</section>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
 <p class="svc-kicker">Minha trajetória</p><h2>Antes de orientar, vivi o processo de mudança</h2>
 <p>Minha relação com o emagrecimento também é pessoal. Durante anos, enfrentei o sobrepeso, o cansaço em atividades comuns e a dificuldade de organizar a alimentação. Minha rotina girava em torno de opções rápidas, entre trabalho e compromissos.</p>
