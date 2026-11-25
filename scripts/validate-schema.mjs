@@ -1,6 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
+const bloggerPosts = JSON.parse(await readFile(new URL('../data/blogger-posts.json', import.meta.url), 'utf8'))
+
 const base = 'https://www.nutrihericles.com.br/'
 const pages = [
   '',
@@ -14,6 +16,7 @@ const pages = [
   'artigos/como-emagrecer-sem-passar-fome',
   'artigos/como-perder-gordura-sem-perder-massa-muscular',
   'artigos/porque-parei-de-emagrecer-mesmo-fazendo-dieta',
+  ...(Array.isArray(bloggerPosts) ? bloggerPosts.map(post => 'artigos/' + post.slug) : []),
 ]
 
 const fail = (reason, page) => { throw new Error('Schema audit [' + (page || '/') + ']: ' + reason) }
