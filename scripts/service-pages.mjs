@@ -88,6 +88,24 @@ function renderHomeResults() {
   return '<section class="emag-results" id="resultados"><div class="svc-wrap"><div class="emag-section-intro emag-section-intro--light"><h2>Transformações reais</h2><p>Histórias reais de pacientes acompanhados. Cada resultado depende do contexto, adesão e características individuais.</p></div><div class="emag-results-grid">'+cards+'</div></div></section>'
 }
 
+
+const homeFaqs = [
+  ['Como funciona a consulta nutricional presencial?','Antes da nossa consulta presencial, você recebe nosso questionário pré-consulta. Depois, temos nossa consulta presencial, onde entendemos sua rotina, hábitos alimentares e comportamento. Realizamos a avaliação física e definimos como será seu novo plano alimentar.'],
+  ['Como funciona a consultoria online?','A consultoria online começa com um questionário detalhado que substitui a consulta presencial. Com base nas respostas, elaboro seu planejamento alimentar.'],
+  ['Preciso cortar pão, arroz e os alimentos de que gosto para emagrecer?','Não necessariamente. O planejamento alimentar considera suas preferências, rotina e necessidades.'],
+  ['O acompanhamento inclui contato depois do plano alimentar?','Sim! Além do meu suporte diário por WhatsApp, temos o check-in semanal.'],
+  ['É possível ganhar massa muscular e perder gordura?','Sim. Tudo depende do histórico e contexto. Mudanças na composição corporal podem acontecer com planejamento alimentar e treinamento adequados. A estratégia precisa ser individualizada.'],
+  ['Você acompanha pessoas que usam Mounjaro, Ozempic ou tirzepatida?','Sim. Acompanho pessoas que fazem uso de medicação para emagrecer. O planejamento nutricional ajuda a organizar a alimentação, avaliar a ingestão de proteínas e lidar com dificuldades nutricionais durante o tratamento.'],
+  ['Quanto tempo demora para receber o planejamento alimentar?','Após nossa consulta, o prazo para entrega do planejamento alimentar e orientações nutricionais é de 72h.'],
+  ['Onde encontro o plano e as orientações?','Além de receber todo o planejamento e orientações por WhatsApp, você também recebe acesso ao nosso aplicativo Dietitian, onde acessa o plano alimentar, receitas, prescrições e exames.'],
+  ['Qual é o endereço do atendimento presencial?','Meu consultório fica na Rua Areia Branca, 1035, Jardim Iririú, em Joinville/SC.']
+]
+
+function renderHomeFaq(contactUrl) {
+  const items = homeFaqs.map(([q,a]) => '<details><summary>'+esc(q)+'</summary><p>'+esc(a)+'</p></details>').join('')
+  return '<section class="svc-section emag-faq"><div class="svc-wrap svc-narrow"><h2>Perguntas frequentes</h2><div class="svc-faq">'+items+'</div><div class="emag-faq__cta"><p>Ainda tem dúvida sobre emagrecimento, hipertrofia ou consultoria online? Me manda mensagem.</p><a class="svc-outline" href="'+contactUrl+'">Falar no WhatsApp</a></div></div></section>'
+}
+
 const pages = [
   {
     slug: 'nutricionista-emagrecimento-joinville',
@@ -247,8 +265,8 @@ ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p)}
-<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
+${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`}
+${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
 <section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
 </main>${sharedFooter()}
 </body></html>`
