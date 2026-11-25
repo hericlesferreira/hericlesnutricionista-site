@@ -107,6 +107,11 @@ function renderHomeFaq(contactUrl) {
 }
 
 
+function renderStyledFaq(items, contactUrl) {
+  const faqItems = items.map(([q,a]) => '<details><summary>'+esc(q)+'</summary><p>'+esc(a)+'</p></details>').join('')
+  return '<section class="svc-section emag-faq"><div class="svc-wrap svc-narrow"><h2>Perguntas frequentes</h2><div class="svc-faq">'+faqItems+'</div><div class="emag-faq__cta"><p>Ainda tem dúvida? Me manda mensagem.</p><a class="svc-outline" href="'+contactUrl+'">Falar no WhatsApp</a></div></div></section>'
+}
+
 function renderHomeLocation(contactUrl) {
   const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address)
   return '<section class="emag-location" id="localizacao" aria-labelledby="emag-location-title"><div class="svc-wrap">'+
@@ -118,6 +123,8 @@ function renderHomeLocation(contactUrl) {
     '<div class="emag-location__gallery"><figure><img src="/img/consultorio.webp" alt="Consultório de Hericles Ferreira para atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure><figure><img src="/img/clinica.webp" alt="Fachada da clínica onde Hericles Ferreira realiza atendimento nutricional em Joinville" loading="lazy" decoding="async"></figure></div>'+
   '</div></section>'
 }
+
+const homeLayoutSlugs = new Set(['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville'])
 
 const pages = [
   {
@@ -252,7 +259,7 @@ function render(p) {
 </head><body>
 ${sharedHeader(contact(p.nav))}
 <main>
-${p.slug === 'nutricionista-emagrecimento-joinville' ? `
+${homeLayoutSlugs.has(p.slug) ? `
 <section class="emag-hero">
   <picture class="emag-hero__media" aria-hidden="true">
     <source media="(max-width:768px)" srcset="/img/hero-home-mobile.png">
@@ -274,13 +281,13 @@ ${p.slug === 'nutricionista-emagrecimento-joinville' ? `
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''}
+${homeLayoutSlugs.has(p.slug) ? renderHomeJourney() : ''}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
-${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p)}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
+${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
+${homeLayoutSlugs.has(p.slug) ? renderHomeResults() : renderTransformations(p)}
+${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : (p.slug === 'nutricionista-esportivo-joinville' ? renderStyledFaq(p.faqs, contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
+${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
+${homeLayoutSlugs.has(p.slug) ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
 </main>${sharedFooter()}
 </body></html>`
 }
