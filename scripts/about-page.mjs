@@ -83,8 +83,8 @@ ${sharedHeader(wa)}
       <nav class="about-hero__breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / Sobre o nutricionista</nav>
       <p class="about-hero__eyebrow">Quem cuida da sua alimentação · CRN-10 12284</p>
       <h1>Hericles Ferreira, nutricionista em Joinville</h1>
-      <p class="about-hero__lead">Minha proposta é encaixar a dieta na realidade de cada paciente, e não o contrário. Sem soluções milagrosas, com estratégia, acompanhamento e respeito à sua rotina.</p>
-      <div class="about-hero__actions"><a class="svc-button" href="${wa}">Falar sobre meu objetivo</a></div>
+      <p class="about-hero__lead">Minha proposta é encaixar a dieta na sua realidade, e não o contrário. Sem soluções milagrosas, com estratégia e acompanhamento.</p>
+      <div class="about-hero__actions"><a class="svc-button" href="${wa}">Agendar consulta</a></div>
     </div>
   </div>
   <div class="about-hero__stats"><div class="svc-wrap about-hero__stats-inner">
