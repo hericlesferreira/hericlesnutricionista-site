@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { sharedHeader, sharedFooter } from './shared-layout.mjs'
+import { sharedHeader, sharedFooter, trackingHead, trackingBody } from './shared-layout.mjs'
 
 const base = 'https://www.nutrihericles.com.br'
 const author = base + '/#professional'
@@ -171,7 +171,7 @@ function renderArticleCta() {
     '<a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a>'+
   '</div></section>'
 }
-function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="icon" type="image/png" href="/img/favicon-hericles.png"><link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/refresh-pages.css"></head><body>'+content+'</body></html>' }
+function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="icon" type="image/png" href="/img/favicon-hericles.png"><link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/refresh-pages.css">${trackingHead}</head><body>${trackingBody}'+content+'</body></html>' }
 function render(article) {
   const url = base + linked(article)
   const graph = {
