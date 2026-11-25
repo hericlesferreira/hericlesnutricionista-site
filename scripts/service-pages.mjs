@@ -20,7 +20,7 @@ const photos = {
     supportAlt: 'Retrato de Hericles Ferreira, nutricionista em Joinville'
   },
   'consultoria-nutricional-online': {
-    hero: '/img/hericles-ferreira-consultoria-online.webp?v=2',
+    hero: '/img/consultoria-online-nutricionista.webp',
     heroAlt: 'Hericles Ferreira trabalhando no notebook no ambiente de atendimento',
     support: '/img/hericles-ferreira-sofa-profissional.webp?v=2',
     supportAlt: 'Hericles Ferreira sentado em retrato profissional'
