@@ -8,7 +8,7 @@ const pages = [
   'nutricionista-esportivo-joinville',
   'consultoria-nutricional-online',
   'acompanhamento-nutricional',
-  'alimentacao-mounjaro-ozempic-tirzepatida',
+  'artigos/alimentacao-mounjaro-ozempic-tirzepatida',
   'sobre-hericles-ferreira',
   'artigos',
   'artigos/como-emagrecer-sem-passar-fome',
@@ -37,7 +37,7 @@ for (const page of pages) {
   const graphTypes = graphs.map(x => x['@type'])
   if (page === '' && (!graphTypes.includes('MedicalBusiness') || !graphTypes.includes('WebSite'))) fail('Entidades principais ausentes', page)
   if (page === 'sobre-hericles-ferreira' && !graphTypes.includes('ProfilePage')) fail('ProfilePage ausente', page)
-  if ((page === 'alimentacao-mounjaro-ozempic-tirzepatida' || page.startsWith('artigos/')) && !graphTypes.includes('Article')) fail('Article ausente', page)
+  if (page.startsWith('artigos/') && !graphTypes.includes('Article')) fail('Article ausente', page)
   if (page === 'artigos' && !graphTypes.includes('CollectionPage')) fail('CollectionPage ausente', page)
   if (page.startsWith('nutricionista-') || page.startsWith('consultoria-') || page.startsWith('acompanhamento-')) {
     if (!graphTypes.includes('Service')) fail('Service ausente', page)
