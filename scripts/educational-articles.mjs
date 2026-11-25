@@ -15,6 +15,8 @@ const sanitizeBloggerHtml = (html = '') => String(html)
   .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
   .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*')/gi, '')
   .replace(/javascript:/gi, '')
+  .replace(/<(?:p|div|h[1-6]|span)[^>]*>\s*(?:<[^>]+>)*\s*ARTIGO\s+E\s+ORIENTA(?:Ç|C)(?:ÕES|OES)\s+PR(?:Á|A)TICAS\s*(?:<\/[^>]+>)*\s*<\/(?:p|div|h[1-6]|span)>/gi, '')
+  .replace(/<a[^>]*>\s*(?:<[^>]+>)*\s*QUERO\s+ACOMPANHAMENTO\s+NUTRICIONAL\s*(?:<\/[^>]+>)*\s*<\/a>/gi, '')
 export const articles = [
   {
     slug: 'como-emagrecer-sem-passar-fome',
@@ -147,6 +149,28 @@ const esc = s => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 const linked = (a) => '/artigos/' + a.slug + '/'
 const refMarkup = refs => refs.map(([label,url]) => '<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')
 const articleLinks = (current) => articles.filter(a => a.slug !== current).map(a=>'<a class="svc-more-link" href="'+linked(a)+'">'+esc(a.nav)+' →</a>').join('')
+
+function renderArticleAuthor() {
+  return '<section class="article-author-home">'+
+    '<div class="article-author-home__media" aria-hidden="true"><img src="/img/quem-sou-eu.webp" alt="" loading="lazy" decoding="async"></div>'+
+    '<div class="svc-wrap article-author-home__inner"><div class="article-author-home__text">'+
+      '<p class="svc-kicker">Quem sou eu</p>'+
+      '<h2>Atuação em <span>metabolismo, emagrecimento e hipertrofia</span></h2>'+
+      '<p>Sou Hericles Ferreira, nutricionista em Joinville/SC, formado pela Católica-SC e pós-graduado em Metabolismo e Emagrecimento pela Faculdade Uniguaçu.</p>'+
+      '<p>Apaixonado por comida e pelos momentos que envolvem comida, minha relação com a nutrição começou em um processo muito pessoal. Quando precisei de ajuda para emagrecer, encontrei muitas informações divergentes na internet e me deparei com profissionais que me passavam dietas irreais e promessas vazias.</p>'+
+      '<p>Hoje minha missão é simples: <strong>ajudar você a emagrecer, ganhar massa magra e sustentar resultados com estratégia, clareza e sem terrorismo nutricional.</strong></p>'+
+      '<div class="article-author-home__creds"><span>📋 CRN-10 12284</span><span>🎓 Pós em Metabolismo e Emagrecimento</span><span>📍 Joinville/SC</span><span>@nutrihericles</span></div>'+
+      '<a class="svc-outline" href="/sobre-hericles-ferreira/">Minha trajetória, formação e consultório</a>'+
+    '</div></div>'+
+  '</section>'
+}
+
+function renderArticleCta() {
+  return '<section class="svc-end article-standard-cta"><div class="svc-wrap">'+
+    '<p>Atendimento presencial em Joinville e consultoria nutricional online, conforme a necessidade de cada pessoa.</p>'+
+    '<a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a>'+
+  '</div></section>'
+}
 function shell(head, content) { return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+head+'<link rel="icon" type="image/png" href="/img/favicon-hericles.png"><link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/refresh-pages.css"></head><body>'+content+'</body></html>' }
 function render(article) {
   const url = base + linked(article)
@@ -179,16 +203,14 @@ function render(article) {
   const faq = article.faqs.map(([q,a])=>'<details><summary>'+esc(q)+'</summary><p>'+esc(a)+'</p></details>').join('')
   const header = sharedHeader(contact)
   return shell(head,header+'<main><article>'+
-    '<section class="svc-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(article.nav)+'</nav>'+
+    '<section class="svc-hero article-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(article.nav)+'</nav>'+
     '<p class="svc-eyebrow">Artigo educativo · Nutrição baseada em evidências</p><h1>'+esc(article.title)+'</h1><p class="svc-lead">'+esc(article.lead)+'</p>'+
     '<div class="svc-author-mini"><img src="/img/hericles-ferreira-retrato-perfil.webp" alt="Retrato profissional de Hericles Ferreira" width="82" height="82" decoding="async">'+
     '<p><strong><a href="/sobre-hericles-ferreira/">Hericles Ferreira</a></strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento<br><small>Publicado em 23/11/2026</small></p></div></div></section>'+
-    '<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Resposta direta</p><h2>O que você precisa saber</h2><p>'+esc(article.summary)+'</p></div></section>'+
-    '<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">'+sections+'</div></section>'+
-    '<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Perguntas frequentes</p><h2>Dúvidas sobre o assunto</h2><div class="svc-faq">'+faq+'</div></div></section>'+
-    '<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Fontes e responsabilidade editorial</p><h2>Referências utilizadas</h2><p>Conteúdo educativo de Hericles Ferreira, CRN-10 12284. As orientações gerais não substituem avaliação nutricional ou médica individual. Não há garantia de resultados específicos.</p><ul class="ed-references">'+refMarkup(article.refs)+'</ul>'+
-    '<h2 style="margin-top:40px">Outros artigos que podem ajudar</h2><div class="svc-more">'+articleLinks(article.slug)+'</div></div></section>'+
-    '<section class="svc-end"><div class="svc-wrap"><h2>Sua estratégia precisa caber na sua vida</h2><p>Atendimento presencial em Joinville e consultoria nutricional online, conforme a necessidade de cada pessoa.</p><a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a><p class="ed-link"><a href="'+article.relatedService+'">'+esc(article.relatedLabel)+' →</a></p></div></section>'+
+    '<section class="svc-section article-reading"><div class="svc-wrap svc-narrow"><div class="svc-article"><p>'+esc(article.summary)+'</p></div>'+sections+'</div></section>'+
+    '<section class="svc-section svc-muted article-references"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Referências</p><h2>Referências utilizadas</h2><p>Conteúdo educativo de Hericles Ferreira, CRN-10 12284. As orientações gerais não substituem avaliação nutricional ou médica individual. Não há garantia de resultados específicos.</p><ul class="ed-references">'+refMarkup(article.refs)+'</ul></div></section>'+
+    renderArticleAuthor()+
+    renderArticleCta()+
     '</article></main>'+sharedFooter())
 }
 function renderBlogger(post) {
@@ -224,12 +246,13 @@ function renderBlogger(post) {
   const labels = post.labels?.length ? '<p class="svc-kicker">'+post.labels.map(esc).join(' · ')+'</p>' : '<p class="svc-kicker">Artigo educativo</p>'
   const header = sharedHeader(contact)
   return shell(head, header+'<main><article>'+
-    '<section class="svc-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(post.title)+'</nav>'+
+    '<section class="svc-hero article-hero"><div class="svc-wrap svc-narrow"><nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / <a href="/artigos/">Artigos</a> / '+esc(post.title)+'</nav>'+
     labels+'<h1>'+esc(post.title)+'</h1><p class="svc-lead">'+esc(post.description)+'</p>'+heroImage+
     '<div class="svc-author-mini"><img src="/img/hericles-ferreira-retrato-perfil.webp" alt="Retrato profissional de Hericles Ferreira" width="82" height="82" decoding="async">'+
     '<p><strong><a href="/sobre-hericles-ferreira/">Hericles Ferreira</a></strong><br>Nutricionista, CRN-10 12284 · Pós-graduado em Metabolismo e Emagrecimento'+(published?'<br><small>Publicado em '+published+'</small>':'')+'</p></div></div></section>'+
-    '<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow"><div class="svc-article blogger-article">'+sanitizeBloggerHtml(post.contentHtml)+'</div></div></section>'+
-    '<section class="svc-end"><div class="svc-wrap"><h2>Sua estratégia precisa caber na sua vida</h2><p>Atendimento presencial em Joinville e consultoria nutricional online.</p><a class="svc-button" href="'+contact+'">Conversar sobre meu objetivo</a></div></section>'+
+    '<section class="svc-section article-reading"><div class="svc-wrap svc-narrow"><div class="svc-article blogger-article">'+sanitizeBloggerHtml(post.contentHtml)+'</div></div></section>'+
+    renderArticleAuthor()+
+    renderArticleCta()+
     '</article></main>'+sharedFooter())
 }
 
