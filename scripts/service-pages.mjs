@@ -96,7 +96,7 @@ const pages = [
     description: 'Acompanhamento nutricional para emagrecimento em Joinville, com plano alimentar adaptado à sua rotina, avaliação física e check-ins semanais. Conheça o atendimento.',
     label: 'Emagrecimento em Joinville',
     heading: 'Emagrecimento com estratégia, sem dieta maluca',
-    intro: 'Emagrecer não precisa significar cortar tudo o que você gosta. O acompanhamento nutricional considera sua rotina, preferências, histórico e objetivos para planejar mudanças que façam sentido na vida real.',
+    intro: 'Emagrecer não precisa significar cortar tudo o que você gosta. O acompanhamento considera sua rotina, preferências, histórico e objetivos para planejar mudanças que façam sentido na vida real.',
     benefits: [
       ['Plano alimentar individualizado', 'Estratégias para reduzir gordura corporal sem transformar cada refeição em uma lista de proibições.'],
       ['Acompanhamento de verdade', 'Check-ins semanais para identificar dificuldades, acompanhar a evolução e orientar ajustes no planejamento.'],
@@ -234,7 +234,7 @@ ${p.slug === 'nutricionista-emagrecimento-joinville' ? `
       <p class="emag-hero__eyebrow">${esc(p.label)} · CRN-10 12284</p>
       <h1>${esc(p.heading)}</h1>
       <p class="emag-hero__lead">${esc(p.intro)}</p>
-      <div class="emag-hero__actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="emag-hero__secondary" href="/sobre-hericles-ferreira/">Conhecer o nutricionista →</a></div>
+      <div class="emag-hero__actions"><a class="svc-button" href="${contact(p.nav)}">Agendar consulta</a><a class="emag-hero__secondary" href="/sobre-hericles-ferreira/">Conheça o meu trabalho</a></div>
     </div>
   </div>
   <div class="emag-stats"><div class="svc-wrap emag-stats__inner"><div><strong>Online & Presencial</strong><span>Joinville/SC</span></div><i></i><div><strong>Até 72h</strong><span>Receba seu plano alimentar em até 72h após sua consulta</span></div><i></i><div><strong>Acompanhamento semanal</strong><span>Para ajustar dieta, treino e evolução</span></div></div></div>
@@ -246,7 +246,7 @@ ${p.slug === 'nutricionista-emagrecimento-joinville' ? `
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''}
 <section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>
-<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>
+${p.slug === 'nutricionista-emagrecimento-joinville' ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeResults() : renderTransformations(p)}
 <section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
