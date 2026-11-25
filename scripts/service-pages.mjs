@@ -336,7 +336,9 @@ function render(p) {
 <link rel="stylesheet" href="/service-pages.css">
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
+${trackingHead}
 </head><body>
+${trackingBody}
 ${sharedHeader(contact(p.nav))}
 <main>
 ${p.slug === "consultoria-nutricional-online" ? `<style>.consultoria-hero-light .emag-breadcrumb,.consultoria-hero-light .emag-breadcrumb a,.consultoria-hero-light .emag-hero__eyebrow,.consultoria-hero-light .emag-hero__lead,.consultoria-hero-light .emag-hero__secondary{color:#242424!important}.consultoria-hero-light h1{color:#242424!important}</style>` : ""}
