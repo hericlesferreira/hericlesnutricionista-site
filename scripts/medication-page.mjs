@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { sharedHeader, sharedFooter } from './shared-layout.mjs'
+import { sharedHeader, sharedFooter, trackingHead, trackingBody } from './shared-layout.mjs'
 
 const origin = 'https://www.nutrihericles.com.br'
 const slug = 'alimentacao-mounjaro-ozempic-tirzepatida'
