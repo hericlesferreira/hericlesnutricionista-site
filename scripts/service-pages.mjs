@@ -103,7 +103,6 @@ const pages = [
       ['Avaliação da evolução', 'No atendimento presencial, a avaliação física complementa a análise de hábitos, medidas e composição corporal.'],
     ],
     sections: [
-      ['Para quem é o acompanhamento?', 'Para pessoas que desejam reduzir gordura corporal, melhorar hábitos alimentares e trabalhar a manutenção do peso após o emagrecimento. A estratégia é adaptada ao contexto clínico e à rotina individual.'],
       ['Como funciona na prática?', 'Começamos entendendo seu histórico, alimentação, rotina e dificuldades. A partir da avaliação, desenvolvemos um plano alimentar personalizado, com acesso ao aplicativo Dietitian, suporte pelo WhatsApp e acompanhamento semanal.'],
       ['É preciso cortar arroz, pão ou sair da vida social?', 'Não existe uma proibição universal desses alimentos. O planejamento pode acomodar alimentos que você gosta e ocasiões sociais, considerando quantidades, frequência e suas necessidades.'],
     ],
