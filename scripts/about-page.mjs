@@ -106,7 +106,7 @@ ${sharedHeader(wa)}
 </div>
 </div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">
-<p class="svc-kicker">Como trabalho</p><h2>Tudo para a <span class="about-work-emphasis">sua</span> realidade</h2>
+<p class="svc-kicker">Como trabalho</p><h2>Tudo para a <em>sua</em> realidade</h2>
 <p>Antes de prescrever seu planejamento, eu procuro compreender como você se alimenta, o que gosta, quais são os seus obstáculos e como sua rotina funciona. A nossa estratégia precisa ser viável dentro do seu contexto.</p>
 <div class="svc-grid" style="margin-top:25px">
 <article class="svc-card"><h3>1. Entender</h3><p>Histórico de saúde, objetivos, rotina alimentar, preferências, treinos e dificuldades.</p></article>
