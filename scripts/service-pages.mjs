@@ -262,8 +262,9 @@ ${sharedHeader(contact(p.nav))}
 ${homeLayoutSlugs.has(p.slug) ? `
 <section class="emag-hero">
   <picture class="emag-hero__media" aria-hidden="true">
-    <source media="(max-width:768px)" srcset="/img/hero-home-mobile.png">
-    <img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">
+    ${p.slug === 'nutricionista-esportivo-joinville'
+      ? '<img src="/img/nutricionista-esportivo.webp" alt="" fetchpriority="high" decoding="async">'
+      : '<source media="(max-width:768px)" srcset="/img/hero-home-mobile.png"><img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">'}
   </picture>
   <div class="svc-wrap emag-hero__inner">
     <div class="emag-hero__copy">
