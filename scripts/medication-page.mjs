@@ -1,9 +1,12 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { sharedHeader, sharedFooter } from './shared-layout.mjs'
 
 const origin = 'https://www.nutrihericles.com.br'
 const slug = 'alimentacao-mounjaro-ozempic-tirzepatida'
-const url = origin + '/' + slug + '/'
+const articlePath = '/artigos/' + slug + '/'
+const legacyPath = '/' + slug + '/'
+const url = origin + articlePath
 const title = 'Alimentação com Mounjaro, Ozempic e Tirzepatida | Nutricionista'
 const description = 'O que comer durante o uso de Mounjaro, Ozempic e tirzepatida? Guia de Hericles Ferreira sobre proteínas, náuseas, hidratação e preservação muscular.'
 const whatsapp = 'https://api.whatsapp.com/send?phone=5547988602379&text=' + encodeURIComponent('Olá, Hericles! Já uso ou estou pensando em usar medicação para emagrecimento e quero acompanhamento nutricional, sem julgamentos.')
@@ -46,8 +49,7 @@ const html = `<!doctype html>
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a>
-<nav aria-label="Navegação"><a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a><a href="/acompanhamento-nutricional/">Acompanhamento</a><a href="/consultoria-nutricional-online/">Consultoria online</a></nav><a class="svc-header-cta" href="${whatsapp}">Agendar</a></div></header>
+${sharedHeader(whatsapp)}
 <main>
 <article>
 <section class="svc-hero"><div class="svc-wrap svc-narrow">
@@ -142,13 +144,19 @@ const html = `<!doctype html>
 <a class="svc-button" href="${whatsapp}">Quero acompanhamento durante o uso da medicação</a>
 </div></section>
 </article>
-</main><footer class="svc-footer"><div class="svc-wrap"><img class="svc-footer-logo" src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"><p>Hericles Ferreira · Nutricionista · CRN-10 12284</p><p>Rua Areia Branca, 1035, Jardim Iririú, Joinville/SC</p><p><a href="/">Início</a> · <a href="/nutricionista-emagrecimento-joinville/">Emagrecimento</a> · <a href="/acompanhamento-nutricional/">Acompanhamento</a></p></div></footer>
+</main>${sharedFooter()}
 </body></html>`
 
 export async function generateMedicationPage() {
-  const dir = join('dist', slug)
+  const dir = join('dist', 'artigos', slug)
   await mkdir(dir, { recursive: true })
   await writeFile(join(dir, 'index.html'), html, 'utf8')
+
+  const legacyDir = join('dist', slug)
+  await mkdir(legacyDir, { recursive: true })
+  const redirect = '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><link rel="canonical" href="'+url+'"><meta http-equiv="refresh" content="0;url='+articlePath+'"><script>location.replace('+JSON.stringify(articlePath)+')</script></head><body><a href="'+articlePath+'">Abrir artigo</a></body></html>'
+  await writeFile(join(legacyDir, 'index.html'), redirect, 'utf8')
+
   if (!html.includes('Hericles Ferreira') || !html.includes('application/ld+json')) throw new Error('Artigo SEO incompleto')
-  console.log('SEO: artigo de medicações para emagrecimento gerado.')
+  console.log('SEO: artigo de medicações para emagrecimento gerado em /artigos/ com redirecionamento da URL antiga.')
 }

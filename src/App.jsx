@@ -37,7 +37,7 @@ const strategicArticles = [
     alt: 'Planejamento alimentar personalizado elaborado por Hericles Ferreira',
   },
   {
-    href: '/alimentacao-mounjaro-ozempic-tirzepatida/',
+    href: '/artigos/alimentacao-mounjaro-ozempic-tirzepatida/',
     category: 'Tratamento e alimentação',
     title: 'Alimentação durante o uso de Mounjaro, Ozempic e tirzepatida',
     description: 'Como organizar a alimentação, preservar massa muscular e lidar com dificuldades nutricionais durante o tratamento.',
@@ -278,18 +278,46 @@ export default function App() {
   const [visibleArticleCount, setVisibleArticleCount] = useState(6)
 
   useEffect(() => {
-    const cards = document.querySelectorAll('.article-card--reveal:not(.is-visible)')
+    const cards = [...document.querySelectorAll('.article-card--reveal')]
+
+    const revealAllArticles = () => {
+      cards.forEach((card) => {
+        card.classList.remove('is-reveal-pending')
+        card.classList.add('is-visible')
+      })
+    }
+
+    if (window.location.hash === '#artigos') {
+      revealAllArticles()
+      return
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          entry.target.classList.remove('is-reveal-pending')
           entry.target.classList.add('is-visible')
           observer.unobserve(entry.target)
         }
       })
     }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' })
 
-    cards.forEach((card) => observer.observe(card))
-    return () => observer.disconnect()
+    cards.forEach((card) => {
+      if (!card.classList.contains('is-visible')) {
+        card.classList.add('is-reveal-pending')
+        observer.observe(card)
+      }
+    })
+
+    const onHashChange = () => {
+      if (window.location.hash === '#artigos') revealAllArticles()
+    }
+    window.addEventListener('hashchange', onHashChange)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('hashchange', onHashChange)
+    }
   }, [visibleArticleCount])
 
   return (
@@ -424,18 +452,20 @@ export default function App() {
                 key={article.href}
                 style={{ '--article-delay': `${Math.min(index % 6, 5) * 55}ms` }}
               >
-                <a className="article-card__image" href={article.href} aria-label={`Ler artigo ${article.title}`}>
-                  <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
-                </a>
-                <div className="article-card__body">
-                  <div className="article-card__meta">
-                    <span>{article.category}</span>
-                    <span>Hericles Ferreira</span>
+                <a className="article-card__cover" href={article.href} aria-label={`Ler artigo ${article.title}`}>
+                  <div className="article-card__image">
+                    <img src={article.image} alt={article.alt} loading="lazy" decoding="async" />
                   </div>
-                  <h3><a href={article.href}>{article.title}</a></h3>
-                  <p>{article.description}</p>
-                  <a className="article-card__link" href={article.href}>Ler artigo →</a>
-                </div>
+                  <div className="article-card__body">
+                    <div className="article-card__meta">
+                      <span>{article.category}</span>
+                      <span>Hericles Ferreira</span>
+                    </div>
+                    <h3>{article.title}</h3>
+                    <p>{article.description}</p>
+                    <span className="article-card__link">Ler artigo →</span>
+                  </div>
+                </a>
               </article>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import { createServer } from 'node:http'
 import { readFile, stat } from 'node:fs/promises'
+import { readFileSync } from 'node:fs'
 import { extname, join, normalize } from 'node:path'
 import { spawn, spawnSync } from 'node:child_process'
 
@@ -31,6 +32,22 @@ function remoteChanged() {
   const remote = spawnSync('git', ['rev-parse', 'origin/' + BRANCH], { encoding: 'utf8', shell: process.platform === 'win32' }).stdout?.trim()
   return Boolean(local && remote && local !== remote)
 }
+function syncBlogger() {
+  const path = 'data/blogger-posts.json'
+  let before = ''
+  try { before = readFileSync(path, 'utf8') } catch {}
+
+  const r = run('node', ['scripts/sync-blogger.mjs'])
+  if (r.status !== 0) {
+    console.log('⚠️ Não foi possível sincronizar o Blogger. Mantendo os artigos já salvos.')
+    return false
+  }
+
+  let after = ''
+  try { after = readFileSync(path, 'utf8') } catch {}
+  return before !== after
+}
+
 function build() {
   console.log('\n🔧 Reconstruindo site local...')
   const r = run('npm', ['run', 'build'])
@@ -127,6 +144,8 @@ const server = createServer(async (req, res) => {
 })
 
 console.log('🚀 Preparando ambiente local...')
+console.log('📰 Sincronizando Blogger na inicialização...')
+syncBlogger()
 build()
 server.listen(PORT, '127.0.0.1', () => {
   console.log('\n👀 Preview automático: http://localhost:' + PORT)
@@ -135,3 +154,32 @@ server.listen(PORT, '127.0.0.1', () => {
 })
 
 setInterval(syncAndBuild, 5000)
+
+function scheduleBloggerSyncAtSix() {
+  const now = new Date()
+  const next = new Date(now)
+  next.setHours(6, 0, 0, 0)
+  if (next <= now) next.setDate(next.getDate() + 1)
+
+  const delay = next.getTime() - now.getTime()
+  console.log('📰 Próxima verificação do Blogger: ' + next.toLocaleString('pt-BR'))
+
+  setTimeout(() => {
+    if (!rebuilding && currentBranch() === BRANCH && !hasBlockingLocalChanges()) {
+      rebuilding = true
+      try {
+        if (syncBlogger()) {
+          console.log('\n📰 Novo conteúdo detectado no Blogger.')
+          build()
+        } else {
+          console.log('📰 Blogger verificado às 06h. Nenhum artigo novo.')
+        }
+      } finally {
+        rebuilding = false
+      }
+    }
+    scheduleBloggerSyncAtSix()
+  }, delay)
+}
+
+scheduleBloggerSyncAtSix()

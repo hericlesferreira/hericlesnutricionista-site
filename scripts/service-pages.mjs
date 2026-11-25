@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { sharedHeader, sharedFooter } from './shared-layout.mjs'
 
 const origin = 'https://www.nutrihericles.com.br'
 const phone = '5547988602379'
@@ -184,7 +185,7 @@ function render(p) {
 <link rel="stylesheet" href="/refresh-pages.css">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 </head><body>
-<header class="svc-header"><div class="svc-wrap svc-header-row"><a class="svc-brand" href="/" aria-label="Hericles Nutri, página inicial"><img src="/img/logo-preta.png" alt="Hericles Nutri" width="2000" height="500" decoding="async"></a><nav aria-label="Serviços">${nav}</nav><a class="svc-header-cta" href="${contact(p.nav)}">Agendar</a></div></header>
+${sharedHeader(contact(p.nav))}
 <main>
 <section class="svc-hero"><div class="svc-wrap svc-hero-grid"><div class="svc-hero-copy">
 <nav class="svc-breadcrumb" aria-label="Caminho de navegação"><a href="/">Início</a> / ${esc(p.nav)}</nav>
@@ -198,7 +199,7 @@ ${renderTransformations(p)}
 <section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>
 <section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>
 <section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>
-</main><footer class="svc-footer"><div class="svc-wrap">${footer}<p><a href="/">Voltar à página inicial</a></p></div></footer>
+</main>${sharedFooter()}
 </body></html>`
 }
 

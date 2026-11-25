@@ -3,7 +3,7 @@ name: Sincronizar Blogger
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */2 * * *'
+    - cron: '0 9 * * *' # 06:00 em America/Sao_Paulo (UTC-3)
 
 permissions:
   contents: write
