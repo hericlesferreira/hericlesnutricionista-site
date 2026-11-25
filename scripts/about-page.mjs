@@ -94,9 +94,9 @@ ${sharedHeader(wa)}
   </div></div>
 </section>
 <section class="svc-section"><div class="svc-wrap svc-narrow">
-<p class="svc-kicker">Minha trajetória</p><h2>Antes de orientar, vivi o processo de mudança</h2>
-<p>Minha relação com o emagrecimento também é pessoal. Durante anos, enfrentei o sobrepeso, o cansaço em atividades comuns e a dificuldade de organizar a alimentação. Minha rotina girava em torno de opções rápidas, entre trabalho e compromissos.</p>
-<p style="margin-top:16px">A experiência de mudar meus hábitos influenciou a maneira como enxergo a nutrição: um planejamento pode ser tecnicamente correto e, ainda assim, não funcionar se não couber na vida de quem precisa segui-lo.</p>
+<p class="svc-kicker">Minha trajetória</p><h2>Antes de te orientar, eu precisei viver o <span class="about-trajectory-emphasis">meu processo</span></h2>
+<p>Minha relação com o emagrecimento também é pessoal. Durante anos, enfrentei a obesidade, o cansaço em atividades simples do dia a dia e a dificuldade de organizar a alimentação. Minha rotina girava em torno de opções rápidas, entre trabalho e compromissos.</p>
+<p style="margin-top:16px">A experiência que tive e as dificuldades que enfrentei ao mudar meus hábitos influenciou a maneira como eu enxergo a nutrição: um planejamento pode ser tecnicamente correto e, ainda assim, não funcionar se não couber na vida de quem precisa segui-lo.</p>
 <p style="margin-top:16px">Foi assim que construí meu propósito profissional: ajudar pessoas a reduzir gordura, ganhar massa muscular e desenvolver hábitos mais consistentes, sem dietas extremas ou culpa por comer.</p>
 <h2 style="margin-top:36px">Formação e identificação profissional</h2>
 <div class="svc-grid">
