@@ -172,7 +172,7 @@ const pages = [
     description: 'Nutrição esportiva em Joinville para musculação, hipertrofia, ganho de massa muscular e recomposição corporal. Planejamento ajustado à rotina e aos treinos.',
     label: 'Nutrição esportiva em Joinville',
     heading: 'Alimentação alinhada aos seus treinos e objetivos',
-    intro: 'Quer ganhar massa muscular, melhorar a composição corporal ou organizar a alimentação para os treinos? O meu acompanhamento e planejamento considera intensidade, frequência dos exercícios, rotina e preferências alimentares'
+    intro: 'Quer ganhar massa muscular, melhorar a composição corporal ou organizar a alimentação para os treinos? O meu acompanhamento e planejamento considera intensidade, frequência dos exercícios, rotina e preferências alimentares',
     benefits: [
       ['Estratégia para hipertrofia', 'Ajuste da ingestão energética e de nutrientes de acordo com os objetivos e as necessidades individuais.'],
       ['Composição corporal', 'Acompanhamento de medidas, evolução física e sinais da rotina para orientar decisões ao longo do processo.'],
