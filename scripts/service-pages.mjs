@@ -91,6 +91,13 @@ function renderOnlineJourney() {
   return '<section class="emag-journey" id="como-funciona"><div class="svc-wrap"><div class="emag-section-intro"><p class="svc-kicker">Sua consultoria online</p><h2>Sua jornada começa <span>onde você estiver</span></h2><p>Da primeira resposta no questionário aos ajustes de cada semana, a consultoria foi pensada para transformar um atendimento online em acompanhamento de verdade.</p></div><div class="emag-journey-grid">'+cards+'</div></div></section>'
 }
 
+function renderFollowupSections(p) {
+  const cards = p.sections.map(([title,text],i) =>
+    '<article class="emag-journey-card"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>0'+(i+1)+'</span> Acompanhamento</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
+  ).join('')
+  return '<section class="emag-journey" id="como-funciona"><div class="svc-wrap"><div class="emag-section-intro"><p class="svc-kicker">Acompanhamento nutricional</p><h2>'+esc(p.heading)+'</h2><p>'+esc(p.intro)+'</p></div><div class="emag-journey-grid">'+cards+'</div></div></section>'
+}
+
 function renderSportsJourney() {
   const cards = homeJourneySteps.map(([n,eyebrow,title,text,image,alt]) =>
     '<article class="emag-journey-card"><img src="'+image+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"><div class="emag-journey-card__body"><p class="emag-journey-card__eyebrow"><span>'+n+'</span> '+esc(eyebrow)+'</p><h3>'+esc(title)+'</h3><p>'+esc(text)+'</p></div></article>'
@@ -157,7 +164,7 @@ function renderHomeLocation(contactUrl) {
   '</div></section>'
 }
 
-const homeLayoutSlugs = new Set(['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville','consultoria-nutricional-online'])
+const homeLayoutSlugs = new Set(['nutricionista-emagrecimento-joinville','nutricionista-esportivo-joinville','consultoria-nutricional-online','acompanhamento-nutricional'])
 
 const pages = [
   {
@@ -300,7 +307,9 @@ ${homeLayoutSlugs.has(p.slug) ? `
       ? '<img src="/img/nutricionista-esportivo.webp" alt="" fetchpriority="high" decoding="async">'
       : (p.slug === 'consultoria-nutricional-online'
         ? '<img src="/img/consultoria-online-nutricionista.webp" alt="" fetchpriority="high" decoding="async">'
-        : '<source media="(max-width:768px)" srcset="/img/hero-home-mobile.png"><img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">')}
+        : (p.slug === 'acompanhamento-nutricional'
+          ? '<img src="'+photo.hero+'" alt="" fetchpriority="high" decoding="async">'
+          : '<source media="(max-width:768px)" srcset="/img/hero-home-mobile.png"><img src="/img/hero-home-desktop.png" alt="" fetchpriority="high" decoding="async">'))}
   </picture>
   <div class="svc-wrap emag-hero__inner">
     <div class="emag-hero__copy">
@@ -318,11 +327,11 @@ ${homeLayoutSlugs.has(p.slug) ? `
 <p class="svc-lead">${esc(p.intro)}</p>
 <div class="svc-actions"><a class="svc-button" href="${contact(p.nav)}">Quero saber mais pelo WhatsApp</a><a class="svc-outline" href="/sobre-hericles-ferreira/">Conhecer o nutricionista</a></div>
 </div><img class="svc-hero-photo" src="${photo.hero}" alt="${esc(photo.heroAlt)}" width="380" height="480" fetchpriority="high" decoding="async"></div></section>`}
-${p.slug === 'consultoria-nutricional-online' ? renderOnlineJourney() : (p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : ''))}
+${p.slug === 'consultoria-nutricional-online' ? renderOnlineJourney() : (p.slug === 'nutricionista-esportivo-joinville' ? renderSportsJourney() : (p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeJourney() : (p.slug === 'acompanhamento-nutricional' ? renderFollowupSections(p) : '')))}
 ${p.slug === "consultoria-nutricional-online" ? "" : `<section class="svc-section"><div class="svc-wrap"><p class="svc-kicker">O que você encontra</p><h2>Estratégia adaptada à sua realidade</h2><div class="svc-grid">${p.benefits.map(card).join('')}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap svc-narrow">${sections}<figure class="svc-support-image"><img src="${photo.support}" alt="${esc(photo.supportAlt)}" loading="lazy" decoding="async" width="320" height="420"><figcaption>Hericles Ferreira · Atendimento nutricional individualizado</figcaption></figure></div></section>`}
 ${p.slug === 'nutricionista-esportivo-joinville' ? renderSportsResults() : (p.slug === 'nutricionista-emagrecimento-joinville' || p.slug === 'consultoria-nutricional-online' ? renderHomeResults() : renderTransformations(p))}
-${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : ((p.slug === 'nutricionista-esportivo-joinville' || p.slug === 'consultoria-nutricional-online') ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`)}
+${p.slug === 'nutricionista-emagrecimento-joinville' ? renderHomeFaq(contact(p.nav)) : ((p.slug === 'nutricionista-esportivo-joinville' || p.slug === 'consultoria-nutricional-online') ? renderStyledFaq([...homeFaqs, ...p.faqs], contact(p.nav)) : (p.slug === 'acompanhamento-nutricional' ? renderStyledFaq(p.faqs, contact(p.nav)) : `<section class="svc-section"><div class="svc-wrap svc-narrow"><p class="svc-kicker">Dúvidas frequentes</p><h2>Perguntas sobre ${esc(p.nav.toLowerCase())}</h2><div class="svc-faq">${questions}</div></div></section>`))}
 ${homeLayoutSlugs.has(p.slug) ? '' : `<section class="svc-section svc-muted"><div class="svc-wrap"><p class="svc-kicker">Outros atendimentos</p><h2>Conheça também</h2><div class="svc-more">${other}</div></div></section>`}
 ${homeLayoutSlugs.has(p.slug) ? renderHomeLocation(contact(p.nav)) : `<section class="svc-end"><div class="svc-wrap"><h2>Seu planejamento começa com uma conversa</h2><p>Atendimento presencial em Joinville, na ${esc(address)}, e modalidades online conforme o serviço.</p><a class="svc-button" href="${contact(p.nav)}">Conversar sobre meu objetivo</a></div></section>`}
 </main>${sharedFooter()}
