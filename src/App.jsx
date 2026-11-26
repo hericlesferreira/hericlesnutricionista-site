@@ -642,6 +642,7 @@ export default function App() {
             <a href="/sobre-hericles-ferreira/">Sobre mim</a>
             <a href="/artigos/">Artigos</a>
             <a href="#localizacao">Localização</a>
+            <a href="#" data-consent-manage>Cookies</a>
           </div>
           <div className="footer__social">
             <h2>Redes sociais</h2>
