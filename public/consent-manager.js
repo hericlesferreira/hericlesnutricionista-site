@@ -25,18 +25,25 @@
     dataLayer.push({
       event:'consent_updated',
       consent_analytics:value.analytics?'granted':'denied',
-      consent_marketing:value.marketing?'granted':'denied'
+      consent_marketing:value.marketing?'granted':'denied',
+      measurement_mode:value.analytics?'full':'basic'
     });
     if(value.analytics) dataLayer.push({event:'analytics_consent_granted'});
     if(value.marketing) dataLayer.push({event:'marketing_consent_granted'});
   }
 
-  function currentMarketingSignal(){
+  function currentConsentSignals(){
     const c=read();
-    if(c&&c.marketing===true){
-      window.dataLayer=window.dataLayer||[];
-      dataLayer.push({event:'marketing_consent_granted'});
-    }
+    if(!c) return;
+    window.dataLayer=window.dataLayer||[];
+    dataLayer.push({
+      event:'consent_state_restored',
+      consent_analytics:c.analytics?'granted':'denied',
+      consent_marketing:c.marketing?'granted':'denied',
+      measurement_mode:c.analytics?'full':'basic'
+    });
+    if(c.analytics===true) dataLayer.push({event:'analytics_consent_granted'});
+    if(c.marketing===true) dataLayer.push({event:'marketing_consent_granted'});
   }
 
   function closePanel(){
@@ -78,16 +85,16 @@
         <div class="nh-consent__copy">
           <p class="nh-consent__eyebrow">Privacidade</p>
           <h2 id="nh-consent-title">Você escolhe como seus dados são usados</h2>
-          <p>Usamos cookies necessários para o site funcionar. Com sua permissão, também usamos cookies de análise para entender o uso do site e de marketing para medir campanhas.</p>
+          <p>Usamos recursos necessários para o site funcionar e uma medição básica de cliques importantes, sem cookies de análise. Com sua permissão, também usamos análise completa para entender a navegação e marketing para medir campanhas.</p>
         </div>
         <div class="nh-consent__actions">
           <button type="button" class="nh-consent__btn nh-consent__btn--primary" data-consent-all>Aceitar tudo</button>
-          <button type="button" class="nh-consent__btn" data-consent-essential>Somente necessários</button>
+          <button type="button" class="nh-consent__btn" data-consent-essential>Continuar sem cookies opcionais</button>
           <button type="button" class="nh-consent__link" data-consent-customize>Personalizar</button>
         </div>
         <div class="nh-consent__details" data-consent-details hidden>
-          <label class="nh-consent__row"><span><strong>Necessários</strong><small>Essenciais para segurança e funcionamento do site.</small></span><input type="checkbox" checked disabled></label>
-          <label class="nh-consent__row"><span><strong>Análise</strong><small>Ajuda a entender visitas, páginas e interações.</small></span><input name="consent-analytics" type="checkbox" checked></label>
+          <label class="nh-consent__row"><span><strong>Necessários + medição básica</strong><small>Essenciais para o site e contagem anônima de cliques em WhatsApp, agendamento e mapa, sem cookies de análise.</small></span><input type="checkbox" checked disabled></label>
+          <label class="nh-consent__row"><span><strong>Análise completa</strong><small>Permite entender visitas, páginas, sessões e interações ao longo da navegação.</small></span><input name="consent-analytics" type="checkbox" checked></label>
           <label class="nh-consent__row"><span><strong>Marketing</strong><small>Permite medir campanhas e anúncios, incluindo Meta Pixel.</small></span><input name="consent-marketing" type="checkbox"></label>
           <button type="button" class="nh-consent__btn nh-consent__btn--primary nh-consent__save" data-consent-save>Salvar preferências</button>
         </div>
@@ -114,7 +121,7 @@
 
     const existing=read();
     if(!existing) openPanel(false);
-    else currentMarketingSignal();
+    else currentConsentSignals();
   }
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount,{once:true});
