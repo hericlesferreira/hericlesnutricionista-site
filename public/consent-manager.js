@@ -101,13 +101,12 @@
       </div>`;
     document.body.appendChild(wrap);
 
-    const manage=document.createElement('button');
-    manage.type='button';
-    manage.className='nh-consent-manage';
-    manage.textContent='Cookies';
-    manage.setAttribute('aria-label','Gerenciar preferências de cookies');
-    manage.addEventListener('click',()=>openPanel(true));
-    document.body.appendChild(manage);
+    document.addEventListener('click',function(e){
+      const manage=e.target.closest('[data-consent-manage]');
+      if(!manage) return;
+      e.preventDefault();
+      openPanel(true);
+    });
 
     wrap.querySelector('[data-consent-all]').addEventListener('click',()=>choose({analytics:true,marketing:true}));
     wrap.querySelector('[data-consent-essential]').addEventListener('click',()=>choose({analytics:false,marketing:false}));
