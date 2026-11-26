@@ -37,6 +37,7 @@ export function sharedFooter() {
         '<a href="/sobre-hericles-ferreira/">Sobre mim</a>'+
         '<a href="/artigos/">Artigos</a>'+
         '<a href="/sobre-hericles-ferreira/#localizacao">Localização</a>'+
+        '<a href="#" data-consent-manage>Cookies</a>'+
       '</div>'+
       '<div class="site-footer__social">'+
         '<h4>Redes sociais</h4>'+
