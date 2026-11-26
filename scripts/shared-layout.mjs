@@ -47,4 +47,3 @@ export function sharedFooter() {
     '<div class="site-footer__bottom"><p>© 2026 Hericles Ferreira. Nutricionista · CRN-10 12284.</p></div>'+
   '</footer>'
 }
-\nexport const consentHead = '<link rel="stylesheet" href="/consent-manager.css">'\n
