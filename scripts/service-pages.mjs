@@ -69,7 +69,7 @@ const homeJourneySteps = [
 
 const homeResults = [
   {nome:'Leonardo',idade:'24 anos',antes:'85kg',depois:'79,5kg',tempo:'3 meses',perfil:'Falso magro',descricao:'Definição corporal + perda de gordura + ganho de massa',image:'/img/Leonardo.png'},
-  {nome:'Daniela',perfil:'Pré-diabetes e hipotireoidismo',descricao:'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',image:'/img/Daniela.png'},
+  {nome:'Daniela',perfil:'Acompanhamento nutricional',descricao:'Reeducação alimentar e emagrecimento',image:'/img/Daniela.png'},
   {nome:'Gabriel',idade:'28 anos',antes:'80kg',depois:'74kg',tempo:'3 meses',perfil:'Falso magro',descricao:'Ganho de massa + redução de gordura',image:'/img/Gabriel.png'},
   {nome:'Djonatan',idade:'30 anos',antes:'87kg',depois:'77kg',tempo:'5 meses',perfil:'Falso magro',descricao:'Perda de gordura + definição muscular',image:'/img/Djonatan.png'},
   {nome:'Hericles',idade:'30 anos',antes:'115kg',depois:'84kg',tempo:'5 meses',perfil:'Obesidade',descricao:'Recomposição corporal com maior perda de gordura',image:'/img/Hericles.png'}
