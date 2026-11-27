@@ -180,8 +180,8 @@ const transformacoes = [
   },
   {
     nome: 'Daniela',
-    perfil: 'Pré-diabetes e hipotireoidismo',
-    descricao: 'Reeducação alimentar e emagrecimento com tratamento nutricional em pré-diabetes e hipotireoidismo',
+    perfil: 'Acompanhamento nutricional',
+    descricao: 'Reeducação alimentar e emagrecimento',
     image: '/img/Daniela.png',
   },
   {
